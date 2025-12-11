@@ -184,7 +184,7 @@ DATABASE_URL=sqlite://./data/app.db
    - Configurar SQLite + repositorio de dashboards/favoritos, exponer `/api/dashboards` stub.
    - Middleware de manejo de errores y logging básico.
    - **Metric groups**: repositorio que infiere agrupaciones desde `/api/states` (prefijos de `entity_id`, `device_class` complementarios) y permite overrides en SQLite para definir grupos (potencia/voltaje/corriente). Endpoint `GET /api/devices/metrics` y `GET /api/devices/metrics/:id/state`.
-   - **Favoritos**: tabla `favorites` con `id`, `card_type`, `config_json`, `title`, `order_index`. Endpoints `GET /api/favorites`, `POST /api/favorites` (alta/actualización idempotente) y `DELETE /api/favorites/:id`.
+   - **Favoritos**: tabla `favorites` con `id`, `card_type`, `config_json`, `title`, `order_index`, `dashboard_id`. Endpoints `GET /api/favorites?dashboardId=`, `POST /api/favorites`, `DELETE /api/favorites/:id`. Asociados a dashboards para controlar dónde se muestran.
    - **Histórico**: endpoint `GET /api/entities/:entityId/history?hours=3&interval=5m` que usa la API de history de HA, reduce muestras y entrega `{ timestamps, values }`.
    - Documentar cómo definir overrides manuales cuando HA no provee `device_id`.
 3. **Frontend fase 1**

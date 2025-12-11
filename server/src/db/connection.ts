@@ -50,8 +50,30 @@ const runMigrations = (db: BetterSqlite3Database) => {
       config_json TEXT NOT NULL,
       title TEXT,
       order_index INTEGER DEFAULT 0,
+      dashboard_id TEXT,
       created_at TEXT DEFAULT CURRENT_TIMESTAMP,
       updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE IF NOT EXISTS dashboards (
+      id TEXT PRIMARY KEY,
+      slug TEXT NOT NULL UNIQUE,
+      name TEXT NOT NULL,
+      description TEXT,
+      created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+      updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE IF NOT EXISTS dashboard_cards (
+      id TEXT PRIMARY KEY,
+      dashboard_id TEXT NOT NULL,
+      card_type TEXT NOT NULL,
+      config_json TEXT NOT NULL,
+      title TEXT,
+      order_index INTEGER DEFAULT 0,
+      created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+      updated_at TEXT DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (dashboard_id) REFERENCES dashboards(id) ON DELETE CASCADE
     );
   `);
 };

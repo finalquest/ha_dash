@@ -63,11 +63,12 @@ describe('favorites routes', () => {
         cardType: 'energy-metric-panel',
         config: { groupId: 'uuid', historyMetric: 'power' },
         title: 'Planta baja',
+        dashboardId: 'favorites',
       },
     });
 
     expect(resPost.statusCode).toBe(200);
-    const listRes = await runHandler('get', '/');
+    const listRes = await runHandler('get', '/', { body: {}, params: {}, });
     const body = listRes.body as { favorites: Array<{ cardType: string; id: string }> };
     expect(body.favorites).toHaveLength(1);
     expect(body.favorites[0].cardType).toBe('energy-metric-panel');

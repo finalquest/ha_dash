@@ -9,6 +9,7 @@ interface FavoriteRow {
   config_json: string;
   title?: string | null;
   order_index: number;
+  dashboard_id?: string | null;
 }
 
 export interface Favorite {
@@ -17,9 +18,12 @@ export interface Favorite {
   config: Record<string, unknown>;
   title?: string;
   orderIndex: number;
+  dashboardId?: string;
 }
 
-const selectFavorites = db.prepare('SELECT * FROM favorites ORDER BY order_index, created_at');
+const selectFavorites = db.prepare(
+  'SELECT * FROM favorites WHERE dashboard_id IS NULL OR dashboard_id = ? ORDER BY order_index, created_at'
+);
 const insertFavorite = db.prepare(
   'INSERT INTO favorites (id, card_type, config_json, title, order_index) VALUES (@id, @card_type, @config_json, @title, @order_index)'
 );
@@ -34,10 +38,11 @@ const mapRowToFavorite = (row: FavoriteRow): Favorite => ({
   config: JSON.parse(row.config_json),
   title: row.title ?? undefined,
   orderIndex: row.order_index,
+  dashboardId: row.dashboard_id ?? undefined,
 });
 
-export const listFavorites = (): Favorite[] => {
-  return selectFavorites.all().map((row) => mapRowToFavorite(row as FavoriteRow));
+export const listFavorites = (dashboardId?: string): Favorite[] => {
+  return selectFavorites.all(dashboardId ?? null).map((row) => mapRowToFavorite(row as FavoriteRow));
 };
 
 export const upsertFavorite = (payload: {
@@ -46,6 +51,7 @@ export const upsertFavorite = (payload: {
   config: Record<string, unknown>;
   title?: string;
   orderIndex?: number;
+  dashboardId?: string;
 }): Favorite => {
   const favorite = {
     id: payload.id ?? randomUUID(),
@@ -53,6 +59,7 @@ export const upsertFavorite = (payload: {
     config_json: JSON.stringify(payload.config),
     title: payload.title ?? null,
     order_index: payload.orderIndex ?? 0,
+    dashboard_id: payload.dashboardId ?? null,
   };
 
   if (payload.id) {

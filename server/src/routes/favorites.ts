@@ -4,19 +4,19 @@ import { deleteFavorite, listFavorites, upsertFavorite } from '../repos/favorite
 
 const router = Router();
 
-router.get('/', (_req: Request, res: Response) => {
-  const favorites = listFavorites();
+router.get('/', (req: Request, res: Response) => {
+  const favorites = listFavorites(req.query.dashboardId as string | undefined);
   res.json({ ok: true, favorites });
 });
 
 router.post('/', (req: Request, res: Response) => {
-  const { id, cardType, config, title, orderIndex } = req.body;
+  const { id, cardType, config, title, orderIndex, dashboardId } = req.body;
   if (!cardType || !config) {
     return res.status(400).json({ ok: false, error: 'cardType and config are required' });
   }
 
   try {
-    const favorite = upsertFavorite({ id, cardType, config, title, orderIndex });
+    const favorite = upsertFavorite({ id, cardType, config, title, orderIndex, dashboardId });
     res.json({ ok: true, favorite });
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Failed to save favorite';

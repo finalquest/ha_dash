@@ -55,5 +55,6 @@ Representar y persistir agrupaciones lógicas de entidades de Home Assistant (HA
 
 ## Favoritos y dashboards
 - Los favoritos apuntan a una card específica (incluyendo su `cardType` y config). Para un metric group esto significa guardar `card_type = 'energy-metric-panel'` y `config = { groupId: 'uuid', historyMetric: 'power' }`.
-- El dashboard "Favorites" consume `/api/favorites` y renderiza cada entrada usando el CardRegistry.
-- Cada dashboard (energía, general, etc.) es una lista de cards configuradas. La persistencia de dashboards en SQLite permitirá asignar cada favorito a un dashboard objetivo.
+- Cada favorito debe pertenecer a un dashboard (`dashboard_id`). Podés tener un dashboard "Favoritos" y otro "Energía" y decidir dónde se verá cada card.
+- El dashboard "Favorites" consume `/api/favorites?dashboardId=<favorites>` y renderiza cada entrada usando el CardRegistry.
+- Cada dashboard (energía, general, etc.) se almacena en SQLite (`dashboards`, `dashboard_cards`). Esto permite editar layouts y añadir cards manualmente.
