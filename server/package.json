@@ -12,7 +12,8 @@
     "format:fix": "prettier --write .",
     "test": "jest",
     "test:watch": "jest --watch",
-    "db:migrate": "node ./scripts/db-migrate.js"
+    "db:migrate": "node ./scripts/db-migrate.js",
+    "db:reset": "node ./scripts/reset-db.js"
   },
   "keywords": [],
   "author": "",
