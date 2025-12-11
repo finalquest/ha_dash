@@ -23,8 +23,18 @@ const filterEntities = (
 };
 
 export const EntitiesView = () => {
-  const { data: entities = [], isLoading: isLoadingEntities, isError: entitiesError } = useEntities();
-  const { data: areas = [], isLoading: isLoadingAreas, isError: areasError } = useAreas();
+  const {
+    data: entities = [],
+    isLoading: isLoadingEntities,
+    isError: entitiesError,
+    error: entitiesQueryError,
+  } = useEntities();
+  const {
+    data: areas = [],
+    isLoading: isLoadingAreas,
+    isError: areasError,
+    error: areasQueryError,
+  } = useAreas();
   const [search, setSearch] = useState('');
   const [selectedArea, setSelectedArea] = useState<'all' | string>('all');
 
@@ -52,16 +62,21 @@ export const EntitiesView = () => {
   }
 
   if (entitiesError || areasError) {
+    console.error('Failed to load entities or areas', { entitiesQueryError, areasQueryError });
+    const message =
+      (entitiesQueryError as Error | undefined)?.message ||
+      (areasQueryError as Error | undefined)?.message ||
+      'Hubo un problema al cargar las entidades o zonas.';
     return (
       <section className="panel">
-        <p>Hubo un problema al cargar las entidades o zonas.</p>
+        <p>{message}</p>
       </section>
     );
   }
 
-  const areaOptions = [{ value: 'all', label: 'Todas las zonas' }].concat(
-    areas.map((area) => ({ value: area.area_id, label: area.name })),
-  );
+  const areaOptions = [{ value: 'all', label: 'Todas las zonas' }]
+    .concat(areas.map((area) => ({ value: area.area_id, label: area.name })))
+    .concat({ value: NO_AREA_KEY, label: 'Sin zona' });
 
   return (
     <section>
@@ -78,7 +93,6 @@ export const EntitiesView = () => {
               {option.label}
             </option>
           ))}
-          <option value={NO_AREA_KEY}>Sin zona</option>
         </select>
       </div>
 
