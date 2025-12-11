@@ -36,6 +36,20 @@ export const entitiesHandler = async (_req: Request, res: Response) => {
       };
     });
 
+    const missingArea = enriched.filter((entity) => !entity.attributes.area_id);
+    if (missingArea.length) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        '[entities] entities without area_id',
+        missingArea.length,
+        'example ids:',
+        missingArea.slice(0, 5).map((entity) => entity.entity_id),
+      );
+    } else {
+      // eslint-disable-next-line no-console
+      console.info('[entities] all entities resolved with area_id');
+    }
+
     res.json({ ok: true, entities: enriched });
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unknown error';

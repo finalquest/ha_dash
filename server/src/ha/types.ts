@@ -29,6 +29,11 @@ export interface HomeAssistantEntityMetadata {
   device_id?: string | null;
 }
 
+export interface HomeAssistantDeviceRegistryEntry {
+  id: string;
+  area_id?: string | null;
+}
+
 export interface HomeAssistantHistoryEntry {
   entity_id: string;
   state: string;
