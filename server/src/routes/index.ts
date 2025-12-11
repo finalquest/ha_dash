@@ -5,6 +5,7 @@ import deviceClassesRouter from './deviceClasses';
 import areasRouter from './areas';
 import metricsRouter from './metrics';
 import historyRouter from './history';
+import favoritesRouter from './favorites';
 
 const apiRouter = Router();
 
@@ -14,5 +15,6 @@ apiRouter.use('/entities', entitiesRouter);
 apiRouter.use('/device-classes', deviceClassesRouter);
 apiRouter.use('/areas', areasRouter);
 apiRouter.use('/devices/metrics', metricsRouter);
+apiRouter.use('/favorites', favoritesRouter);
 
 export default apiRouter;

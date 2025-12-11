@@ -43,6 +43,16 @@ const runMigrations = (db: BetterSqlite3Database) => {
       FOREIGN KEY (group_id) REFERENCES metric_groups(id) ON DELETE CASCADE,
       UNIQUE(group_id, metric_type)
     );
+
+    CREATE TABLE IF NOT EXISTS favorites (
+      id TEXT PRIMARY KEY,
+      card_type TEXT NOT NULL,
+      config_json TEXT NOT NULL,
+      title TEXT,
+      order_index INTEGER DEFAULT 0,
+      created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+      updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+    );
   `);
 };
 

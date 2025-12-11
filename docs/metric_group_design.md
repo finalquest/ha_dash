@@ -52,3 +52,8 @@ Representar y persistir agrupaciones lógicas de entidades de Home Assistant (HA
 3. Exponer los endpoints (`/api/devices/metrics`, `/api/devices/metrics/:id/state`, `/api/entities/:entityId/history`).
 4. Añadir fixtures en `server/docs/responses/` para device/entity registry e historial, facilitando tests.
 5. Consumir estos endpoints desde la card `energy-metric-panel` en el frontend.
+
+## Favoritos y dashboards
+- Los favoritos apuntan a una card específica (incluyendo su `cardType` y config). Para un metric group esto significa guardar `card_type = 'energy-metric-panel'` y `config = { groupId: 'uuid', historyMetric: 'power' }`.
+- El dashboard "Favorites" consume `/api/favorites` y renderiza cada entrada usando el CardRegistry.
+- Cada dashboard (energía, general, etc.) es una lista de cards configuradas. La persistencia de dashboards en SQLite permitirá asignar cada favorito a un dashboard objetivo.
