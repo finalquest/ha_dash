@@ -137,6 +137,18 @@ interface CardInstance {
 - Data requirements: cada card define qué queries necesita (p.ej. `energy-consumption` usa `useAreasQuery` + filtros de dominio).
 - Persistencia: dashboards y favoritos se almacenan en SQLite (tablas `dashboards`, `dashboard_cards`, `favorites`) para garantizar que los cambios del usuario se mantengan entre sesiones.
 
+#### Card compuesta de energía
+- `CardType`: `energy-metric-panel`.
+- Props esperadas: `{ groupId: string; historyMetric: 'power' | 'voltage' | 'current'; historyHours?: number }`.
+- Renderiza tres métricas (potencia, voltaje, corriente) y un gráfico con tendencia histórica de la métrica seleccionada.
+- Se alimenta de un “metric group” (ver sección Backend) que mapea un `device_id` o conjunto de entidades al panel. Esto permite reutilizar la misma card en varios dashboards sin duplicar implementación.
+- UI features: badge de favorito, título configurable, indicador de zona si aplica.
+
+#### Histórico en cards
+- Hook `useEntityHistory(entityId, { hours, samplingMinutes })` que consulta `/api/entities/:entityId/history` para poblar charts.
+- Cache con TanStack Query por `[entityId, hours]` para evitar repetir llamadas.
+- El backend normaliza la respuesta (timestamps + valores) para que el frontend no tenga que parsear estructuras complejas de HA.
+
 ## 6. Tiempo real (fase 2)
 - Home Assistant expone WebSocket API (`/api/websocket`).
 - Backend actuará como proxy:
@@ -171,6 +183,9 @@ DATABASE_URL=sqlite://./data/app.db
    - Endpoint `/api/entities` + pruebas del agrupador.
    - Configurar SQLite + repositorio de dashboards/favoritos, exponer `/api/dashboards` stub.
    - Middleware de manejo de errores y logging básico.
+   - **Metric groups**: repositorio que infiere agrupaciones desde `/api/states` (prefijos de `entity_id`, `device_class` complementarios) y permite overrides en SQLite para definir grupos (potencia/voltaje/corriente). Endpoint `GET /api/devices/metrics` y `GET /api/devices/metrics/:id/state`.
+   - **Histórico**: endpoint `GET /api/entities/:entityId/history?hours=3&interval=5m` que usa la API de history de HA, reduce muestras y entrega `{ timestamps, values }`.
+   - Documentar cómo definir overrides manuales cuando HA no provee `device_id`.
 3. **Frontend fase 1**
    - Vite + React + TanStack Router/Query.
    - Implementar `CardRegistry` con al menos un tipo (`generic-entities`), layout de dashboards y selector de dashboard.
@@ -193,7 +208,10 @@ DATABASE_URL=sqlite://./data/app.db
 - **CORS/HTTPS**: usar proxy local en dev y recomendar reverse proxy (Nginx) en prod.
 
 ## 10. Próximos pasos inmediatos
-1. Instalar dependencias del backend (Express, TypeScript, ts-node-dev, dotenv, SQLite, Jest, ESLint, Prettier) y configurar scripts npm.
-2. Definir esquema inicial de SQLite (dashboards, cards, favoritos) + scripts `db:migrate`.
-3. Implementar `GET /api/health` y stub de `/api/dashboards` que lee desde SQLite.
-4. Implementar cliente HA + `/api/entities` con pruebas unitarias para la lógica de agrupado.
+1. Definir esquema SQLite para `metric_groups` y `metric_group_entities` (entity_id por metric_type) además de dashboards/favoritos.
+2. Implementar servicios en backend para:
+   - `GET /api/devices/metrics` (lista de grupos con entidades asociadas)
+   - `GET /api/devices/metrics/:id/state` (valores actuales de todas las entidades del grupo)
+   - `GET /api/entities/:entityId/history` (historial con parámetros `hours`/`interval`)
+3. Crear fixtures (en `server/docs/responses/`) para Device/Entity registry y samples de history.
+4. En frontend, definir la card `energy-metric-panel`, hooks `useMetricGroup`, `useEntityHistory` y layout responsive para mostrar métricas + gráfico.
