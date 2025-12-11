@@ -1,5 +1,9 @@
 import { AppConfig } from '../config';
-import type { HomeAssistantArea, HomeAssistantEntityState } from './types';
+import type {
+  HomeAssistantArea,
+  HomeAssistantEntityState,
+  HomeAssistantHistoryEntry,
+} from './types';
 
 export interface HomeAssistantInfo {
   message?: string;
@@ -116,6 +120,19 @@ export class HomeAssistantClient {
     } catch (error) {
       throw new HomeAssistantError('Invalid template response for areas');
     }
+  }
+
+  async getHistory(entityId: string, start: Date, end: Date): Promise<HomeAssistantHistoryEntry[]> {
+    const startISO = start.toISOString();
+    const params = new URLSearchParams({
+      filter_entity_id: entityId,
+      minimal_response: '1',
+      significant_changes_only: '0',
+      end: end.toISOString(),
+    });
+    const path = `/api/history/period/${encodeURIComponent(startISO)}?${params.toString()}`;
+    const response = await this.fetchJson<HomeAssistantHistoryEntry[][]>(path);
+    return response[0] ?? [];
   }
 }
 
