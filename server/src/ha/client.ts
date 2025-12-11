@@ -1,6 +1,7 @@
 import { AppConfig } from '../config';
 import type {
   HomeAssistantArea,
+  HomeAssistantEntityMetadata,
   HomeAssistantEntityState,
   HomeAssistantHistoryEntry,
 } from './types';
@@ -97,8 +98,7 @@ export class HomeAssistantClient {
     }
   }
 
-  private async fetchAreasViaTemplate(): Promise<HomeAssistantArea[]> {
-    const template = '{{ areas() | tojson }}';
+  private async executeTemplate<T>(template: string): Promise<T> {
     const response = await fetch(this.buildUrl('/api/template'), {
       method: 'POST',
       headers: this.headers,
@@ -116,10 +116,15 @@ export class HomeAssistantClient {
 
     const text = await response.text();
     try {
-      return JSON.parse(text) as HomeAssistantArea[];
+      return JSON.parse(text) as T;
     } catch (error) {
-      throw new HomeAssistantError('Invalid template response for areas');
+      throw new HomeAssistantError('Invalid template response');
     }
+  }
+
+  private async fetchAreasViaTemplate(): Promise<HomeAssistantArea[]> {
+    const template = '{{ areas() | tojson }}';
+    return this.executeTemplate<HomeAssistantArea[]>(template);
   }
 
   async getHistory(entityId: string, start: Date, end: Date): Promise<HomeAssistantHistoryEntry[]> {
@@ -133,6 +138,29 @@ export class HomeAssistantClient {
     const path = `/api/history/period/${encodeURIComponent(startISO)}?${params.toString()}`;
     const response = await this.fetchJson<HomeAssistantHistoryEntry[][]>(path);
     return response[0] ?? [];
+  }
+
+  async getEntityMetadata(): Promise<Record<string, { area_id?: string; device_id?: string }>> {
+    const template = `
+{% set result = [] %}
+{% for s in states %}
+  {% set entity_area = area_id(s.entity_id) %}
+  {% set entity_device = device_id(s.entity_id) %}
+  {% if entity_area or entity_device %}
+    {% set _ = result.append({'entity_id': s.entity_id, 'area_id': entity_area, 'device_id': entity_device}) %}
+  {% endif %}
+{% endfor %}
+{{ result | tojson }}
+`;
+
+    const entries = await this.executeTemplate<HomeAssistantEntityMetadata[]>(template).catch(() => []);
+    return entries.reduce<Record<string, { area_id?: string; device_id?: string }>>((acc, entry) => {
+      acc[entry.entity_id] = {
+        area_id: entry.area_id ?? undefined,
+        device_id: entry.device_id ?? undefined,
+      };
+      return acc;
+    }, {});
   }
 }
 

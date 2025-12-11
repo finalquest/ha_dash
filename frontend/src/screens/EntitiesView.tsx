@@ -1,7 +1,8 @@
 import { useMemo, useState } from 'react';
 import { useAreas } from '../hooks/useAreas';
 import { useEntities } from '../hooks/useEntities';
-import type { HaEntity } from '../api/types';
+import type { AreaEntry, HaEntity } from '../api/types';
+import { EntityCard } from '../components/EntityCard';
 
 const NO_AREA_KEY = 'unassigned';
 
@@ -38,20 +39,51 @@ export const EntitiesView = () => {
   const [search, setSearch] = useState('');
   const [selectedArea, setSelectedArea] = useState<'all' | string>('all');
 
+  const areaNameMap = useMemo(() => {
+    const map = new Map<string, string>();
+
+    areas.forEach((entry: AreaEntry) => {
+      if (typeof entry === 'string') {
+        map.set(entry, entry);
+      } else if (entry.area_id) {
+        map.set(entry.area_id, entry.name ?? entry.area_id);
+      }
+    });
+
+    entities.forEach((entity) => {
+      const areaId = entity.attributes.area_id as string | undefined;
+      const areaName = entity.attributes.area_name as string | undefined;
+      if (areaId && areaName && !map.has(areaId)) {
+        map.set(areaId, areaName);
+      }
+    });
+
+    return map;
+  }, [areas, entities]);
+
+  const areaOptions = useMemo(() => {
+    const derived = Array.from(areaNameMap.entries()).map(([value, label]) => ({ value, label }));
+    derived.sort((a, b) => a.label.localeCompare(b.label));
+
+    return [
+      { value: 'all', label: 'Todas las zonas' },
+      ...derived,
+      { value: NO_AREA_KEY, label: 'Sin zona' },
+    ];
+  }, [areaNameMap]);
+
   const grouped = useMemo(() => {
     const filtered = filterEntities(entities, search, selectedArea);
-    const areaNameMap = new Map<string, string>(areas.map((area) => [area.area_id, area.name]));
-
     return filtered.reduce<Record<string, { name: string; items: HaEntity[] }>>((acc, entity) => {
-      const areaId = entity.attributes.area_id || NO_AREA_KEY;
+      const areaId = (entity.attributes.area_id as string | undefined) || NO_AREA_KEY;
       if (!acc[areaId]) {
-        const areaName = areaId === NO_AREA_KEY ? 'Sin zona' : areaNameMap.get(areaId) ?? 'Zona desconocida';
+        const areaName = areaId === NO_AREA_KEY ? 'Sin zona' : areaNameMap.get(areaId) ?? areaId;
         acc[areaId] = { name: areaName, items: [] };
       }
       acc[areaId].items.push(entity);
       return acc;
     }, {});
-  }, [areas, entities, search, selectedArea]);
+  }, [areaNameMap, entities, search, selectedArea]);
 
   if (isLoadingEntities || isLoadingAreas) {
     return (
@@ -74,10 +106,6 @@ export const EntitiesView = () => {
     );
   }
 
-  const areaOptions = [{ value: 'all', label: 'Todas las zonas' }]
-    .concat(areas.map((area) => ({ value: area.area_id, label: area.name })))
-    .concat({ value: NO_AREA_KEY, label: 'Sin zona' });
-
   return (
     <section>
       <div className="panel filters">
@@ -99,17 +127,11 @@ export const EntitiesView = () => {
       {Object.entries(grouped).map(([areaId, group]) => (
         <section key={areaId} className="panel entity-group">
           <h3>{group.name}</h3>
-          <ul>
+          <div className="entity-grid">
             {group.items.map((entity) => (
-              <li key={entity.entity_id}>
-                <strong>{entity.attributes.friendly_name ?? entity.entity_id}</strong>
-                <span>{entity.state}</span>
-                {entity.attributes.unit_of_measurement && (
-                  <small>{entity.attributes.unit_of_measurement as string}</small>
-                )}
-              </li>
+              <EntityCard key={entity.entity_id} entity={entity} areaName={group.name} />
             ))}
-          </ul>
+          </div>
         </section>
       ))}
 

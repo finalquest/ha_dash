@@ -7,9 +7,36 @@ export const entitiesHandler = async (_req: Request, res: Response) => {
   try {
     const config = getConfig();
     const haClient = createHomeAssistantClient(config);
-    const entities = await haClient.getStates();
+    const [entities, areas] = await Promise.all([haClient.getStates(), haClient.getAreas()]);
 
-    res.json({ ok: true, entities });
+    let metadataMap: Record<string, { area_id?: string; device_id?: string }> = {};
+    try {
+      metadataMap = await haClient.getEntityMetadata();
+    } catch (metadataError) {
+      // eslint-disable-next-line no-console
+      console.warn('Unable to load entity metadata', metadataError);
+    }
+
+    const areaNameMap = new Map<string, string>(areas.map((area) => [area.area_id, area.name]));
+
+    const enriched = entities.map((entity) => {
+      const metadata = metadataMap[entity.entity_id];
+      const areaId = metadata?.area_id ?? (entity.attributes.area_id as string | undefined);
+      const areaName = areaId ? areaNameMap.get(areaId) ?? areaId : undefined;
+      const deviceId = metadata?.device_id ?? (entity.attributes.device_id as string | undefined);
+
+      return {
+        ...entity,
+        attributes: {
+          ...entity.attributes,
+          area_id: areaId ?? null,
+          area_name: areaName,
+          device_id: deviceId ?? null,
+        },
+      };
+    });
+
+    res.json({ ok: true, entities: enriched });
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unknown error';
     res.status(500).json({ ok: false, error: message });

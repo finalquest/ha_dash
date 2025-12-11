@@ -23,6 +23,12 @@ export interface HomeAssistantArea {
   floor_id?: string | null;
 }
 
+export interface HomeAssistantEntityMetadata {
+  entity_id: string;
+  area_id?: string | null;
+  device_id?: string | null;
+}
+
 export interface HomeAssistantHistoryEntry {
   entity_id: string;
   state: string;

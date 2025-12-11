@@ -4,17 +4,15 @@ export interface HaEntity {
   attributes: Record<string, unknown> & {
     friendly_name?: string;
     area_id?: string;
+    area_name?: string;
+    device_id?: string;
     unit_of_measurement?: string;
   };
   last_changed: string;
   last_updated: string;
 }
 
-export interface HaArea {
-  area_id: string;
-  name: string;
-  picture?: string | null;
-}
+export type AreaEntry = string | { area_id: string; name: string };
 
 export interface EntitiesResponse {
   ok: boolean;
@@ -23,5 +21,5 @@ export interface EntitiesResponse {
 
 export interface AreasResponse {
   ok: boolean;
-  areas: HaArea[];
+  areas: AreaEntry[];
 }
