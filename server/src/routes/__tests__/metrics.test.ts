@@ -1,5 +1,6 @@
 import type { Request, Response } from 'express';
 import { listMetricGroupsHandler, metricGroupStateHandler } from '../metrics';
+import { getDb } from '../../db/connection';
 
 const sampleStates = [
   {
@@ -101,6 +102,8 @@ const runStateHandler = async (id: string) => {
 describe('metrics routes', () => {
   beforeEach(() => {
     mockGetStates.mockReset();
+    const db = getDb();
+    db.exec('DELETE FROM metric_group_entities; DELETE FROM metric_groups;');
   });
 
   it('returns inferred metric groups', async () => {
