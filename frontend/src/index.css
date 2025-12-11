@@ -64,3 +64,47 @@ main {
   border-radius: 16px;
   padding: 1.5rem;
 }
+
+.panel.filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.panel.filters input,
+.panel.filters select {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(15, 23, 42, 0.8);
+  color: inherit;
+}
+
+.entity-group + .entity-group {
+  margin-top: 1rem;
+}
+
+.entity-group ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.entity-group li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 0.5rem;
+}
+
+.entity-group li strong {
+  font-size: 1rem;
+}
+
+.entity-group li span {
+  font-weight: 600;
+}
