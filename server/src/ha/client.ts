@@ -1,4 +1,5 @@
 import { AppConfig } from '../config';
+import type { HomeAssistantArea, HomeAssistantEntityState } from './types';
 
 export interface HomeAssistantInfo {
   message?: string;
@@ -34,9 +35,13 @@ export class HomeAssistantClient {
     };
   }
 
-  async fetchJson<T = unknown>(path: string): Promise<T> {
+  async fetchJson<T = unknown>(path: string, init?: RequestInit): Promise<T> {
     const response = await fetch(this.buildUrl(path), {
-      headers: this.headers,
+      headers: {
+        ...this.headers,
+        ...(init?.headers as Record<string, string> | undefined),
+      },
+      ...init,
     });
 
     if (!response.ok) {
@@ -61,6 +66,56 @@ export class HomeAssistantClient {
 
   async health(): Promise<HomeAssistantInfo> {
     return this.fetchJson<HomeAssistantInfo>('/api/');
+  }
+
+  async getStates(): Promise<HomeAssistantEntityState[]> {
+    return this.fetchJson<HomeAssistantEntityState[]>('/api/states');
+  }
+
+  async getAreas(): Promise<HomeAssistantArea[]> {
+    try {
+      return await this.fetchJson<HomeAssistantArea[]>('/api/config/area_registry/areas');
+    } catch (error) {
+      if (error instanceof HomeAssistantError && error.status === 404) {
+        try {
+          return await this.fetchJson<HomeAssistantArea[]>('/api/config/areas');
+        } catch (fallbackError) {
+          if (
+            fallbackError instanceof HomeAssistantError &&
+            fallbackError.status === 404
+          ) {
+            return this.fetchAreasViaTemplate();
+          }
+          throw fallbackError;
+        }
+      }
+      throw error;
+    }
+  }
+
+  private async fetchAreasViaTemplate(): Promise<HomeAssistantArea[]> {
+    const template = '{{ areas() | tojson }}';
+    const response = await fetch(this.buildUrl('/api/template'), {
+      method: 'POST',
+      headers: this.headers,
+      body: JSON.stringify({ template }),
+    });
+
+    if (!response.ok) {
+      const errorBody = await this.safeParseJson(response);
+      throw new HomeAssistantError(
+        (errorBody as { message?: string } | null)?.message ||
+          `Home Assistant template request failed with status ${response.status}`,
+        response.status,
+      );
+    }
+
+    const text = await response.text();
+    try {
+      return JSON.parse(text) as HomeAssistantArea[];
+    } catch (error) {
+      throw new HomeAssistantError('Invalid template response for areas');
+    }
   }
 }
 

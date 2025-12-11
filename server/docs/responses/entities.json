@@ -1,0 +1,4448 @@
+[
+    {
+        "entity_id": "update.home_assistant_supervisor_update",
+        "state": "off",
+        "attributes": {
+            "auto_update": true,
+            "display_precision": 0,
+            "installed_version": "2025.12.3",
+            "in_progress": false,
+            "latest_version": "2025.12.3",
+            "release_summary": null,
+            "release_url": "https://github.com/home-assistant/supervisor/releases/tag/2025.12.3",
+            "skipped_version": null,
+            "title": "Home Assistant Supervisor",
+            "update_percentage": null,
+            "entity_picture": "https://brands.home-assistant.io/hassio/icon.png",
+            "friendly_name": "Home Assistant Supervisor Update",
+            "supported_features": 1
+        },
+        "last_changed": "2025-12-08T15:27:34.146158+00:00",
+        "last_reported": "2025-12-09T14:12:33.727199+00:00",
+        "last_updated": "2025-12-09T14:07:33.726366+00:00",
+        "context": {
+            "id": "01KC1Q0PTYZ026Z5TVSYD59N70",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "update.home_assistant_core_update",
+        "state": "on",
+        "attributes": {
+            "auto_update": false,
+            "display_precision": 0,
+            "installed_version": "2025.11.1",
+            "in_progress": false,
+            "latest_version": "2025.12.2",
+            "release_summary": null,
+            "release_url": "https://www.home-assistant.io/latest-release-notes/",
+            "skipped_version": null,
+            "title": "Home Assistant Core",
+            "update_percentage": null,
+            "entity_picture": "https://brands.home-assistant.io/homeassistant/icon.png",
+            "friendly_name": "Home Assistant Core Update",
+            "supported_features": 15
+        },
+        "last_changed": "2025-12-08T15:27:34.146386+00:00",
+        "last_reported": "2025-12-08T23:12:33.726436+00:00",
+        "last_updated": "2025-12-08T23:02:33.726393+00:00",
+        "context": {
+            "id": "01KC037KFYPW60QFABEHJ3XFA3",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "update.get_hacs_update",
+        "state": "off",
+        "attributes": {
+            "auto_update": false,
+            "display_precision": 0,
+            "installed_version": "1.3.1",
+            "in_progress": false,
+            "latest_version": "1.3.1",
+            "release_summary": null,
+            "release_url": null,
+            "skipped_version": null,
+            "title": "Get HACS",
+            "update_percentage": null,
+            "entity_picture": "/api/hassio/addons/cb646a50_get/icon",
+            "friendly_name": "Get HACS Update",
+            "supported_features": 29
+        },
+        "last_changed": "2025-12-08T15:27:34.146527+00:00",
+        "last_reported": "2025-12-08T15:27:34.146527+00:00",
+        "last_updated": "2025-12-08T15:27:34.146527+00:00",
+        "context": {
+            "id": "01KBZ96FR2V4RMNMEFS7BCYD9E",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "update.home_assistant_operating_system_update",
+        "state": "off",
+        "attributes": {
+            "auto_update": false,
+            "display_precision": 0,
+            "installed_version": "16.3",
+            "in_progress": false,
+            "latest_version": "16.3",
+            "release_summary": null,
+            "release_url": "https://github.com/home-assistant/operating-system/releases/tag/16.3",
+            "skipped_version": null,
+            "title": "Home Assistant Operating System",
+            "update_percentage": null,
+            "entity_picture": "https://brands.home-assistant.io/homeassistant/icon.png",
+            "friendly_name": "Home Assistant Operating System Update",
+            "supported_features": 11
+        },
+        "last_changed": "2025-12-08T15:27:34.146654+00:00",
+        "last_reported": "2025-12-08T15:27:34.146654+00:00",
+        "last_updated": "2025-12-08T15:27:34.146654+00:00",
+        "context": {
+            "id": "01KBZ96FR2EWR8ENQKZWEPRG1B",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "conversation.home_assistant",
+        "state": "unknown",
+        "attributes": {
+            "friendly_name": "Home Assistant",
+            "supported_features": 1
+        },
+        "last_changed": "2025-12-08T15:27:35.514236+00:00",
+        "last_reported": "2025-12-08T15:27:35.514236+00:00",
+        "last_updated": "2025-12-08T15:27:35.514236+00:00",
+        "context": {
+            "id": "01KBZ96H2TDZ1TBT1TH59GH6M6",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "event.backup_automatic_backup",
+        "state": "unknown",
+        "attributes": {
+            "event_types": [
+                "completed",
+                "failed",
+                "in_progress"
+            ],
+            "event_type": null,
+            "friendly_name": "Backup Automatic backup"
+        },
+        "last_changed": "2025-12-08T15:27:35.593004+00:00",
+        "last_reported": "2025-12-08T15:27:35.593004+00:00",
+        "last_updated": "2025-12-08T15:27:35.593004+00:00",
+        "context": {
+            "id": "01KBZ96H59G0T9YPXS9BR22TKV",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.backup_backup_manager_state",
+        "state": "idle",
+        "attributes": {
+            "options": [
+                "idle",
+                "create_backup",
+                "blocked",
+                "receive_backup",
+                "restore_backup"
+            ],
+            "device_class": "enum",
+            "friendly_name": "Backup Backup Manager state"
+        },
+        "last_changed": "2025-12-08T15:27:39.559277+00:00",
+        "last_reported": "2025-12-08T15:27:39.559277+00:00",
+        "last_updated": "2025-12-08T15:27:39.559277+00:00",
+        "context": {
+            "id": "01KBZ96N171ZN7STM2A8X5WE6V",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.backup_next_scheduled_automatic_backup",
+        "state": "unknown",
+        "attributes": {
+            "device_class": "timestamp",
+            "friendly_name": "Backup Next scheduled automatic backup"
+        },
+        "last_changed": "2025-12-08T15:27:35.593441+00:00",
+        "last_reported": "2025-12-08T15:27:39.559318+00:00",
+        "last_updated": "2025-12-08T15:27:35.593441+00:00",
+        "context": {
+            "id": "01KBZ96H59ZWMYPEST08G17B3S",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.backup_last_successful_automatic_backup",
+        "state": "unknown",
+        "attributes": {
+            "device_class": "timestamp",
+            "friendly_name": "Backup Last successful automatic backup"
+        },
+        "last_changed": "2025-12-08T15:27:35.593542+00:00",
+        "last_reported": "2025-12-08T15:27:39.559333+00:00",
+        "last_updated": "2025-12-08T15:27:35.593542+00:00",
+        "context": {
+            "id": "01KBZ96H59SREKC1GNB7D1KB4H",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.backup_last_attempted_automatic_backup",
+        "state": "unknown",
+        "attributes": {
+            "device_class": "timestamp",
+            "friendly_name": "Backup Last attempted automatic backup"
+        },
+        "last_changed": "2025-12-08T15:27:35.593667+00:00",
+        "last_reported": "2025-12-08T15:27:39.559343+00:00",
+        "last_updated": "2025-12-08T15:27:35.593667+00:00",
+        "context": {
+            "id": "01KBZ96H59A00P38060JD0AQQF",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "zone.home",
+        "state": "0",
+        "attributes": {
+            "latitude": -34.7244569,
+            "longitude": -58.2463182,
+            "radius": 100,
+            "passive": false,
+            "persons": [],
+            "editable": true,
+            "icon": "mdi:home",
+            "friendly_name": "Home"
+        },
+        "last_changed": "2025-12-08T15:27:35.788401+00:00",
+        "last_reported": "2025-12-08T15:27:35.788401+00:00",
+        "last_updated": "2025-12-08T15:27:35.788401+00:00",
+        "context": {
+            "id": "01KBZ96HBCSFVRXKQV30YTNRDF",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "person.fer",
+        "state": "unknown",
+        "attributes": {
+            "editable": true,
+            "id": "fer",
+            "device_trackers": [],
+            "user_id": "3064054ed94d42f68fb38ea96e80525f",
+            "friendly_name": "Fer"
+        },
+        "last_changed": "2025-12-08T15:27:35.795923+00:00",
+        "last_reported": "2025-12-08T15:27:39.308102+00:00",
+        "last_updated": "2025-12-08T15:27:39.308102+00:00",
+        "context": {
+            "id": "01KBZ96MSCYER9YYRGP3DMPHK7",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sun.sun",
+        "state": "above_horizon",
+        "attributes": {
+            "next_dawn": "2025-12-12T08:03:33.323142+00:00",
+            "next_dusk": "2025-12-11T23:29:39.111173+00:00",
+            "next_midnight": "2025-12-12T03:46:53+00:00",
+            "next_noon": "2025-12-11T15:46:07+00:00",
+            "next_rising": "2025-12-12T08:33:34.615106+00:00",
+            "next_setting": "2025-12-11T22:59:37.736187+00:00",
+            "elevation": 71.22,
+            "azimuth": 56.04,
+            "rising": true,
+            "friendly_name": "Sun"
+        },
+        "last_changed": "2025-12-11T08:33:22.590685+00:00",
+        "last_reported": "2025-12-11T14:41:22.821487+00:00",
+        "last_updated": "2025-12-11T14:38:55.516986+00:00",
+        "context": {
+            "id": "01KC6XKJGWWZZP7XVPJER0AN64",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.sun_next_dawn",
+        "state": "2025-12-12T08:03:33+00:00",
+        "attributes": {
+            "device_class": "timestamp",
+            "friendly_name": "Sun Next dawn"
+        },
+        "last_changed": "2025-12-11T08:03:23.255533+00:00",
+        "last_reported": "2025-12-11T09:30:55.446536+00:00",
+        "last_updated": "2025-12-11T08:03:23.255533+00:00",
+        "context": {
+            "id": "01KC66ZAFQZ767Y8NA0CC5EQR2",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.sun_next_dusk",
+        "state": "2025-12-11T23:29:39+00:00",
+        "attributes": {
+            "device_class": "timestamp",
+            "friendly_name": "Sun Next dusk"
+        },
+        "last_changed": "2025-12-10T23:28:52.945573+00:00",
+        "last_reported": "2025-12-11T09:30:55.446564+00:00",
+        "last_updated": "2025-12-10T23:28:52.945573+00:00",
+        "context": {
+            "id": "01KC59H7PH01AXNT6SR3YMSNSN",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.sun_next_midnight",
+        "state": "2025-12-12T03:46:53+00:00",
+        "attributes": {
+            "device_class": "timestamp",
+            "friendly_name": "Sun Next midnight"
+        },
+        "last_changed": "2025-12-11T03:46:25.001851+00:00",
+        "last_reported": "2025-12-11T09:30:55.446582+00:00",
+        "last_updated": "2025-12-11T03:46:25.001851+00:00",
+        "context": {
+            "id": "01KC5R8SK9DSB1XRV8HRW5P1SY",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.sun_next_noon",
+        "state": "2025-12-11T15:46:07+00:00",
+        "attributes": {
+            "device_class": "timestamp",
+            "friendly_name": "Sun Next noon"
+        },
+        "last_changed": "2025-12-10T15:45:39.001687+00:00",
+        "last_reported": "2025-12-11T09:30:55.446597+00:00",
+        "last_updated": "2025-12-10T15:45:39.001687+00:00",
+        "context": {
+            "id": "01KC4F115SD6CBTP9097TRCK5Q",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.sun_next_rising",
+        "state": "2025-12-12T08:33:34+00:00",
+        "attributes": {
+            "device_class": "timestamp",
+            "friendly_name": "Sun Next rising"
+        },
+        "last_changed": "2025-12-11T08:33:22.590869+00:00",
+        "last_reported": "2025-12-11T09:30:55.446611+00:00",
+        "last_updated": "2025-12-11T08:33:22.590869+00:00",
+        "context": {
+            "id": "01KC68P7MY4VSV4SJJC0TR0RW0",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.sun_next_setting",
+        "state": "2025-12-11T22:59:37+00:00",
+        "attributes": {
+            "device_class": "timestamp",
+            "friendly_name": "Sun Next setting"
+        },
+        "last_changed": "2025-12-10T22:58:53.519317+00:00",
+        "last_reported": "2025-12-11T09:30:55.446625+00:00",
+        "last_updated": "2025-12-10T22:58:53.519317+00:00",
+        "context": {
+            "id": "01KC57TAEFRA0DRSG29VZKPYZ9",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "tts.google_translate_en_com",
+        "state": "unknown",
+        "attributes": {
+            "friendly_name": "Google Translate en com"
+        },
+        "last_changed": "2025-12-08T15:27:36.977107+00:00",
+        "last_reported": "2025-12-08T15:27:36.977107+00:00",
+        "last_updated": "2025-12-08T15:27:36.977107+00:00",
+        "context": {
+            "id": "01KBZ96JGHJV50TBK2MEV5R5N9",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "update.hacs_update",
+        "state": "off",
+        "attributes": {
+            "auto_update": false,
+            "display_precision": 0,
+            "installed_version": "2.0.5",
+            "in_progress": false,
+            "latest_version": "2.0.5",
+            "release_summary": null,
+            "release_url": "https://github.com/hacs/integration/releases/2.0.5",
+            "skipped_version": null,
+            "title": null,
+            "update_percentage": null,
+            "entity_picture": "https://brands.home-assistant.io/_/hacs/icon.png",
+            "friendly_name": "HACS update",
+            "supported_features": 23
+        },
+        "last_changed": "2025-12-08T15:27:37.016077+00:00",
+        "last_reported": "2025-12-08T15:27:37.016077+00:00",
+        "last_updated": "2025-12-08T15:27:37.016077+00:00",
+        "context": {
+            "id": "01KBZ96JHRRK7N3XV9QQC93EY0",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "update.sonoff_lan_update",
+        "state": "off",
+        "attributes": {
+            "auto_update": false,
+            "display_precision": 0,
+            "installed_version": "v3.9.3",
+            "in_progress": false,
+            "latest_version": "v3.9.3",
+            "release_summary": null,
+            "release_url": "https://github.com/AlexxIT/SonoffLAN/releases/v3.9.3",
+            "skipped_version": null,
+            "title": null,
+            "update_percentage": null,
+            "entity_picture": "https://brands.home-assistant.io/_/sonoff/icon.png",
+            "friendly_name": "Sonoff LAN update",
+            "supported_features": 23
+        },
+        "last_changed": "2025-12-08T15:27:37.016225+00:00",
+        "last_reported": "2025-12-08T15:27:37.016225+00:00",
+        "last_updated": "2025-12-08T15:27:37.016225+00:00",
+        "context": {
+            "id": "01KBZ96JHR0N4N4EN3G996TSBJ",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "todo.shopping_list",
+        "state": "0",
+        "attributes": {
+            "friendly_name": "Shopping List",
+            "supported_features": 15
+        },
+        "last_changed": "2025-12-08T15:27:37.021001+00:00",
+        "last_reported": "2025-12-08T15:27:37.021001+00:00",
+        "last_updated": "2025-12-08T15:27:37.021001+00:00",
+        "context": {
+            "id": "01KBZ96JHXNKW5JRNSZXHPYTPB",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "weather.forecast_home",
+        "state": "sunny",
+        "attributes": {
+            "temperature": 25.9,
+            "dew_point": 17.7,
+            "temperature_unit": "°C",
+            "humidity": 61,
+            "cloud_coverage": 8.6,
+            "uv_index": 7.4,
+            "pressure": 1004.0,
+            "pressure_unit": "hPa",
+            "wind_bearing": 297.9,
+            "wind_speed": 10.8,
+            "wind_speed_unit": "km/h",
+            "visibility_unit": "km",
+            "precipitation_unit": "mm",
+            "attribution": "Weather forecast from met.no, delivered by the Norwegian Meteorological Institute.",
+            "friendly_name": "Forecast Home",
+            "supported_features": 3
+        },
+        "last_changed": "2025-12-11T09:00:55.490740+00:00",
+        "last_reported": "2025-12-11T13:45:55.511383+00:00",
+        "last_updated": "2025-12-11T13:45:55.511383+00:00",
+        "context": {
+            "id": "01KC6TJH1Q65MXJ7FTFN40C7XZ",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "binary_sensor.nerv_geof_cctv_02_is_dark",
+        "state": "off",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:brightness-6",
+            "friendly_name": "NERV_GEOF_CCTV_02 Is dark"
+        },
+        "last_changed": "2025-12-11T06:30:33.080279+00:00",
+        "last_reported": "2025-12-11T06:30:33.080279+00:00",
+        "last_updated": "2025-12-11T06:30:33.080279+00:00",
+        "context": {
+            "id": "01KC61NAVRKX3QW74V78KD2BCZ",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "binary_sensor.nerv_geof_cctv_01_is_dark",
+        "state": "off",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:brightness-6",
+            "friendly_name": "NERV_GEOF_CCTV_01 Is dark"
+        },
+        "last_changed": "2025-12-11T11:37:18.609422+00:00",
+        "last_reported": "2025-12-11T11:37:18.609422+00:00",
+        "last_updated": "2025-12-11T11:37:18.609422+00:00",
+        "context": {
+            "id": "01KC6K710HVGY3Q700HB22N92G",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "binary_sensor.nerv_geof_cctv_02_motion",
+        "state": "unavailable",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "device_class": "motion",
+            "friendly_name": "NERV_GEOF_CCTV_02 Motion"
+        },
+        "last_changed": "2025-12-08T15:27:37.493655+00:00",
+        "last_reported": "2025-12-08T15:27:37.493655+00:00",
+        "last_updated": "2025-12-08T15:27:37.493655+00:00",
+        "context": {
+            "id": "01KBZ96K0NQ2TRFZBR82GT1T5R",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "binary_sensor.nerv_geof_cctv_02_person_detected",
+        "state": "off",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:walk",
+            "friendly_name": "NERV_GEOF_CCTV_02 Person detected"
+        },
+        "last_changed": "2025-12-11T06:30:33.080436+00:00",
+        "last_reported": "2025-12-11T06:30:33.080436+00:00",
+        "last_updated": "2025-12-11T06:30:33.080436+00:00",
+        "context": {
+            "id": "01KC61NAVR28Z5QJF6ZMRKRJV4",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "binary_sensor.nerv_geof_cctv_02_vehicle_detected",
+        "state": "off",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:car",
+            "friendly_name": "NERV_GEOF_CCTV_02 Vehicle detected"
+        },
+        "last_changed": "2025-12-11T06:30:33.079992+00:00",
+        "last_reported": "2025-12-11T06:30:33.079992+00:00",
+        "last_updated": "2025-12-11T06:30:33.079992+00:00",
+        "context": {
+            "id": "01KC61NAVQKEFM8SR8R8F8KBBS",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "binary_sensor.nerv_geof_cctv_02_animal_detected",
+        "state": "unavailable",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:paw",
+            "friendly_name": "NERV_GEOF_CCTV_02 Animal detected"
+        },
+        "last_changed": "2025-12-08T15:27:37.494004+00:00",
+        "last_reported": "2025-12-08T15:27:37.494004+00:00",
+        "last_updated": "2025-12-08T15:27:37.494004+00:00",
+        "context": {
+            "id": "01KBZ96K0PY782HQASKCR83GF0",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "binary_sensor.nerv_geof_cctv_02_smoke_alarm_detected",
+        "state": "off",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:fire",
+            "friendly_name": "NERV_GEOF_CCTV_02 Smoke alarm detected"
+        },
+        "last_changed": "2025-12-11T06:30:33.079714+00:00",
+        "last_reported": "2025-12-11T06:30:33.079714+00:00",
+        "last_updated": "2025-12-11T06:30:33.079714+00:00",
+        "context": {
+            "id": "01KC61NAVQ5924ATTD4AYV7FMF",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "binary_sensor.nerv_geof_cctv_02_co_alarm_detected",
+        "state": "off",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:molecule-co",
+            "friendly_name": "NERV_GEOF_CCTV_02 CO alarm detected"
+        },
+        "last_changed": "2025-12-11T06:30:33.080148+00:00",
+        "last_reported": "2025-12-11T06:30:33.080148+00:00",
+        "last_updated": "2025-12-11T06:30:33.080148+00:00",
+        "context": {
+            "id": "01KC61NAVRK9Z1M76VZV0Y63NC",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "binary_sensor.nerv_geof_cctv_02_baby_cry_detected",
+        "state": "off",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:cradle",
+            "friendly_name": "NERV_GEOF_CCTV_02 Baby cry detected"
+        },
+        "last_changed": "2025-12-11T06:30:33.080012+00:00",
+        "last_reported": "2025-12-11T06:30:33.080012+00:00",
+        "last_updated": "2025-12-11T06:30:33.080012+00:00",
+        "context": {
+            "id": "01KC61NAVRVRDZ0FQPJZ8GSPDE",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "binary_sensor.nerv_geof_cctv_02_speaking_detected",
+        "state": "off",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:account-voice",
+            "friendly_name": "NERV_GEOF_CCTV_02 Speaking detected"
+        },
+        "last_changed": "2025-12-11T14:37:13.124025+00:00",
+        "last_reported": "2025-12-11T14:37:13.124106+00:00",
+        "last_updated": "2025-12-11T14:37:13.124025+00:00",
+        "context": {
+            "id": "01KC6XGEH4F111FZ8TM2YD92N1",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "binary_sensor.nerv_geof_cctv_01_motion",
+        "state": "off",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "device_class": "motion",
+            "friendly_name": "NERV_GEOF_CCTV_01 Motion"
+        },
+        "last_changed": "2025-12-08T15:27:37.494529+00:00",
+        "last_reported": "2025-12-08T15:27:37.494529+00:00",
+        "last_updated": "2025-12-08T15:27:37.494529+00:00",
+        "context": {
+            "id": "01KBZ96K0PHZH4PZXZ583PCR46",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "binary_sensor.terminal_dogma_hdd_1",
+        "state": "off",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "device_class": "problem",
+            "friendly_name": "Terminal Dogma HDD 1"
+        },
+        "last_changed": "2025-12-08T15:27:37.494799+00:00",
+        "last_reported": "2025-12-08T15:27:37.494799+00:00",
+        "last_updated": "2025-12-08T15:27:37.494799+00:00",
+        "context": {
+            "id": "01KBZ96K0PXC8AC07WFMTAWNWB",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "camera.nerv_geof_cctv_02_high_resolution_channel",
+        "state": "recording",
+        "attributes": {
+            "access_token": "cead27328c43ac176568fd47d7fe4f3af3ee71bc1e084e1ae7710718919d8a32",
+            "width": 2688,
+            "height": 1512,
+            "fps": 24,
+            "bitrate": 10000000,
+            "channel_id": 0,
+            "attribution": "Powered by UniFi Protect Server",
+            "entity_picture": "/api/camera_proxy/camera.nerv_geof_cctv_02_high_resolution_channel?token=cead27328c43ac176568fd47d7fe4f3af3ee71bc1e084e1ae7710718919d8a32",
+            "friendly_name": "NERV_GEOF_CCTV_02 High resolution channel",
+            "supported_features": 0
+        },
+        "last_changed": "2025-12-11T06:30:33.080348+00:00",
+        "last_reported": "2025-12-11T14:37:36.573284+00:00",
+        "last_updated": "2025-12-11T14:37:36.573284+00:00",
+        "context": {
+            "id": "01KC6XH5DX4194XGYE8PK6KXWW",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "camera.nerv_geof_cctv_01_high_resolution_channel",
+        "state": "recording",
+        "attributes": {
+            "access_token": "6a817848f5ea2a64ca65132d542b118d9cdfef180b4a04f21aa9fe95a7f8370c",
+            "motion_detection": true,
+            "width": 1920,
+            "height": 1080,
+            "fps": 25,
+            "bitrate": 6000000,
+            "channel_id": 0,
+            "attribution": "Powered by UniFi Protect Server",
+            "entity_picture": "/api/camera_proxy/camera.nerv_geof_cctv_01_high_resolution_channel?token=6a817848f5ea2a64ca65132d542b118d9cdfef180b4a04f21aa9fe95a7f8370c",
+            "friendly_name": "NERV_GEOF_CCTV_01 High resolution channel",
+            "supported_features": 0
+        },
+        "last_changed": "2025-12-08T15:27:37.496233+00:00",
+        "last_reported": "2025-12-11T14:37:36.573399+00:00",
+        "last_updated": "2025-12-11T14:37:36.573399+00:00",
+        "context": {
+            "id": "01KC6XH5DXQ1AC6VW29EC6D4FJ",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "number.nerv_geof_cctv_02_microphone_level",
+        "state": "100",
+        "attributes": {
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "mode": "auto",
+            "unit_of_measurement": "%",
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:microphone",
+            "friendly_name": "NERV_GEOF_CCTV_02 Microphone level"
+        },
+        "last_changed": "2025-12-11T06:30:33.080255+00:00",
+        "last_reported": "2025-12-11T06:30:33.080255+00:00",
+        "last_updated": "2025-12-11T06:30:33.080255+00:00",
+        "context": {
+            "id": "01KC61NAVRAA11NMCSMZAQFG65",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "number.nerv_geof_cctv_02_infrared_custom_lux_trigger",
+        "state": "3",
+        "attributes": {
+            "min": 0,
+            "max": 30,
+            "step": 1,
+            "mode": "auto",
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:white-balance-sunny",
+            "friendly_name": "NERV_GEOF_CCTV_02 Infrared custom lux trigger"
+        },
+        "last_changed": "2025-12-11T06:30:33.080047+00:00",
+        "last_reported": "2025-12-11T06:30:33.080047+00:00",
+        "last_updated": "2025-12-11T06:30:33.080047+00:00",
+        "context": {
+            "id": "01KC61NAVRV9NV7AG2N88XFJ54",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "number.nerv_geof_cctv_01_microphone_level",
+        "state": "100",
+        "attributes": {
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "mode": "auto",
+            "unit_of_measurement": "%",
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:microphone",
+            "friendly_name": "NERV_GEOF_CCTV_01 Microphone level"
+        },
+        "last_changed": "2025-12-08T15:27:37.497381+00:00",
+        "last_reported": "2025-12-08T15:27:37.497381+00:00",
+        "last_updated": "2025-12-08T15:27:37.497381+00:00",
+        "context": {
+            "id": "01KBZ96K0SSGQ82YWPPGMPNZNV",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "number.nerv_geof_cctv_01_infrared_custom_lux_trigger",
+        "state": "0",
+        "attributes": {
+            "min": 0,
+            "max": 30,
+            "step": 1,
+            "mode": "auto",
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:white-balance-sunny",
+            "friendly_name": "NERV_GEOF_CCTV_01 Infrared custom lux trigger"
+        },
+        "last_changed": "2025-12-08T15:27:37.497488+00:00",
+        "last_reported": "2025-12-08T15:27:37.497488+00:00",
+        "last_updated": "2025-12-08T15:27:37.497488+00:00",
+        "context": {
+            "id": "01KBZ96K0SQJTAEYNJC708TH7Y",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "select.nerv_geof_cctv_02_recording_mode",
+        "state": "Always",
+        "attributes": {
+            "options": [
+                "Adaptive",
+                "Always",
+                "Never",
+                "Schedule",
+                "Detections"
+            ],
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:video-outline",
+            "friendly_name": "NERV_GEOF_CCTV_02 Recording mode"
+        },
+        "last_changed": "2025-12-11T06:30:33.080202+00:00",
+        "last_reported": "2025-12-11T06:30:33.080202+00:00",
+        "last_updated": "2025-12-11T06:30:33.080202+00:00",
+        "context": {
+            "id": "01KC61NAVRDKQ1E5VZSZJHW9SS",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "select.nerv_geof_cctv_02_infrared_mode",
+        "state": "Auto (Custom Lux)",
+        "attributes": {
+            "options": [
+                "Auto",
+                "Always Enable",
+                "Auto (Filter Only, no LED's)",
+                "Auto (Custom Lux)",
+                "Always Disable"
+            ],
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:circle-opacity",
+            "friendly_name": "NERV_GEOF_CCTV_02 Infrared mode"
+        },
+        "last_changed": "2025-12-11T06:30:33.079896+00:00",
+        "last_reported": "2025-12-11T06:30:33.079896+00:00",
+        "last_updated": "2025-12-11T06:30:33.079896+00:00",
+        "context": {
+            "id": "01KC61NAVQG5PGSQHJQKB9FJP5",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "select.nerv_geof_cctv_02_hdr_mode",
+        "state": "Auto",
+        "attributes": {
+            "options": [
+                "Always On",
+                "Always Off",
+                "Auto"
+            ],
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:brightness-7",
+            "friendly_name": "NERV_GEOF_CCTV_02 HDR mode"
+        },
+        "last_changed": "2025-12-11T06:30:33.080399+00:00",
+        "last_reported": "2025-12-11T06:30:33.080399+00:00",
+        "last_updated": "2025-12-11T06:30:33.080399+00:00",
+        "context": {
+            "id": "01KC61NAVRQT9M4NVTN8P47NB1",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "select.nerv_geof_cctv_01_recording_mode",
+        "state": "Always",
+        "attributes": {
+            "options": [
+                "Adaptive",
+                "Always",
+                "Never",
+                "Schedule",
+                "Detections"
+            ],
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:video-outline",
+            "friendly_name": "NERV_GEOF_CCTV_01 Recording mode"
+        },
+        "last_changed": "2025-12-08T15:27:37.498182+00:00",
+        "last_reported": "2025-12-08T15:27:37.498182+00:00",
+        "last_updated": "2025-12-08T15:27:37.498182+00:00",
+        "context": {
+            "id": "01KBZ96K0THS72904G719FYRRX",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "select.nerv_geof_cctv_01_infrared_mode",
+        "state": "Auto (Custom Lux)",
+        "attributes": {
+            "options": [
+                "Auto",
+                "Always Enable",
+                "Auto (Filter Only, no LED's)",
+                "Auto (Custom Lux)",
+                "Always Disable"
+            ],
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:circle-opacity",
+            "friendly_name": "NERV_GEOF_CCTV_01 Infrared mode"
+        },
+        "last_changed": "2025-12-08T15:27:37.498279+00:00",
+        "last_reported": "2025-12-08T15:27:37.498279+00:00",
+        "last_updated": "2025-12-08T15:27:37.498279+00:00",
+        "context": {
+            "id": "01KBZ96K0T3C4V6G91WMWD0KFS",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "select.nerv_geof_cctv_01_hdr_mode",
+        "state": "Always Off",
+        "attributes": {
+            "options": [
+                "Always On",
+                "Always Off",
+                "Auto"
+            ],
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:brightness-7",
+            "friendly_name": "NERV_GEOF_CCTV_01 HDR mode"
+        },
+        "last_changed": "2025-12-08T15:27:37.498369+00:00",
+        "last_reported": "2025-12-08T15:27:37.498369+00:00",
+        "last_updated": "2025-12-08T15:27:37.498369+00:00",
+        "context": {
+            "id": "01KBZ96K0TCTDTAYDH1741JC5W",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.nerv_geof_cctv_02_storage_used",
+        "state": "1968168.763392",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB",
+            "attribution": "Powered by UniFi Protect Server",
+            "device_class": "data_size",
+            "friendly_name": "NERV_GEOF_CCTV_02 Storage used"
+        },
+        "last_changed": "2025-12-11T14:12:37.864013+00:00",
+        "last_reported": "2025-12-11T14:12:37.864013+00:00",
+        "last_updated": "2025-12-11T14:12:37.864013+00:00",
+        "context": {
+            "id": "01KC6W3DV8MQWDHW7N8FNMTAFR",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.nerv_geof_cctv_02_disk_write_rate",
+        "state": "0.50815226",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "attribution": "Powered by UniFi Protect Server",
+            "device_class": "data_rate",
+            "friendly_name": "NERV_GEOF_CCTV_02 Disk write rate"
+        },
+        "last_changed": "2025-12-11T14:12:37.863848+00:00",
+        "last_reported": "2025-12-11T14:12:37.863848+00:00",
+        "last_updated": "2025-12-11T14:12:37.863848+00:00",
+        "context": {
+            "id": "01KC6W3DV78GKYEJ6530383GFK",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.nerv_geof_cctv_01_storage_used",
+        "state": "485331.304448",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB",
+            "attribution": "Powered by UniFi Protect Server",
+            "device_class": "data_size",
+            "friendly_name": "NERV_GEOF_CCTV_01 Storage used"
+        },
+        "last_changed": "2025-12-11T13:42:37.853081+00:00",
+        "last_reported": "2025-12-11T13:42:37.853081+00:00",
+        "last_updated": "2025-12-11T13:42:37.853081+00:00",
+        "context": {
+            "id": "01KC6TCG0XVR8JBTVV09P90ZS1",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.nerv_geof_cctv_01_disk_write_rate",
+        "state": "0.14021904",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "attribution": "Powered by UniFi Protect Server",
+            "device_class": "data_rate",
+            "friendly_name": "NERV_GEOF_CCTV_01 Disk write rate"
+        },
+        "last_changed": "2025-12-11T13:42:37.853211+00:00",
+        "last_reported": "2025-12-11T13:42:37.853211+00:00",
+        "last_updated": "2025-12-11T13:42:37.853211+00:00",
+        "context": {
+            "id": "01KC6TCG0XGXHP116N0WH997FA",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.terminal_dogma_uptime_2",
+        "state": "2025-12-06T18:33:00+00:00",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "device_class": "timestamp",
+            "icon": "mdi:clock",
+            "friendly_name": "Terminal Dogma Uptime"
+        },
+        "last_changed": "2025-12-08T15:27:37.500266+00:00",
+        "last_reported": "2025-12-08T15:27:37.500266+00:00",
+        "last_updated": "2025-12-08T15:27:37.500266+00:00",
+        "context": {
+            "id": "01KBZ96K0WY8G9SD3FR3CER0QD",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.terminal_dogma_storage_utilization",
+        "state": "62.75",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "%",
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:harddisk",
+            "friendly_name": "Terminal Dogma Storage utilization"
+        },
+        "last_changed": "2025-12-11T13:57:37.864982+00:00",
+        "last_reported": "2025-12-11T13:57:37.864982+00:00",
+        "last_updated": "2025-12-11T13:57:37.864982+00:00",
+        "context": {
+            "id": "01KC6V7YY8E89A0F7JRDJNPJ3P",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.terminal_dogma_type_timelapse_video",
+        "state": "0.17",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "%",
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:server",
+            "friendly_name": "Terminal Dogma Type: timelapse video"
+        },
+        "last_changed": "2025-12-11T10:57:37.872470+00:00",
+        "last_reported": "2025-12-11T10:57:37.872470+00:00",
+        "last_updated": "2025-12-11T10:57:37.872470+00:00",
+        "context": {
+            "id": "01KC6GYC2GWHD57XTW6FX71ZAA",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.terminal_dogma_type_continuous_video",
+        "state": "99.83",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "%",
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:server",
+            "friendly_name": "Terminal Dogma Type: continuous video"
+        },
+        "last_changed": "2025-12-11T10:57:37.872397+00:00",
+        "last_reported": "2025-12-11T10:57:37.872397+00:00",
+        "last_updated": "2025-12-11T10:57:37.872397+00:00",
+        "context": {
+            "id": "01KC6GYC2G0XVQXYXGH61M22XB",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.terminal_dogma_type_detections_video",
+        "state": "0",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "%",
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:server",
+            "friendly_name": "Terminal Dogma Type: detections video"
+        },
+        "last_changed": "2025-12-08T15:27:37.500779+00:00",
+        "last_reported": "2025-12-08T15:27:37.500779+00:00",
+        "last_updated": "2025-12-08T15:27:37.500779+00:00",
+        "context": {
+            "id": "01KBZ96K0WSVAFMGMTRHGMT55P",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.terminal_dogma_resolution_hd_video",
+        "state": "unknown",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "%",
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:cctv",
+            "friendly_name": "Terminal Dogma Resolution: HD video"
+        },
+        "last_changed": "2025-12-08T15:27:37.500909+00:00",
+        "last_reported": "2025-12-08T15:27:37.500909+00:00",
+        "last_updated": "2025-12-08T15:27:37.500909+00:00",
+        "context": {
+            "id": "01KBZ96K0WR552B3WRXDAKZNTK",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.terminal_dogma_resolution_4k_video",
+        "state": "unknown",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "%",
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:cctv",
+            "friendly_name": "Terminal Dogma Resolution: 4K video"
+        },
+        "last_changed": "2025-12-08T15:27:37.501026+00:00",
+        "last_reported": "2025-12-08T15:27:37.501026+00:00",
+        "last_updated": "2025-12-08T15:27:37.501026+00:00",
+        "context": {
+            "id": "01KBZ96K0XKW007R3P1400ZKEQ",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.terminal_dogma_resolution_free_space",
+        "state": "unknown",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "%",
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:cctv",
+            "friendly_name": "Terminal Dogma Resolution: free space"
+        },
+        "last_changed": "2025-12-08T15:27:37.503589+00:00",
+        "last_reported": "2025-12-08T15:27:37.503589+00:00",
+        "last_updated": "2025-12-08T15:27:37.503589+00:00",
+        "context": {
+            "id": "01KBZ96K0ZSJHHJRWP7G3E8RZS",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.terminal_dogma_recording_capacity",
+        "state": "6053718",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "s",
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:record-rec",
+            "friendly_name": "Terminal Dogma Recording capacity"
+        },
+        "last_changed": "2025-12-11T14:12:37.863583+00:00",
+        "last_reported": "2025-12-11T14:12:37.863583+00:00",
+        "last_updated": "2025-12-11T14:12:37.863583+00:00",
+        "context": {
+            "id": "01KC6W3DV7ZWV9MZ5FRX9A13T1",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.nerv_geof_cctv_02_high_fps",
+        "state": "off",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:video-high-definition",
+            "friendly_name": "NERV_GEOF_CCTV_02 High FPS"
+        },
+        "last_changed": "2025-12-11T06:30:33.080311+00:00",
+        "last_reported": "2025-12-11T06:30:33.080311+00:00",
+        "last_updated": "2025-12-11T06:30:33.080311+00:00",
+        "context": {
+            "id": "01KC61NAVRDNA4348WJJAGFP2S",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.nerv_geof_cctv_02_overlay_show_name",
+        "state": "on",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:fullscreen",
+            "friendly_name": "NERV_GEOF_CCTV_02 Overlay: show name"
+        },
+        "last_changed": "2025-12-11T06:30:33.080296+00:00",
+        "last_reported": "2025-12-11T06:30:33.080296+00:00",
+        "last_updated": "2025-12-11T06:30:33.080296+00:00",
+        "context": {
+            "id": "01KC61NAVR80HRY6MKHS6YEN4G",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.nerv_geof_cctv_02_overlay_show_date",
+        "state": "on",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:fullscreen",
+            "friendly_name": "NERV_GEOF_CCTV_02 Overlay: show date"
+        },
+        "last_changed": "2025-12-11T06:30:33.080234+00:00",
+        "last_reported": "2025-12-11T06:30:33.080234+00:00",
+        "last_updated": "2025-12-11T06:30:33.080234+00:00",
+        "context": {
+            "id": "01KC61NAVRNBF38NRXEV3P7JYN",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.nerv_geof_cctv_02_overlay_show_logo",
+        "state": "on",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:fullscreen",
+            "friendly_name": "NERV_GEOF_CCTV_02 Overlay: show logo"
+        },
+        "last_changed": "2025-12-11T06:30:33.080219+00:00",
+        "last_reported": "2025-12-11T06:30:33.080219+00:00",
+        "last_updated": "2025-12-11T06:30:33.080219+00:00",
+        "context": {
+            "id": "01KC61NAVRSWEE2NV55JES1FNS",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.nerv_geof_cctv_02_overlay_show_nerd_mode",
+        "state": "off",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:fullscreen",
+            "friendly_name": "NERV_GEOF_CCTV_02 Overlay: show nerd mode"
+        },
+        "last_changed": "2025-12-11T06:30:33.079948+00:00",
+        "last_reported": "2025-12-11T06:30:33.079948+00:00",
+        "last_updated": "2025-12-11T06:30:33.079948+00:00",
+        "context": {
+            "id": "01KC61NAVQ86QJDGRM6FBR4MH0",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.nerv_geof_cctv_02_motion",
+        "state": "off",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:run-fast",
+            "friendly_name": "NERV_GEOF_CCTV_02 Motion"
+        },
+        "last_changed": "2025-12-11T06:30:33.079829+00:00",
+        "last_reported": "2025-12-11T06:30:33.079829+00:00",
+        "last_updated": "2025-12-11T06:30:33.079829+00:00",
+        "context": {
+            "id": "01KC61NAVQ1D9SXD8EYPWQVTKY",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.nerv_geof_cctv_02_detections_person",
+        "state": "on",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:walk",
+            "friendly_name": "NERV_GEOF_CCTV_02 Detections: person"
+        },
+        "last_changed": "2025-12-11T06:30:33.080182+00:00",
+        "last_reported": "2025-12-11T06:30:33.080182+00:00",
+        "last_updated": "2025-12-11T06:30:33.080182+00:00",
+        "context": {
+            "id": "01KC61NAVRV527ANGESCTYJ2WY",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.nerv_geof_cctv_02_detections_vehicle",
+        "state": "on",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:car",
+            "friendly_name": "NERV_GEOF_CCTV_02 Detections: vehicle"
+        },
+        "last_changed": "2025-12-11T06:30:33.080101+00:00",
+        "last_reported": "2025-12-11T06:30:33.080101+00:00",
+        "last_updated": "2025-12-11T06:30:33.080101+00:00",
+        "context": {
+            "id": "01KC61NAVREZNSR0Q73BGS7KEJ",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.nerv_geof_cctv_02_detections_animal",
+        "state": "off",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:paw",
+            "friendly_name": "NERV_GEOF_CCTV_02 Detections: animal"
+        },
+        "last_changed": "2025-12-11T06:30:33.079966+00:00",
+        "last_reported": "2025-12-11T06:30:33.079966+00:00",
+        "last_updated": "2025-12-11T06:30:33.079966+00:00",
+        "context": {
+            "id": "01KC61NAVQNYN3FDFHWYVSVMQA",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.nerv_geof_cctv_02_detections_smoke",
+        "state": "on",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:fire",
+            "friendly_name": "NERV_GEOF_CCTV_02 Detections: smoke"
+        },
+        "last_changed": "2025-12-11T06:30:33.079929+00:00",
+        "last_reported": "2025-12-11T06:30:33.079929+00:00",
+        "last_updated": "2025-12-11T06:30:33.079929+00:00",
+        "context": {
+            "id": "01KC61NAVQDS1WVNR68K7F1CQV",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.nerv_geof_cctv_02_detections_co_alarm",
+        "state": "on",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:molecule-co",
+            "friendly_name": "NERV_GEOF_CCTV_02 Detections: CO alarm"
+        },
+        "last_changed": "2025-12-11T06:30:33.080166+00:00",
+        "last_reported": "2025-12-11T06:30:33.080166+00:00",
+        "last_updated": "2025-12-11T06:30:33.080166+00:00",
+        "context": {
+            "id": "01KC61NAVRZXE92VJ0NSD9KERV",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.nerv_geof_cctv_02_detections_baby_cry",
+        "state": "on",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:cradle",
+            "friendly_name": "NERV_GEOF_CCTV_02 Detections: baby cry"
+        },
+        "last_changed": "2025-12-11T06:30:33.080118+00:00",
+        "last_reported": "2025-12-11T06:30:33.080118+00:00",
+        "last_updated": "2025-12-11T06:30:33.080118+00:00",
+        "context": {
+            "id": "01KC61NAVRSRG1SYCMAZ08X84P",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.nerv_geof_cctv_02_detections_speaking",
+        "state": "on",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:account-voice",
+            "friendly_name": "NERV_GEOF_CCTV_02 Detections: speaking"
+        },
+        "last_changed": "2025-12-11T06:30:33.080417+00:00",
+        "last_reported": "2025-12-11T06:30:33.080417+00:00",
+        "last_updated": "2025-12-11T06:30:33.080417+00:00",
+        "context": {
+            "id": "01KC61NAVRAABQ6CJEZAZHT6R0",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.nerv_geof_cctv_01_status_light",
+        "state": "on",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:led-on",
+            "friendly_name": "NERV_GEOF_CCTV_01 Status light"
+        },
+        "last_changed": "2025-12-08T15:27:37.505850+00:00",
+        "last_reported": "2025-12-08T15:27:37.505850+00:00",
+        "last_updated": "2025-12-08T15:27:37.505850+00:00",
+        "context": {
+            "id": "01KBZ96K11JNM1SMS9XZNMEZN9",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.nerv_geof_cctv_01_overlay_show_name",
+        "state": "on",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:fullscreen",
+            "friendly_name": "NERV_GEOF_CCTV_01 Overlay: show name"
+        },
+        "last_changed": "2025-12-08T15:27:37.505981+00:00",
+        "last_reported": "2025-12-08T15:27:37.505981+00:00",
+        "last_updated": "2025-12-08T15:27:37.505981+00:00",
+        "context": {
+            "id": "01KBZ96K116EC0ZZD2HA664KCP",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.nerv_geof_cctv_01_overlay_show_date",
+        "state": "on",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:fullscreen",
+            "friendly_name": "NERV_GEOF_CCTV_01 Overlay: show date"
+        },
+        "last_changed": "2025-12-08T15:27:37.506064+00:00",
+        "last_reported": "2025-12-08T15:27:37.506064+00:00",
+        "last_updated": "2025-12-08T15:27:37.506064+00:00",
+        "context": {
+            "id": "01KBZ96K12G8EW6ZEGTVHWECX2",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.nerv_geof_cctv_01_overlay_show_logo",
+        "state": "on",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:fullscreen",
+            "friendly_name": "NERV_GEOF_CCTV_01 Overlay: show logo"
+        },
+        "last_changed": "2025-12-08T15:27:37.506166+00:00",
+        "last_reported": "2025-12-08T15:27:37.506166+00:00",
+        "last_updated": "2025-12-08T15:27:37.506166+00:00",
+        "context": {
+            "id": "01KBZ96K12W1N54B5MB5P9F39B",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.nerv_geof_cctv_01_overlay_show_nerd_mode",
+        "state": "off",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:fullscreen",
+            "friendly_name": "NERV_GEOF_CCTV_01 Overlay: show nerd mode"
+        },
+        "last_changed": "2025-12-08T15:27:37.506248+00:00",
+        "last_reported": "2025-12-08T15:27:37.506248+00:00",
+        "last_updated": "2025-12-08T15:27:37.506248+00:00",
+        "context": {
+            "id": "01KBZ96K120ESG9SB35RK697VY",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.nerv_geof_cctv_01_motion",
+        "state": "on",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:run-fast",
+            "friendly_name": "NERV_GEOF_CCTV_01 Motion"
+        },
+        "last_changed": "2025-12-08T15:27:37.506333+00:00",
+        "last_reported": "2025-12-08T15:27:37.506333+00:00",
+        "last_updated": "2025-12-08T15:27:37.506333+00:00",
+        "context": {
+            "id": "01KBZ96K12SCNEKXK11RNFAER4",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.nerv_geof_cctv_02_privacy_mode",
+        "state": "off",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:eye-settings",
+            "friendly_name": "NERV_GEOF_CCTV_02 Privacy mode"
+        },
+        "last_changed": "2025-12-11T06:30:33.079862+00:00",
+        "last_reported": "2025-12-11T06:30:33.079862+00:00",
+        "last_updated": "2025-12-11T06:30:33.079862+00:00",
+        "context": {
+            "id": "01KC61NAVQQ8D37B88CDC7VW3G",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.nerv_geof_cctv_01_privacy_mode",
+        "state": "off",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:eye-settings",
+            "friendly_name": "NERV_GEOF_CCTV_01 Privacy mode"
+        },
+        "last_changed": "2025-12-08T15:27:37.506555+00:00",
+        "last_reported": "2025-12-08T15:27:37.506555+00:00",
+        "last_updated": "2025-12-08T15:27:37.506555+00:00",
+        "context": {
+            "id": "01KBZ96K12DGCPH722H7Y7AK1P",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.terminal_dogma_analytics_enabled",
+        "state": "on",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:google-analytics",
+            "friendly_name": "Terminal Dogma Analytics enabled"
+        },
+        "last_changed": "2025-12-08T15:27:37.506662+00:00",
+        "last_reported": "2025-12-08T15:27:37.506662+00:00",
+        "last_updated": "2025-12-08T15:27:37.506662+00:00",
+        "context": {
+            "id": "01KBZ96K12S05XTPG2ETWW4DTT",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.terminal_dogma_insights_enabled",
+        "state": "on",
+        "attributes": {
+            "attribution": "Powered by UniFi Protect Server",
+            "icon": "mdi:magnify",
+            "friendly_name": "Terminal Dogma Insights enabled"
+        },
+        "last_changed": "2025-12-08T15:27:37.506755+00:00",
+        "last_reported": "2025-12-08T15:27:37.506755+00:00",
+        "last_updated": "2025-12-08T15:27:37.506755+00:00",
+        "context": {
+            "id": "01KBZ96K12BTZ8XZVS6GS03YY6",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.geofront_restart",
+        "state": "unknown",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "GeoFront Restart"
+        },
+        "last_changed": "2025-12-08T15:28:09.175756+00:00",
+        "last_reported": "2025-12-08T15:29:11.817667+00:00",
+        "last_updated": "2025-12-08T15:28:09.175756+00:00",
+        "context": {
+            "id": "01KBZ97HYQ1FWRK6699BX8XRJY",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.matsushiro_restart",
+        "state": "unknown",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Matsushiro Restart"
+        },
+        "last_changed": "2025-12-08T15:28:09.175935+00:00",
+        "last_reported": "2025-12-08T15:29:11.817472+00:00",
+        "last_updated": "2025-12-08T15:28:09.175935+00:00",
+        "context": {
+            "id": "01KBZ97HYQ8CKQXV8YD9JN04P4",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.central_dogma_restart",
+        "state": "unknown",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Central Dogma Restart"
+        },
+        "last_changed": "2025-12-08T15:28:09.176042+00:00",
+        "last_reported": "2025-12-08T15:29:11.816858+00:00",
+        "last_updated": "2025-12-08T15:28:09.176042+00:00",
+        "context": {
+            "id": "01KBZ97HYRQAGVWJDT4MV6KHTQ",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.neotokyo_2_restart",
+        "state": "unknown",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "NeoTokyo-2 Restart"
+        },
+        "last_changed": "2025-12-08T15:28:09.176139+00:00",
+        "last_reported": "2025-12-08T15:29:11.817952+00:00",
+        "last_updated": "2025-12-08T15:28:09.176139+00:00",
+        "context": {
+            "id": "01KBZ97HYRQZ4CJ0AZ4XKQT0MT",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.terminal_dogma_restart",
+        "state": "unknown",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Terminal Dogma Restart"
+        },
+        "last_changed": "2025-12-08T15:28:09.176283+00:00",
+        "last_reported": "2025-12-08T15:29:11.829787+00:00",
+        "last_updated": "2025-12-08T15:28:09.176283+00:00",
+        "context": {
+            "id": "01KBZ97HYRF7V28ZAFAD6TNF9B",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.tokyo_3_restart",
+        "state": "unknown",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Tokyo-3 Restart"
+        },
+        "last_changed": "2025-12-08T15:28:09.176379+00:00",
+        "last_reported": "2025-12-08T15:28:09.176379+00:00",
+        "last_updated": "2025-12-08T15:28:09.176379+00:00",
+        "context": {
+            "id": "01KBZ97HYRY59Q98XDQWHN5Y4S",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.geofront_port_2_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "GeoFront Port 2 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.413744+00:00",
+        "last_reported": "2025-12-08T15:29:11.817814+00:00",
+        "last_updated": "2025-12-08T15:28:09.176470+00:00",
+        "context": {
+            "id": "01KBZ97HYR4JK27W96E4TNVXZE",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.geofront_port_3_power_cycle",
+        "state": "unknown",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "GeoFront Port 3 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:28:09.176560+00:00",
+        "last_reported": "2025-12-08T15:29:11.817871+00:00",
+        "last_updated": "2025-12-08T15:28:09.176560+00:00",
+        "context": {
+            "id": "01KBZ97HYRVB23KMK4VCFWQ3S4",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.geofront_port_4_power_cycle",
+        "state": "unknown",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "GeoFront Port 4 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:28:09.176648+00:00",
+        "last_reported": "2025-12-08T15:29:11.817913+00:00",
+        "last_updated": "2025-12-08T15:28:09.176648+00:00",
+        "context": {
+            "id": "01KBZ97HYRAATND16VDJSA3982",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.geofront_port_5_power_cycle",
+        "state": "unknown",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "GeoFront Port 5 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:28:09.176734+00:00",
+        "last_reported": "2025-12-08T15:29:11.817924+00:00",
+        "last_updated": "2025-12-08T15:28:09.176734+00:00",
+        "context": {
+            "id": "01KBZ97HYRF9TTD73EQ468SWGP",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.matsushiro_poe_out_data_power_cycle",
+        "state": "unknown",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Matsushiro PoE Out + Data Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:28:09.176822+00:00",
+        "last_reported": "2025-12-08T15:29:11.817623+00:00",
+        "last_updated": "2025-12-08T15:28:09.176822+00:00",
+        "context": {
+            "id": "01KBZ97HYRJWB5CTT4ES6TRZYT",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.central_dogma_port_1_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Central Dogma Port 1 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.414217+00:00",
+        "last_reported": "2025-12-08T15:29:11.817142+00:00",
+        "last_updated": "2025-12-08T15:28:09.176906+00:00",
+        "context": {
+            "id": "01KBZ97HYRVR3HSH8N02Q5DW8H",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.central_dogma_port_2_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Central Dogma Port 2 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.414496+00:00",
+        "last_reported": "2025-12-08T15:29:11.817157+00:00",
+        "last_updated": "2025-12-08T15:28:09.176991+00:00",
+        "context": {
+            "id": "01KBZ97HYR25FHR328NX5XGE4T",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.central_dogma_port_3_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Central Dogma Port 3 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.414594+00:00",
+        "last_reported": "2025-12-08T15:29:11.817189+00:00",
+        "last_updated": "2025-12-08T15:28:09.177072+00:00",
+        "context": {
+            "id": "01KBZ97HYSV2PYGZET5YGACZME",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.central_dogma_port_4_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Central Dogma Port 4 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.414674+00:00",
+        "last_reported": "2025-12-08T15:29:11.817201+00:00",
+        "last_updated": "2025-12-08T15:28:09.177166+00:00",
+        "context": {
+            "id": "01KBZ97HYS8X63W19ET38AR6GF",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.central_dogma_port_5_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Central Dogma Port 5 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.414754+00:00",
+        "last_reported": "2025-12-08T15:29:11.817213+00:00",
+        "last_updated": "2025-12-08T15:28:09.177249+00:00",
+        "context": {
+            "id": "01KBZ97HYS81JM9E5EEPKHYHPX",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.central_dogma_port_6_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Central Dogma Port 6 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.414825+00:00",
+        "last_reported": "2025-12-08T15:29:11.817224+00:00",
+        "last_updated": "2025-12-08T15:28:09.177331+00:00",
+        "context": {
+            "id": "01KBZ97HYSD24TW5TE9ARBHNM7",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.central_dogma_port_7_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Central Dogma Port 7 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.414895+00:00",
+        "last_reported": "2025-12-08T15:29:11.817234+00:00",
+        "last_updated": "2025-12-08T15:28:09.177413+00:00",
+        "context": {
+            "id": "01KBZ97HYSSGQKYK2VNM5W7KFK",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.central_dogma_port_8_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Central Dogma Port 8 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.414967+00:00",
+        "last_reported": "2025-12-08T15:29:11.817246+00:00",
+        "last_updated": "2025-12-08T15:28:09.177496+00:00",
+        "context": {
+            "id": "01KBZ97HYSD8NZNSRQ0871Y4GA",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.central_dogma_port_9_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Central Dogma Port 9 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.415076+00:00",
+        "last_reported": "2025-12-08T15:29:11.817256+00:00",
+        "last_updated": "2025-12-08T15:28:09.178003+00:00",
+        "context": {
+            "id": "01KBZ97HYT7B41W9M8ZF57PG9R",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.central_dogma_port_10_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Central Dogma Port 10 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.415191+00:00",
+        "last_reported": "2025-12-08T15:29:11.817267+00:00",
+        "last_updated": "2025-12-08T15:28:09.178101+00:00",
+        "context": {
+            "id": "01KBZ97HYTQKCNNH3ZAHYXRM6T",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.central_dogma_port_11_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Central Dogma Port 11 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.415270+00:00",
+        "last_reported": "2025-12-08T15:29:11.817277+00:00",
+        "last_updated": "2025-12-08T15:28:09.178206+00:00",
+        "context": {
+            "id": "01KBZ97HYT45X5WBW6Q8V36QKN",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.central_dogma_port_12_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Central Dogma Port 12 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.415344+00:00",
+        "last_reported": "2025-12-08T15:29:11.817288+00:00",
+        "last_updated": "2025-12-08T15:28:09.178295+00:00",
+        "context": {
+            "id": "01KBZ97HYT0S4XFNEY40X8N18S",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.central_dogma_port_13_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Central Dogma Port 13 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.415416+00:00",
+        "last_reported": "2025-12-08T15:29:11.817298+00:00",
+        "last_updated": "2025-12-08T15:28:09.178391+00:00",
+        "context": {
+            "id": "01KBZ97HYTRSZJDBXYN086J6BG",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.central_dogma_port_14_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Central Dogma Port 14 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.415484+00:00",
+        "last_reported": "2025-12-08T15:29:11.817308+00:00",
+        "last_updated": "2025-12-08T15:28:09.178515+00:00",
+        "context": {
+            "id": "01KBZ97HYT773JW2353GVEVKRE",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.central_dogma_port_15_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Central Dogma Port 15 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.415560+00:00",
+        "last_reported": "2025-12-08T15:29:11.817318+00:00",
+        "last_updated": "2025-12-08T15:28:09.178601+00:00",
+        "context": {
+            "id": "01KBZ97HYTJZA8KF8D163S3G8Z",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.central_dogma_port_16_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Central Dogma Port 16 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.415629+00:00",
+        "last_reported": "2025-12-08T15:29:11.817327+00:00",
+        "last_updated": "2025-12-08T15:28:09.178687+00:00",
+        "context": {
+            "id": "01KBZ97HYTBP8AKY7PWTWH9331",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.central_dogma_port_17_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Central Dogma Port 17 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.415695+00:00",
+        "last_reported": "2025-12-08T15:29:11.817337+00:00",
+        "last_updated": "2025-12-08T15:28:09.178771+00:00",
+        "context": {
+            "id": "01KBZ97HYTJERF3FX5Y1HAFQHB",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.central_dogma_port_18_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Central Dogma Port 18 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.415767+00:00",
+        "last_reported": "2025-12-08T15:29:11.817347+00:00",
+        "last_updated": "2025-12-08T15:28:09.178853+00:00",
+        "context": {
+            "id": "01KBZ97HYTJZWW1TFGTK488E9V",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.central_dogma_port_19_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Central Dogma Port 19 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.415837+00:00",
+        "last_reported": "2025-12-08T15:29:11.817357+00:00",
+        "last_updated": "2025-12-08T15:28:09.178935+00:00",
+        "context": {
+            "id": "01KBZ97HYTC64008G2J5BX4JJ6",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.central_dogma_port_20_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Central Dogma Port 20 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.415907+00:00",
+        "last_reported": "2025-12-08T15:29:11.817366+00:00",
+        "last_updated": "2025-12-08T15:28:09.179015+00:00",
+        "context": {
+            "id": "01KBZ97HYVA4VE68CTD0BPJWNA",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.central_dogma_port_21_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Central Dogma Port 21 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.415975+00:00",
+        "last_reported": "2025-12-08T15:29:11.817375+00:00",
+        "last_updated": "2025-12-08T15:28:09.179095+00:00",
+        "context": {
+            "id": "01KBZ97HYV6EK62WY5VR2DR3VV",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.central_dogma_port_22_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Central Dogma Port 22 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.416047+00:00",
+        "last_reported": "2025-12-08T15:29:11.817385+00:00",
+        "last_updated": "2025-12-08T15:28:09.179187+00:00",
+        "context": {
+            "id": "01KBZ97HYV11BXJJ2CSF4KXRTK",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.central_dogma_port_23_power_cycle",
+        "state": "unknown",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Central Dogma Port 23 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:28:09.179273+00:00",
+        "last_reported": "2025-12-08T15:29:11.817397+00:00",
+        "last_updated": "2025-12-08T15:28:09.179273+00:00",
+        "context": {
+            "id": "01KBZ97HYVN7S2BB4AFJY3PJ53",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.central_dogma_port_24_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Central Dogma Port 24 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.416203+00:00",
+        "last_reported": "2025-12-08T15:29:11.817407+00:00",
+        "last_updated": "2025-12-08T15:28:09.179357+00:00",
+        "context": {
+            "id": "01KBZ97HYVF1ZJNXAPB0C1VSM8",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.terminal_dogma_port_1_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Terminal Dogma Port 1 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.416272+00:00",
+        "last_reported": "2025-12-08T15:29:11.830249+00:00",
+        "last_updated": "2025-12-08T15:28:09.179438+00:00",
+        "context": {
+            "id": "01KBZ97HYVVTS48J1Q4VTRGCK9",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.terminal_dogma_port_2_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Terminal Dogma Port 2 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.416339+00:00",
+        "last_reported": "2025-12-08T15:29:11.830272+00:00",
+        "last_updated": "2025-12-08T15:28:09.179516+00:00",
+        "context": {
+            "id": "01KBZ97HYVCMMJMQ45V8CD0W1X",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.terminal_dogma_port_3_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Terminal Dogma Port 3 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.416421+00:00",
+        "last_reported": "2025-12-08T15:29:11.830286+00:00",
+        "last_updated": "2025-12-08T15:28:09.179595+00:00",
+        "context": {
+            "id": "01KBZ97HYVQ6BPQ5HWJV0C6AYQ",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.terminal_dogma_port_4_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Terminal Dogma Port 4 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.416682+00:00",
+        "last_reported": "2025-12-08T15:29:11.830298+00:00",
+        "last_updated": "2025-12-08T15:28:09.179674+00:00",
+        "context": {
+            "id": "01KBZ97HYV4BF9YAPWWWBZGYXG",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.terminal_dogma_port_5_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Terminal Dogma Port 5 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.416771+00:00",
+        "last_reported": "2025-12-08T15:29:11.830309+00:00",
+        "last_updated": "2025-12-08T15:28:09.179752+00:00",
+        "context": {
+            "id": "01KBZ97HYV6YCB4Y32MZKR05BC",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.terminal_dogma_port_6_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Terminal Dogma Port 6 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.416859+00:00",
+        "last_reported": "2025-12-08T15:29:11.830320+00:00",
+        "last_updated": "2025-12-08T15:28:09.179829+00:00",
+        "context": {
+            "id": "01KBZ97HYV24BWVF19H60CA55P",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.terminal_dogma_port_7_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Terminal Dogma Port 7 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.416939+00:00",
+        "last_reported": "2025-12-08T15:29:11.830332+00:00",
+        "last_updated": "2025-12-08T15:28:09.179906+00:00",
+        "context": {
+            "id": "01KBZ97HYVCQEEH2D2DGYEXCVW",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "button.terminal_dogma_port_8_power_cycle",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "restart",
+            "friendly_name": "Terminal Dogma Port 8 Power Cycle"
+        },
+        "last_changed": "2025-12-08T15:27:38.417023+00:00",
+        "last_reported": "2025-12-08T15:29:11.830343+00:00",
+        "last_updated": "2025-12-08T15:28:09.179986+00:00",
+        "context": {
+            "id": "01KBZ97HYV24A9C4B4MX3QV1KC",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "device_tracker.nervgeofcctv01",
+        "state": "home",
+        "attributes": {
+            "source_type": "router",
+            "ip": "10.1.0.132",
+            "mac": "e4:38:83:0c:d7:56",
+            "host_name": "nervgeofcctv01",
+            "is_guest": false,
+            "qos_policy_applied": true,
+            "oui": "Ubiquiti Inc",
+            "friendly_name": "nervgeofcctv01"
+        },
+        "last_changed": "2025-12-08T15:28:09.180583+00:00",
+        "last_reported": "2025-12-08T15:29:11.795505+00:00",
+        "last_updated": "2025-12-08T15:28:09.180583+00:00",
+        "context": {
+            "id": "01KBZ97HYWDKGZ7SYAAQR8P3PZ",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "device_tracker.espressif",
+        "state": "home",
+        "attributes": {
+            "source_type": "router",
+            "ip": "10.1.0.195",
+            "mac": "e0:5a:1b:6a:c7:78",
+            "host_name": "espressif",
+            "_is_guest_by_uap": false,
+            "ap_mac": "28:70:4e:86:fe:7d",
+            "essid": "IoT",
+            "is_11r": false,
+            "is_guest": false,
+            "qos_policy_applied": true,
+            "radio": "ng",
+            "radio_proto": "ng",
+            "oui": "Espressif Inc.",
+            "friendly_name": "espressif"
+        },
+        "last_changed": "2025-12-08T15:28:09.180799+00:00",
+        "last_reported": "2025-12-08T15:29:11.795582+00:00",
+        "last_updated": "2025-12-08T15:28:09.180799+00:00",
+        "context": {
+            "id": "01KBZ97HYWPFGP3RAAM1767JV0",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "device_tracker.espressif_2",
+        "state": "home",
+        "attributes": {
+            "source_type": "router",
+            "ip": "10.1.0.24",
+            "mac": "c8:f0:9e:ee:4f:08",
+            "host_name": "espressif",
+            "_is_guest_by_uap": false,
+            "ap_mac": "28:70:4e:86:fe:7d",
+            "essid": "IoT",
+            "is_11r": false,
+            "is_guest": false,
+            "qos_policy_applied": true,
+            "radio": "ng",
+            "radio_proto": "ng",
+            "oui": "Espressif Inc.",
+            "friendly_name": "espressif"
+        },
+        "last_changed": "2025-12-08T15:28:09.184345+00:00",
+        "last_reported": "2025-12-08T15:29:11.796285+00:00",
+        "last_updated": "2025-12-08T15:28:09.184345+00:00",
+        "context": {
+            "id": "01KBZ97HZ05YWQ8J0T598W97CD",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "device_tracker.proxmox",
+        "state": "home",
+        "attributes": {
+            "source_type": "router",
+            "ip": "10.1.0.201",
+            "mac": "80:e8:2c:10:85:f1",
+            "host_name": "",
+            "is_guest": false,
+            "qos_policy_applied": true,
+            "name": "proxmox",
+            "oui": "Hewlett Packard",
+            "friendly_name": "proxmox"
+        },
+        "last_changed": "2025-12-08T15:28:09.184554+00:00",
+        "last_reported": "2025-12-08T15:29:11.795341+00:00",
+        "last_updated": "2025-12-08T15:28:09.184554+00:00",
+        "context": {
+            "id": "01KBZ97HZ0S98SQG33PYXQVVZ1",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "device_tracker.hb_pi_hole",
+        "state": "home",
+        "attributes": {
+            "source_type": "router",
+            "ip": "10.1.0.241",
+            "mac": "f2:ac:ef:18:a2:be",
+            "host_name": "hb-pi-hole",
+            "is_guest": false,
+            "qos_policy_applied": true,
+            "oui": "",
+            "friendly_name": "hb-pi-hole"
+        },
+        "last_changed": "2025-12-08T15:28:09.184755+00:00",
+        "last_reported": "2025-12-08T15:29:11.795810+00:00",
+        "last_updated": "2025-12-08T15:28:09.184755+00:00",
+        "context": {
+            "id": "01KBZ97HZ0KYF281E7R3KEDAQR",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "device_tracker.nervgeofcctv02",
+        "state": "home",
+        "attributes": {
+            "source_type": "router",
+            "ip": "10.1.0.237",
+            "mac": "ac:8b:a9:0b:56:85",
+            "host_name": "nervgeofcctv02",
+            "is_guest": false,
+            "qos_policy_applied": true,
+            "oui": "Ubiquiti Inc",
+            "friendly_name": "nervgeofcctv02"
+        },
+        "last_changed": "2025-12-08T15:28:09.185118+00:00",
+        "last_reported": "2025-12-08T15:29:11.795887+00:00",
+        "last_updated": "2025-12-08T15:28:09.185118+00:00",
+        "context": {
+            "id": "01KBZ97HZ19A12WMAV72H44M3Y",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "device_tracker.homeassistant",
+        "state": "home",
+        "attributes": {
+            "source_type": "router",
+            "ip": "10.1.0.135",
+            "mac": "bc:24:11:fa:33:5a",
+            "host_name": "homeassistant",
+            "is_guest": false,
+            "qos_policy_applied": true,
+            "oui": "Proxmox Server Solutions GmbH",
+            "friendly_name": "homeassistant"
+        },
+        "last_changed": "2025-12-08T15:28:09.185347+00:00",
+        "last_reported": "2025-12-08T15:29:11.795952+00:00",
+        "last_updated": "2025-12-08T15:28:09.185347+00:00",
+        "context": {
+            "id": "01KBZ97HZ1EESVE8PBA2GQK7PM",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "device_tracker.iphone",
+        "state": "not_home",
+        "attributes": {
+            "source_type": "router",
+            "mac": "8e:a2:83:e6:2b:df",
+            "host_name": "iPhone",
+            "oui": "",
+            "friendly_name": "iPhone"
+        },
+        "last_changed": "2025-12-08T15:28:09.185539+00:00",
+        "last_reported": "2025-12-08T15:28:09.185539+00:00",
+        "last_updated": "2025-12-08T15:28:09.185539+00:00",
+        "context": {
+            "id": "01KBZ97HZ1DP1FQG8ECQMTGDC2",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "device_tracker.iphone_2",
+        "state": "not_home",
+        "attributes": {
+            "source_type": "router",
+            "mac": "a6:4f:40:44:53:5f",
+            "host_name": "iPhone",
+            "oui": "",
+            "friendly_name": "iPhone"
+        },
+        "last_changed": "2025-12-08T15:28:09.185724+00:00",
+        "last_reported": "2025-12-08T15:28:09.185724+00:00",
+        "last_updated": "2025-12-08T15:28:09.185724+00:00",
+        "context": {
+            "id": "01KBZ97HZ1DQ63Q4702D7Y134B",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "device_tracker.iphone_56",
+        "state": "not_home",
+        "attributes": {
+            "source_type": "router",
+            "mac": "74:42:18:2f:ae:28",
+            "host_name": "iPhone-56",
+            "oui": "",
+            "friendly_name": "iPhone-56"
+        },
+        "last_changed": "2025-12-08T15:28:09.185906+00:00",
+        "last_reported": "2025-12-08T15:28:09.185906+00:00",
+        "last_updated": "2025-12-08T15:28:09.185906+00:00",
+        "context": {
+            "id": "01KBZ97HZ1JATDSGP0CQBTC35N",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "device_tracker.mac",
+        "state": "not_home",
+        "attributes": {
+            "source_type": "router",
+            "mac": "fa:d1:17:31:30:07",
+            "host_name": "Mac",
+            "oui": "",
+            "friendly_name": "Mac"
+        },
+        "last_changed": "2025-12-08T15:28:09.186088+00:00",
+        "last_reported": "2025-12-08T15:28:09.186088+00:00",
+        "last_updated": "2025-12-08T15:28:09.186088+00:00",
+        "context": {
+            "id": "01KBZ97HZ2ZFW1VBNCNBZR11TX",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "device_tracker.geofront",
+        "state": "home",
+        "attributes": {
+            "source_type": "router",
+            "ip": "10.1.0.91",
+            "mac": "9c:05:d6:0f:22:08",
+            "friendly_name": "GeoFront"
+        },
+        "last_changed": "2025-12-08T15:28:09.186287+00:00",
+        "last_reported": "2025-12-08T15:29:11.817685+00:00",
+        "last_updated": "2025-12-08T15:28:09.186287+00:00",
+        "context": {
+            "id": "01KBZ97HZ2SGBMMKZ081SMQTN0",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "device_tracker.matsushiro",
+        "state": "home",
+        "attributes": {
+            "source_type": "router",
+            "ip": "10.1.0.234",
+            "mac": "28:70:4e:86:fe:7d",
+            "friendly_name": "Matsushiro"
+        },
+        "last_changed": "2025-12-08T15:28:09.186511+00:00",
+        "last_reported": "2025-12-08T15:29:11.817493+00:00",
+        "last_updated": "2025-12-08T15:28:09.186511+00:00",
+        "context": {
+            "id": "01KBZ97HZ2CAW3E1QW2E2F3FF1",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "device_tracker.central_dogma",
+        "state": "home",
+        "attributes": {
+            "source_type": "router",
+            "ip": "10.1.0.69",
+            "mac": "ac:8b:a9:ae:c3:09",
+            "friendly_name": "Central Dogma"
+        },
+        "last_changed": "2025-12-08T15:28:09.186695+00:00",
+        "last_reported": "2025-12-08T15:29:11.816907+00:00",
+        "last_updated": "2025-12-08T15:28:09.186695+00:00",
+        "context": {
+            "id": "01KBZ97HZ2EDZ7XEXZ9H165G9V",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "device_tracker.neotokyo_2",
+        "state": "home",
+        "attributes": {
+            "source_type": "router",
+            "ip": "10.1.0.86",
+            "mac": "ac:8b:a9:af:c4:e5",
+            "friendly_name": "NeoTokyo-2"
+        },
+        "last_changed": "2025-12-08T15:28:09.186875+00:00",
+        "last_reported": "2025-12-08T15:29:11.817971+00:00",
+        "last_updated": "2025-12-08T15:28:09.186875+00:00",
+        "context": {
+            "id": "01KBZ97HZ2SJV9F6BDWCRQHY98",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "device_tracker.terminal_dogma",
+        "state": "home",
+        "attributes": {
+            "source_type": "router",
+            "ip": "186.57.226.88",
+            "mac": "0c:ea:14:53:f6:0d",
+            "friendly_name": "Terminal Dogma"
+        },
+        "last_changed": "2025-12-08T15:28:09.187058+00:00",
+        "last_reported": "2025-12-11T13:42:03.793372+00:00",
+        "last_updated": "2025-12-10T18:35:50.955781+00:00",
+        "context": {
+            "id": "01KC4RRNSBRTD5YYMPM1K7MBJG",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "device_tracker.tokyo_3",
+        "state": "not_home",
+        "attributes": {
+            "source_type": "router",
+            "ip": "10.1.0.32",
+            "mac": "ac:8b:a9:af:c4:af",
+            "friendly_name": "Tokyo-3"
+        },
+        "last_changed": "2025-12-08T15:28:09.187244+00:00",
+        "last_reported": "2025-12-08T15:28:09.187244+00:00",
+        "last_updated": "2025-12-08T15:28:09.187244+00:00",
+        "context": {
+            "id": "01KBZ97HZ3T7GASBVSG1E8ASAZ",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "image.matsushiro_qr_code",
+        "state": "2025-12-08T15:28:09.187322+00:00",
+        "attributes": {
+            "access_token": "ffd1a3cae8fda10e6529a1beb100ac6caa3e277cdd7d90268876ee9cca61aa48",
+            "entity_picture": "/api/image_proxy/image.matsushiro_qr_code?token=ffd1a3cae8fda10e6529a1beb100ac6caa3e277cdd7d90268876ee9cca61aa48",
+            "friendly_name": "Matsushiro QR Code"
+        },
+        "last_changed": "2025-12-08T15:28:09.187478+00:00",
+        "last_reported": "2025-12-11T14:37:39.181846+00:00",
+        "last_updated": "2025-12-11T14:37:39.181846+00:00",
+        "context": {
+            "id": "01KC6XH7ZDQSW9CJHVW0N7CK56",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "image.iot_qr_code",
+        "state": "2025-12-08T15:28:09.187356+00:00",
+        "attributes": {
+            "access_token": "748b2ec92017760b06318c20203827cf9c2ff132d3dd45721761e743bdd4e442",
+            "entity_picture": "/api/image_proxy/image.iot_qr_code?token=748b2ec92017760b06318c20203827cf9c2ff132d3dd45721761e743bdd4e442",
+            "friendly_name": "IoT QR Code"
+        },
+        "last_changed": "2025-12-08T15:28:09.187584+00:00",
+        "last_reported": "2025-12-11T14:37:39.181948+00:00",
+        "last_updated": "2025-12-11T14:37:39.181948+00:00",
+        "context": {
+            "id": "01KC6XH7ZDYYFSBSSMYYV797M5",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.nervgeofcctv01_rx",
+        "state": "0.0",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "device_class": "data_rate",
+            "friendly_name": "NERV_GEOF_CCTV_01 RX"
+        },
+        "last_changed": "2025-12-08T15:28:09.189652+00:00",
+        "last_reported": "2025-12-08T15:29:11.795528+00:00",
+        "last_updated": "2025-12-08T15:28:09.189652+00:00",
+        "context": {
+            "id": "01KBZ97HZ5YJHAF8G3PCMAJNVJ",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.espressif_rx",
+        "state": "0.000475",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "device_class": "data_rate",
+            "friendly_name": "espressif RX"
+        },
+        "last_changed": "2025-12-11T14:41:21.125650+00:00",
+        "last_reported": "2025-12-11T14:41:30.011745+00:00",
+        "last_updated": "2025-12-11T14:41:21.125650+00:00",
+        "context": {
+            "id": "01KC6XR0Q5K9K63TW08MNHYJY7",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.broadlink_remote_3e_e9_67_rx",
+        "state": "0.000235714285714286",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "device_class": "data_rate",
+            "friendly_name": "Control planta alta RX"
+        },
+        "last_changed": "2025-12-11T14:41:21.125979+00:00",
+        "last_reported": "2025-12-11T14:41:30.012022+00:00",
+        "last_updated": "2025-12-11T14:41:21.125979+00:00",
+        "context": {
+            "id": "01KC6XR0Q58QQK2Z7CMN2CT3TQ",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.espressif_rx_2",
+        "state": "0.000516216216216216",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "device_class": "data_rate",
+            "friendly_name": "espressif RX"
+        },
+        "last_changed": "2025-12-11T14:41:19.999880+00:00",
+        "last_reported": "2025-12-11T14:41:30.012091+00:00",
+        "last_updated": "2025-12-11T14:41:19.999880+00:00",
+        "context": {
+            "id": "01KC6XQZKZ50DVNZ9Q41120CRN",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.proxmox_rx",
+        "state": "4.6594982078853e-05",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "device_class": "data_rate",
+            "friendly_name": "proxmox RX"
+        },
+        "last_changed": "2025-12-11T14:41:22.235889+00:00",
+        "last_reported": "2025-12-11T14:41:30.011566+00:00",
+        "last_updated": "2025-12-11T14:41:22.235889+00:00",
+        "context": {
+            "id": "01KC6XR1SV4M4H4B4H8D9B0GFR",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.hb_pi_hole_rx",
+        "state": "0.0",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "device_class": "data_rate",
+            "friendly_name": "hb-pi-hole RX"
+        },
+        "last_changed": "2025-12-11T11:00:07.493656+00:00",
+        "last_reported": "2025-12-11T13:42:03.779509+00:00",
+        "last_updated": "2025-12-11T11:00:07.493656+00:00",
+        "context": {
+            "id": "01KC6H2Y658WZQD59XREXEK5N3",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.nervgeofcctv02_rx",
+        "state": "0.0",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "device_class": "data_rate",
+            "friendly_name": "NERV_GEOF_CCTV_02 RX"
+        },
+        "last_changed": "2025-12-08T15:28:09.190685+00:00",
+        "last_reported": "2025-12-08T15:29:11.795907+00:00",
+        "last_updated": "2025-12-08T15:28:09.190685+00:00",
+        "context": {
+            "id": "01KBZ97HZ6E9D2T2P12Y3JKG6V",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.homeassistant_rx",
+        "state": "0.000122504537205082",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "device_class": "data_rate",
+            "friendly_name": "homeassistant RX"
+        },
+        "last_changed": "2025-12-11T14:41:28.896145+00:00",
+        "last_reported": "2025-12-11T14:41:30.011950+00:00",
+        "last_updated": "2025-12-11T14:41:28.896145+00:00",
+        "context": {
+            "id": "01KC6XR8A0GPJ324W6WR2GDJCC",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.iphone_rx",
+        "state": "0.0",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "device_class": "data_rate",
+            "friendly_name": "iPhone RX"
+        },
+        "last_changed": "2025-12-08T15:28:09.190943+00:00",
+        "last_reported": "2025-12-08T15:28:09.190943+00:00",
+        "last_updated": "2025-12-08T15:28:09.190943+00:00",
+        "context": {
+            "id": "01KBZ97HZ6TF9B3YDC65CMY0G4",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.iphone_rx_2",
+        "state": "0.0",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "device_class": "data_rate",
+            "friendly_name": "iPhone RX"
+        },
+        "last_changed": "2025-12-08T15:28:09.191066+00:00",
+        "last_reported": "2025-12-08T15:28:09.191066+00:00",
+        "last_updated": "2025-12-08T15:28:09.191066+00:00",
+        "context": {
+            "id": "01KBZ97HZ7F5PFAW0MSWXPT4YT",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.iphone_56_rx",
+        "state": "0.0",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "device_class": "data_rate",
+            "friendly_name": "iPhone-56 RX"
+        },
+        "last_changed": "2025-12-08T15:28:09.191201+00:00",
+        "last_reported": "2025-12-08T15:28:09.191201+00:00",
+        "last_updated": "2025-12-08T15:28:09.191201+00:00",
+        "context": {
+            "id": "01KBZ97HZ7YFH3656NBP2HESMR",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.mac_rx",
+        "state": "0.0",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "device_class": "data_rate",
+            "friendly_name": "Mac RX"
+        },
+        "last_changed": "2025-12-08T15:28:09.191326+00:00",
+        "last_reported": "2025-12-08T15:28:09.191326+00:00",
+        "last_updated": "2025-12-08T15:28:09.191326+00:00",
+        "context": {
+            "id": "01KBZ97HZ75RGTG6M5PG3SRWW1",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.nervgeofcctv01_tx",
+        "state": "0.0",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "device_class": "data_rate",
+            "friendly_name": "NERV_GEOF_CCTV_01 TX"
+        },
+        "last_changed": "2025-12-08T15:28:09.191452+00:00",
+        "last_reported": "2025-12-08T15:29:11.795547+00:00",
+        "last_updated": "2025-12-08T15:28:09.191452+00:00",
+        "context": {
+            "id": "01KBZ97HZ76JCTH6A8S5NN4CYP",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.espressif_tx",
+        "state": "0.000220535714285714",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "device_class": "data_rate",
+            "friendly_name": "espressif TX"
+        },
+        "last_changed": "2025-12-11T14:41:21.125682+00:00",
+        "last_reported": "2025-12-11T14:41:30.011765+00:00",
+        "last_updated": "2025-12-11T14:41:21.125682+00:00",
+        "context": {
+            "id": "01KC6XR0Q5191CD6HA34D4K32B",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.broadlink_remote_3e_e9_67_tx",
+        "state": "0.000264285714285714",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "device_class": "data_rate",
+            "friendly_name": "Control planta alta TX"
+        },
+        "last_changed": "2025-12-11T14:41:21.126005+00:00",
+        "last_reported": "2025-12-11T14:41:30.012040+00:00",
+        "last_updated": "2025-12-11T14:41:21.126005+00:00",
+        "context": {
+            "id": "01KC6XR0Q6T8XE8GAZJYRY4H2Y",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.espressif_tx_2",
+        "state": "0.000223423423423423",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "device_class": "data_rate",
+            "friendly_name": "espressif TX"
+        },
+        "last_changed": "2025-12-11T14:41:19.999907+00:00",
+        "last_reported": "2025-12-11T14:41:30.012110+00:00",
+        "last_updated": "2025-12-11T14:41:19.999907+00:00",
+        "context": {
+            "id": "01KC6XQZKZF8ABA3HGW7NN8PYN",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.proxmox_tx",
+        "state": "4.68468468468468e-05",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "device_class": "data_rate",
+            "friendly_name": "proxmox TX"
+        },
+        "last_changed": "2025-12-11T14:41:23.341086+00:00",
+        "last_reported": "2025-12-11T14:41:30.011595+00:00",
+        "last_updated": "2025-12-11T14:41:23.341086+00:00",
+        "context": {
+            "id": "01KC6XR2WD84K75K77CGCD2HD0",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.hb_pi_hole_tx",
+        "state": "0.0",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "device_class": "data_rate",
+            "friendly_name": "hb-pi-hole TX"
+        },
+        "last_changed": "2025-12-11T11:00:07.493728+00:00",
+        "last_reported": "2025-12-11T13:42:03.779538+00:00",
+        "last_updated": "2025-12-11T11:00:07.493728+00:00",
+        "context": {
+            "id": "01KC6H2Y65JW1WPPHSEKS921D0",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.nervgeofcctv02_tx",
+        "state": "0.0",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "device_class": "data_rate",
+            "friendly_name": "NERV_GEOF_CCTV_02 TX"
+        },
+        "last_changed": "2025-12-08T15:28:09.192198+00:00",
+        "last_reported": "2025-12-08T15:29:11.795924+00:00",
+        "last_updated": "2025-12-08T15:28:09.192198+00:00",
+        "context": {
+            "id": "01KBZ97HZ8GYAA6HPRPETVB8VE",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.homeassistant_tx",
+        "state": "7.53176043557169e-05",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "device_class": "data_rate",
+            "friendly_name": "homeassistant TX"
+        },
+        "last_changed": "2025-12-11T14:41:28.896221+00:00",
+        "last_reported": "2025-12-11T14:41:30.011968+00:00",
+        "last_updated": "2025-12-11T14:41:28.896221+00:00",
+        "context": {
+            "id": "01KC6XR8A0FP9325RVE2KMRHM2",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.iphone_tx",
+        "state": "0.0",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "device_class": "data_rate",
+            "friendly_name": "iPhone TX"
+        },
+        "last_changed": "2025-12-08T15:28:09.192447+00:00",
+        "last_reported": "2025-12-08T15:28:09.192447+00:00",
+        "last_updated": "2025-12-08T15:28:09.192447+00:00",
+        "context": {
+            "id": "01KBZ97HZ8R1NB1A0MRED9ETS2",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.iphone_tx_2",
+        "state": "0.0",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "device_class": "data_rate",
+            "friendly_name": "iPhone TX"
+        },
+        "last_changed": "2025-12-08T15:28:09.196111+00:00",
+        "last_reported": "2025-12-08T15:28:09.196111+00:00",
+        "last_updated": "2025-12-08T15:28:09.196111+00:00",
+        "context": {
+            "id": "01KBZ97HZCD3D72BP902XC52GQ",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.iphone_56_tx",
+        "state": "0.0",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "device_class": "data_rate",
+            "friendly_name": "iPhone-56 TX"
+        },
+        "last_changed": "2025-12-08T15:28:09.196275+00:00",
+        "last_reported": "2025-12-08T15:28:09.196275+00:00",
+        "last_updated": "2025-12-08T15:28:09.196275+00:00",
+        "context": {
+            "id": "01KBZ97HZCM5FYHTA49NHEDBX2",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.mac_tx",
+        "state": "0.0",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "MB/s",
+            "device_class": "data_rate",
+            "friendly_name": "Mac TX"
+        },
+        "last_changed": "2025-12-08T15:28:09.196407+00:00",
+        "last_reported": "2025-12-08T15:28:09.196407+00:00",
+        "last_updated": "2025-12-08T15:28:09.196407+00:00",
+        "context": {
+            "id": "01KBZ97HZC88JJ84D45JC5DP06",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.terminal_dogma_port_9_rx",
+        "state": "0.019272",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "Mbit/s",
+            "device_class": "data_rate",
+            "friendly_name": "Terminal Dogma Port 9 RX"
+        },
+        "last_changed": "2025-12-11T14:41:30.033377+00:00",
+        "last_reported": "2025-12-11T14:41:30.033377+00:00",
+        "last_updated": "2025-12-11T14:41:30.033377+00:00",
+        "context": {
+            "id": "01KC6XR9DHTFX3CQZFX14HJS13",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.terminal_dogma_port_9_tx",
+        "state": "0.01788",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "Mbit/s",
+            "device_class": "data_rate",
+            "friendly_name": "Terminal Dogma Port 9 TX"
+        },
+        "last_changed": "2025-12-11T14:41:30.033422+00:00",
+        "last_reported": "2025-12-11T14:41:30.033422+00:00",
+        "last_updated": "2025-12-11T14:41:30.033422+00:00",
+        "context": {
+            "id": "01KC6XR9DHYSK9S65CMS71BKKR",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.matsushiro",
+        "state": "1",
+        "attributes": {
+            "state_class": "measurement",
+            "friendly_name": "Matsushiro"
+        },
+        "last_changed": "2025-12-08T15:28:09.202873+00:00",
+        "last_reported": "2025-12-08T15:29:09.211895+00:00",
+        "last_updated": "2025-12-08T15:28:09.202873+00:00",
+        "context": {
+            "id": "01KBZ97HZJ8NBQ321YPE8VPNG8",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.iot",
+        "state": "2",
+        "attributes": {
+            "state_class": "measurement",
+            "friendly_name": "IoT"
+        },
+        "last_changed": "2025-12-08T15:28:09.202990+00:00",
+        "last_reported": "2025-12-08T15:29:09.211944+00:00",
+        "last_updated": "2025-12-08T15:28:09.202990+00:00",
+        "context": {
+            "id": "01KBZ97HZJ328D91V9EAXTW0VE",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.geofront_uptime",
+        "state": "2025-12-06T18:35:00+00:00",
+        "attributes": {
+            "device_class": "timestamp",
+            "friendly_name": "GeoFront Uptime"
+        },
+        "last_changed": "2025-12-08T15:28:09.203371+00:00",
+        "last_reported": "2025-12-08T15:29:11.817711+00:00",
+        "last_updated": "2025-12-08T15:28:09.203371+00:00",
+        "context": {
+            "id": "01KBZ97HZK3S5DP2RNJ63WX36Z",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.matsushiro_uptime",
+        "state": "2025-12-06T18:36:01+00:00",
+        "attributes": {
+            "device_class": "timestamp",
+            "friendly_name": "Matsushiro Uptime"
+        },
+        "last_changed": "2025-12-08T15:28:09.203494+00:00",
+        "last_reported": "2025-12-08T15:29:11.817522+00:00",
+        "last_updated": "2025-12-08T15:28:09.203494+00:00",
+        "context": {
+            "id": "01KBZ97HZK044ZHE8X3KFR3FSX",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.central_dogma_uptime",
+        "state": "2025-12-06T18:33:50+00:00",
+        "attributes": {
+            "device_class": "timestamp",
+            "friendly_name": "Central Dogma Uptime"
+        },
+        "last_changed": "2025-12-08T15:28:09.203612+00:00",
+        "last_reported": "2025-12-08T15:29:11.816954+00:00",
+        "last_updated": "2025-12-08T15:28:09.203612+00:00",
+        "context": {
+            "id": "01KBZ97HZK90R2E73TRYTBJE5M",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.neotokyo_2_uptime",
+        "state": "2025-12-06T18:40:20+00:00",
+        "attributes": {
+            "device_class": "timestamp",
+            "friendly_name": "NeoTokyo-2 Uptime"
+        },
+        "last_changed": "2025-12-10T13:20:19.273462+00:00",
+        "last_reported": "2025-12-11T13:42:03.788594+00:00",
+        "last_updated": "2025-12-10T13:20:19.273462+00:00",
+        "context": {
+            "id": "01KC46PXT9TS4AQ76EXA03WTV9",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.terminal_dogma_uptime",
+        "state": "2025-12-06T18:33:40+00:00",
+        "attributes": {
+            "device_class": "timestamp",
+            "friendly_name": "Terminal Dogma Uptime"
+        },
+        "last_changed": "2025-12-08T15:28:09.203843+00:00",
+        "last_reported": "2025-12-08T15:29:11.829936+00:00",
+        "last_updated": "2025-12-08T15:28:09.203843+00:00",
+        "context": {
+            "id": "01KBZ97HZKHJGK5BDBYMZP6ZDP",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.tokyo_3_uptime",
+        "state": "unknown",
+        "attributes": {
+            "device_class": "timestamp",
+            "friendly_name": "Tokyo-3 Uptime"
+        },
+        "last_changed": "2025-12-08T15:28:09.203951+00:00",
+        "last_reported": "2025-12-08T15:28:09.203951+00:00",
+        "last_updated": "2025-12-08T15:28:09.203951+00:00",
+        "context": {
+            "id": "01KBZ97HZKF2KZ75E9DK42MEDS",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.central_dogma_temperature",
+        "state": "42",
+        "attributes": {
+            "unit_of_measurement": "°C",
+            "device_class": "temperature",
+            "friendly_name": "Central Dogma Temperature"
+        },
+        "last_changed": "2025-12-11T01:53:12.466084+00:00",
+        "last_reported": "2025-12-11T13:42:03.788945+00:00",
+        "last_updated": "2025-12-11T01:53:12.466084+00:00",
+        "context": {
+            "id": "01KC5HSG8JP05TS13SVH0PB3X0",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.geofront_uplink_mac",
+        "state": "ac:8b:a9:ae:c3:09",
+        "attributes": {
+            "friendly_name": "GeoFront Uplink MAC"
+        },
+        "last_changed": "2025-12-08T15:28:09.205722+00:00",
+        "last_reported": "2025-12-08T15:29:11.817729+00:00",
+        "last_updated": "2025-12-08T15:28:09.205722+00:00",
+        "context": {
+            "id": "01KBZ97HZN0WCECPDVN94G5988",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.matsushiro_uplink_mac",
+        "state": "ac:8b:a9:af:c4:e5",
+        "attributes": {
+            "friendly_name": "Matsushiro Uplink MAC"
+        },
+        "last_changed": "2025-12-11T14:08:30.765876+00:00",
+        "last_reported": "2025-12-11T14:08:30.765876+00:00",
+        "last_updated": "2025-12-11T14:08:30.765876+00:00",
+        "context": {
+            "id": "01KC6VVWHD2V1C7ZSFCV41QG4T",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.central_dogma_uplink_mac",
+        "state": "0c:ea:14:53:f6:0d",
+        "attributes": {
+            "friendly_name": "Central Dogma Uplink MAC"
+        },
+        "last_changed": "2025-12-08T15:28:09.205966+00:00",
+        "last_reported": "2025-12-08T15:29:11.816999+00:00",
+        "last_updated": "2025-12-08T15:28:09.205966+00:00",
+        "context": {
+            "id": "01KBZ97HZN0A3Y14KZGT5W2N2G",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.neotokyo_2_uplink_mac",
+        "state": "9c:05:d6:0f:22:08",
+        "attributes": {
+            "friendly_name": "NeoTokyo-2 Uplink MAC"
+        },
+        "last_changed": "2025-12-08T15:28:09.206082+00:00",
+        "last_reported": "2025-12-08T15:29:11.818011+00:00",
+        "last_updated": "2025-12-08T15:28:09.206082+00:00",
+        "context": {
+            "id": "01KBZ97HZP53RGN4MZ2S85AZ3Y",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.tokyo_3_uplink_mac",
+        "state": "ac:8b:a9:ae:c3:09",
+        "attributes": {
+            "friendly_name": "Tokyo-3 Uplink MAC"
+        },
+        "last_changed": "2025-12-08T15:28:09.206210+00:00",
+        "last_reported": "2025-12-08T15:28:09.206210+00:00",
+        "last_updated": "2025-12-08T15:28:09.206210+00:00",
+        "context": {
+            "id": "01KBZ97HZPFJY7Q5Q5QPF3WY8R",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.geofront_state",
+        "state": "connected",
+        "attributes": {
+            "options": [
+                "disconnected",
+                "connected",
+                "pending",
+                "firmware_mismatch",
+                "upgrading",
+                "provisioning",
+                "heartbeat_missed",
+                "adopting",
+                "deleting",
+                "inform_error",
+                "adoption_failed",
+                "isolated"
+            ],
+            "device_class": "enum",
+            "friendly_name": "GeoFront State"
+        },
+        "last_changed": "2025-12-08T15:28:09.206335+00:00",
+        "last_reported": "2025-12-08T15:29:11.817743+00:00",
+        "last_updated": "2025-12-08T15:28:09.206335+00:00",
+        "context": {
+            "id": "01KBZ97HZPSQPNDDRECW6M276P",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.matsushiro_state",
+        "state": "connected",
+        "attributes": {
+            "options": [
+                "disconnected",
+                "connected",
+                "pending",
+                "firmware_mismatch",
+                "upgrading",
+                "provisioning",
+                "heartbeat_missed",
+                "adopting",
+                "deleting",
+                "inform_error",
+                "adoption_failed",
+                "isolated"
+            ],
+            "device_class": "enum",
+            "friendly_name": "Matsushiro State"
+        },
+        "last_changed": "2025-12-08T15:28:09.206466+00:00",
+        "last_reported": "2025-12-08T15:29:11.817554+00:00",
+        "last_updated": "2025-12-08T15:28:09.206466+00:00",
+        "context": {
+            "id": "01KBZ97HZPT74ZX7BF5XQKPXYA",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.central_dogma_state",
+        "state": "connected",
+        "attributes": {
+            "options": [
+                "disconnected",
+                "connected",
+                "pending",
+                "firmware_mismatch",
+                "upgrading",
+                "provisioning",
+                "heartbeat_missed",
+                "adopting",
+                "deleting",
+                "inform_error",
+                "adoption_failed",
+                "isolated"
+            ],
+            "device_class": "enum",
+            "friendly_name": "Central Dogma State"
+        },
+        "last_changed": "2025-12-08T15:28:09.206587+00:00",
+        "last_reported": "2025-12-08T15:29:11.817016+00:00",
+        "last_updated": "2025-12-08T15:28:09.206587+00:00",
+        "context": {
+            "id": "01KBZ97HZP061PFTST76MF2WFQ",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.neotokyo_2_state",
+        "state": "connected",
+        "attributes": {
+            "options": [
+                "disconnected",
+                "connected",
+                "pending",
+                "firmware_mismatch",
+                "upgrading",
+                "provisioning",
+                "heartbeat_missed",
+                "adopting",
+                "deleting",
+                "inform_error",
+                "adoption_failed",
+                "isolated"
+            ],
+            "device_class": "enum",
+            "friendly_name": "NeoTokyo-2 State"
+        },
+        "last_changed": "2025-12-08T15:28:09.206704+00:00",
+        "last_reported": "2025-12-08T15:29:11.818024+00:00",
+        "last_updated": "2025-12-08T15:28:09.206704+00:00",
+        "context": {
+            "id": "01KBZ97HZPY9T965SSVB4J5Q5F",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.terminal_dogma_state",
+        "state": "connected",
+        "attributes": {
+            "options": [
+                "disconnected",
+                "connected",
+                "pending",
+                "firmware_mismatch",
+                "upgrading",
+                "provisioning",
+                "heartbeat_missed",
+                "adopting",
+                "deleting",
+                "inform_error",
+                "adoption_failed",
+                "isolated"
+            ],
+            "device_class": "enum",
+            "friendly_name": "Terminal Dogma State"
+        },
+        "last_changed": "2025-12-08T15:28:09.206818+00:00",
+        "last_reported": "2025-12-08T15:29:11.829960+00:00",
+        "last_updated": "2025-12-08T15:28:09.206818+00:00",
+        "context": {
+            "id": "01KBZ97HZPM78VZF88MD0WHEH9",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.tokyo_3_state",
+        "state": "disconnected",
+        "attributes": {
+            "options": [
+                "disconnected",
+                "connected",
+                "pending",
+                "firmware_mismatch",
+                "upgrading",
+                "provisioning",
+                "heartbeat_missed",
+                "adopting",
+                "deleting",
+                "inform_error",
+                "adoption_failed",
+                "isolated"
+            ],
+            "device_class": "enum",
+            "friendly_name": "Tokyo-3 State"
+        },
+        "last_changed": "2025-12-08T15:28:09.206931+00:00",
+        "last_reported": "2025-12-08T15:28:09.206931+00:00",
+        "last_updated": "2025-12-08T15:28:09.206931+00:00",
+        "context": {
+            "id": "01KBZ97HZP4MX1P4SBKWZNPPWG",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.geofront_cpu_utilization",
+        "state": "5.6",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "%",
+            "friendly_name": "GeoFront CPU utilization"
+        },
+        "last_changed": "2025-12-11T14:40:22.578066+00:00",
+        "last_reported": "2025-12-11T14:41:30.025399+00:00",
+        "last_updated": "2025-12-11T14:40:22.578066+00:00",
+        "context": {
+            "id": "01KC6XP7HJ1EWMZF8E4VPRC8D8",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.matsushiro_cpu_utilization",
+        "state": "3.5",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "%",
+            "friendly_name": "Matsushiro CPU utilization"
+        },
+        "last_changed": "2025-12-11T14:37:34.042583+00:00",
+        "last_reported": "2025-12-11T14:41:30.026336+00:00",
+        "last_updated": "2025-12-11T14:37:34.042583+00:00",
+        "context": {
+            "id": "01KC6XH2YTA7VHG46X1HYV6PVM",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.central_dogma_cpu_utilization",
+        "state": "60.0",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "%",
+            "friendly_name": "Central Dogma CPU utilization"
+        },
+        "last_changed": "2025-12-11T14:41:25.719841+00:00",
+        "last_reported": "2025-12-11T14:41:30.025675+00:00",
+        "last_updated": "2025-12-11T14:41:25.719841+00:00",
+        "context": {
+            "id": "01KC6XR56Q94F40VHR7B959XNQ",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.neotokyo_2_cpu_utilization",
+        "state": "  2.5",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "%",
+            "friendly_name": "NeoTokyo-2 CPU utilization"
+        },
+        "last_changed": "2025-12-11T14:41:14.765864+00:00",
+        "last_reported": "2025-12-11T14:41:30.026113+00:00",
+        "last_updated": "2025-12-11T14:41:14.765864+00:00",
+        "context": {
+            "id": "01KC6XQTGDMBJMZ3G0MYZGX0BV",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.terminal_dogma_cpu_utilization",
+        "state": "18.0",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "%",
+            "friendly_name": "Terminal Dogma CPU utilization"
+        },
+        "last_changed": "2025-12-11T14:41:28.912760+00:00",
+        "last_reported": "2025-12-11T14:41:30.033126+00:00",
+        "last_updated": "2025-12-11T14:41:28.912760+00:00",
+        "context": {
+            "id": "01KC6XR8AGD78T4T877FWV5RSS",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.geofront_memory_utilization",
+        "state": "17.0",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "%",
+            "friendly_name": "GeoFront Memory utilization"
+        },
+        "last_changed": "2025-12-11T14:22:38.610430+00:00",
+        "last_reported": "2025-12-11T14:41:30.025417+00:00",
+        "last_updated": "2025-12-11T14:22:38.610430+00:00",
+        "context": {
+            "id": "01KC6WNRGJEK1RR24VF8GN28BX",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.matsushiro_memory_utilization",
+        "state": "26.4",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "%",
+            "friendly_name": "Matsushiro Memory utilization"
+        },
+        "last_changed": "2025-12-11T14:39:50.986923+00:00",
+        "last_reported": "2025-12-11T14:41:30.026350+00:00",
+        "last_updated": "2025-12-11T14:39:50.986923+00:00",
+        "context": {
+            "id": "01KC6XN8PAZNZ61KCPKZGFJB5P",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.central_dogma_memory_utilization",
+        "state": "33.0",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "%",
+            "friendly_name": "Central Dogma Memory utilization"
+        },
+        "last_changed": "2025-12-11T14:25:23.600647+00:00",
+        "last_reported": "2025-12-11T14:41:30.025690+00:00",
+        "last_updated": "2025-12-11T14:25:23.600647+00:00",
+        "context": {
+            "id": "01KC6WTSMG6A6R9JPMV3ZV6MEQ",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.neotokyo_2_memory_utilization",
+        "state": " 79.4",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "%",
+            "friendly_name": "NeoTokyo-2 Memory utilization"
+        },
+        "last_changed": "2025-12-08T15:28:09.209291+00:00",
+        "last_reported": "2025-12-08T15:29:11.818052+00:00",
+        "last_updated": "2025-12-08T15:28:09.209291+00:00",
+        "context": {
+            "id": "01KBZ97HZSTH1728YZ4WMSSR52",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.terminal_dogma_memory_utilization",
+        "state": "57.3",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "%",
+            "friendly_name": "Terminal Dogma Memory utilization"
+        },
+        "last_changed": "2025-12-11T14:41:30.033167+00:00",
+        "last_reported": "2025-12-11T14:41:30.033167+00:00",
+        "last_updated": "2025-12-11T14:41:30.033167+00:00",
+        "context": {
+            "id": "01KC6XR9DHCR6XYTPJ911TG006",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.terminal_dogma_terminal_dogma_cpu_temperature",
+        "state": "51.5",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "°C",
+            "device_class": "temperature",
+            "friendly_name": "Terminal Dogma Terminal Dogma CPU Temperature"
+        },
+        "last_changed": "2025-12-11T14:41:28.912830+00:00",
+        "last_reported": "2025-12-11T14:41:30.033215+00:00",
+        "last_updated": "2025-12-11T14:41:28.912830+00:00",
+        "context": {
+            "id": "01KC6XR8AG3B5EE71K3AS2YJNR",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.matsushiro",
+        "state": "on",
+        "attributes": {
+            "device_class": "switch",
+            "friendly_name": "Matsushiro"
+        },
+        "last_changed": "2025-12-08T15:28:09.213281+00:00",
+        "last_reported": "2025-12-08T15:28:09.213281+00:00",
+        "last_updated": "2025-12-08T15:28:09.213281+00:00",
+        "context": {
+            "id": "01KBZ97HZX94Z7PHJJKMYMAYK3",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.iot",
+        "state": "on",
+        "attributes": {
+            "device_class": "switch",
+            "friendly_name": "IoT"
+        },
+        "last_changed": "2025-12-08T15:28:09.213385+00:00",
+        "last_reported": "2025-12-08T15:28:09.213385+00:00",
+        "last_updated": "2025-12-08T15:28:09.213385+00:00",
+        "context": {
+            "id": "01KBZ97HZXF5D8NZM5KAGN3MWB",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "update.geofront",
+        "state": "off",
+        "attributes": {
+            "auto_update": false,
+            "display_precision": 0,
+            "installed_version": "7.2.123.16565",
+            "in_progress": false,
+            "latest_version": "7.2.123.16565",
+            "release_summary": null,
+            "release_url": null,
+            "skipped_version": null,
+            "title": null,
+            "update_percentage": null,
+            "device_class": "firmware",
+            "entity_picture": "https://brands.home-assistant.io/_/unifi/icon.png",
+            "friendly_name": "GeoFront",
+            "supported_features": 5
+        },
+        "last_changed": "2025-12-08T15:28:09.213691+00:00",
+        "last_reported": "2025-12-08T15:29:11.817792+00:00",
+        "last_updated": "2025-12-08T15:28:09.213691+00:00",
+        "context": {
+            "id": "01KBZ97HZX0055M2N9QQHB327W",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "update.matsushiro",
+        "state": "off",
+        "attributes": {
+            "auto_update": false,
+            "display_precision": 0,
+            "installed_version": "6.7.35.15586",
+            "in_progress": false,
+            "latest_version": "6.7.35.15586",
+            "release_summary": null,
+            "release_url": null,
+            "skipped_version": null,
+            "title": null,
+            "update_percentage": null,
+            "device_class": "firmware",
+            "entity_picture": "https://brands.home-assistant.io/_/unifi/icon.png",
+            "friendly_name": "Matsushiro",
+            "supported_features": 5
+        },
+        "last_changed": "2025-12-08T15:28:09.214586+00:00",
+        "last_reported": "2025-12-08T15:29:11.817604+00:00",
+        "last_updated": "2025-12-08T15:28:09.214586+00:00",
+        "context": {
+            "id": "01KBZ97HZY8097FGK1X5V33S3C",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "update.central_dogma",
+        "state": "off",
+        "attributes": {
+            "auto_update": false,
+            "display_precision": 0,
+            "installed_version": "7.2.123.16565",
+            "in_progress": false,
+            "latest_version": "7.2.123.16565",
+            "release_summary": null,
+            "release_url": null,
+            "skipped_version": null,
+            "title": null,
+            "update_percentage": null,
+            "device_class": "firmware",
+            "entity_picture": "https://brands.home-assistant.io/_/unifi/icon.png",
+            "friendly_name": "Central Dogma",
+            "supported_features": 5
+        },
+        "last_changed": "2025-12-08T15:28:09.214722+00:00",
+        "last_reported": "2025-12-08T15:29:11.817101+00:00",
+        "last_updated": "2025-12-08T15:28:09.214722+00:00",
+        "context": {
+            "id": "01KBZ97HZYYBT69CXNTHH6HCZH",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "update.neotokyo_2",
+        "state": "off",
+        "attributes": {
+            "auto_update": false,
+            "display_precision": 0,
+            "installed_version": "2.1.6.762",
+            "in_progress": false,
+            "latest_version": "2.1.6.762",
+            "release_summary": null,
+            "release_url": null,
+            "skipped_version": null,
+            "title": null,
+            "update_percentage": null,
+            "device_class": "firmware",
+            "entity_picture": "https://brands.home-assistant.io/_/unifi/icon.png",
+            "friendly_name": "NeoTokyo-2",
+            "supported_features": 5
+        },
+        "last_changed": "2025-12-08T15:28:09.214833+00:00",
+        "last_reported": "2025-12-08T15:29:11.818069+00:00",
+        "last_updated": "2025-12-08T15:28:09.214833+00:00",
+        "context": {
+            "id": "01KBZ97HZYRGYYRY8HS7D56MZY",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "update.terminal_dogma",
+        "state": "off",
+        "attributes": {
+            "auto_update": false,
+            "display_precision": 0,
+            "installed_version": "4.4.6.27560",
+            "in_progress": false,
+            "latest_version": "4.4.6.27560",
+            "release_summary": null,
+            "release_url": null,
+            "skipped_version": null,
+            "title": null,
+            "update_percentage": null,
+            "device_class": "firmware",
+            "entity_picture": "https://brands.home-assistant.io/_/unifi/icon.png",
+            "friendly_name": "Terminal Dogma",
+            "supported_features": 5
+        },
+        "last_changed": "2025-12-08T15:28:09.214940+00:00",
+        "last_reported": "2025-12-08T15:29:11.830221+00:00",
+        "last_updated": "2025-12-08T15:28:09.214940+00:00",
+        "context": {
+            "id": "01KBZ97HZY4JP3JG9ZX4SSJ7HX",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "update.tokyo_3",
+        "state": "off",
+        "attributes": {
+            "auto_update": false,
+            "display_precision": 0,
+            "installed_version": "2.1.3.755",
+            "in_progress": false,
+            "latest_version": "2.1.3.755",
+            "release_summary": null,
+            "release_url": null,
+            "skipped_version": null,
+            "title": null,
+            "update_percentage": null,
+            "device_class": "firmware",
+            "entity_picture": "https://brands.home-assistant.io/_/unifi/icon.png",
+            "friendly_name": "Tokyo-3",
+            "supported_features": 5
+        },
+        "last_changed": "2025-12-08T15:28:09.215045+00:00",
+        "last_reported": "2025-12-08T15:28:09.215045+00:00",
+        "last_updated": "2025-12-08T15:28:09.215045+00:00",
+        "context": {
+            "id": "01KBZ97HZZ4T86CAEA313GFCMY",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.sonoff_1001d4e658_current",
+        "state": "0.66",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "A",
+            "device_class": "current",
+            "friendly_name": "Planta baja Current"
+        },
+        "last_changed": "2025-12-11T14:38:50.514435+00:00",
+        "last_reported": "2025-12-11T14:41:17.398433+00:00",
+        "last_updated": "2025-12-11T14:38:50.514435+00:00",
+        "context": {
+            "id": "01KC6XKDMJWJTBCQBZ13CN84EZ",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.sonoff_1001d4e658_power",
+        "state": "133.35",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "W",
+            "device_class": "power",
+            "friendly_name": "Planta baja Power"
+        },
+        "last_changed": "2025-12-11T14:40:38.515633+00:00",
+        "last_reported": "2025-12-11T14:41:17.398475+00:00",
+        "last_updated": "2025-12-11T14:40:38.515633+00:00",
+        "context": {
+            "id": "01KC6XPQ3KSJ3HVMP0RZZ2NBSS",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.sonoff_1001d4e658_voltage",
+        "state": "218.59",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "V",
+            "device_class": "voltage",
+            "friendly_name": "Planta baja Voltage"
+        },
+        "last_changed": "2025-12-11T14:40:38.515690+00:00",
+        "last_reported": "2025-12-11T14:41:17.398498+00:00",
+        "last_updated": "2025-12-11T14:40:38.515690+00:00",
+        "context": {
+            "id": "01KC6XPQ3KJVY71VDNB2TCAWX5",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.sonoff_1001d4e658_energy_day",
+        "state": "0.78",
+        "attributes": {
+            "state_class": "total_increasing",
+            "unit_of_measurement": "kWh",
+            "device_class": "energy",
+            "friendly_name": "Planta baja Energy Day"
+        },
+        "last_changed": "2025-12-11T14:37:47.208807+00:00",
+        "last_reported": "2025-12-11T14:41:17.398518+00:00",
+        "last_updated": "2025-12-11T14:37:47.208807+00:00",
+        "context": {
+            "id": "01KC6XHFT8R8CH04YA4VCTHFVC",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.sonoff_1001d4e658_energy_month",
+        "state": "19.82",
+        "attributes": {
+            "state_class": "total_increasing",
+            "unit_of_measurement": "kWh",
+            "device_class": "energy",
+            "friendly_name": "Planta baja Energy Month"
+        },
+        "last_changed": "2025-12-11T14:37:08.514637+00:00",
+        "last_reported": "2025-12-11T14:41:17.398538+00:00",
+        "last_updated": "2025-12-11T14:37:08.514637+00:00",
+        "context": {
+            "id": "01KC6XGA12Q516GXQZCZF8MW6Z",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.sonoff_1001db2d0b_current",
+        "state": "0.67",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "A",
+            "device_class": "current",
+            "friendly_name": "Planta alta Current"
+        },
+        "last_changed": "2025-12-11T14:40:22.397143+00:00",
+        "last_reported": "2025-12-11T14:41:18.306670+00:00",
+        "last_updated": "2025-12-11T14:40:22.397143+00:00",
+        "context": {
+            "id": "01KC6XP7BXXYE8WMPD3GD3E0BS",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.sonoff_1001db2d0b_power",
+        "state": "87.81",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "W",
+            "device_class": "power",
+            "friendly_name": "Planta alta Power"
+        },
+        "last_changed": "2025-12-11T14:40:22.397244+00:00",
+        "last_reported": "2025-12-11T14:41:18.306711+00:00",
+        "last_updated": "2025-12-11T14:40:22.397244+00:00",
+        "context": {
+            "id": "01KC6XP7BXVS9D655CP51T4D9K",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.sonoff_1001db2d0b_voltage",
+        "state": "216.64",
+        "attributes": {
+            "state_class": "measurement",
+            "unit_of_measurement": "V",
+            "device_class": "voltage",
+            "friendly_name": "Planta alta Voltage"
+        },
+        "last_changed": "2025-12-11T14:40:22.397285+00:00",
+        "last_reported": "2025-12-11T14:41:18.306734+00:00",
+        "last_updated": "2025-12-11T14:40:22.397285+00:00",
+        "context": {
+            "id": "01KC6XP7BXN1EVYK54B5Z8DQYZ",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.sonoff_1001db2d0b_energy_day",
+        "state": "1.04",
+        "attributes": {
+            "state_class": "total_increasing",
+            "unit_of_measurement": "kWh",
+            "device_class": "energy",
+            "friendly_name": "Planta alta Energy Day"
+        },
+        "last_changed": "2025-12-11T14:36:19.304464+00:00",
+        "last_reported": "2025-12-11T14:41:18.306754+00:00",
+        "last_updated": "2025-12-11T14:36:19.304464+00:00",
+        "context": {
+            "id": "01KC6XESZ8EAD06WZ98TH8SMX1",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.sonoff_1001db2d0b_energy_month",
+        "state": "21.56",
+        "attributes": {
+            "state_class": "total_increasing",
+            "unit_of_measurement": "kWh",
+            "device_class": "energy",
+            "friendly_name": "Planta alta Energy Month"
+        },
+        "last_changed": "2025-12-11T14:37:04.302056+00:00",
+        "last_reported": "2025-12-11T14:41:18.306773+00:00",
+        "last_updated": "2025-12-11T14:37:04.302056+00:00",
+        "context": {
+            "id": "01KC6XG5XEHEJ98A9PYD7YF1TR",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.sonoff_1001d4e658",
+        "state": "on",
+        "attributes": {
+            "friendly_name": "Sonoff medidor planta baja"
+        },
+        "last_changed": "2025-12-08T15:27:39.306447+00:00",
+        "last_reported": "2025-12-08T15:29:07.981713+00:00",
+        "last_updated": "2025-12-08T15:27:39.306447+00:00",
+        "context": {
+            "id": "01KBZ96MSA7Q4G9JXH71GZPTQE",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.sonoff_1001db2d0b",
+        "state": "on",
+        "attributes": {
+            "friendly_name": "Sonoff Medidor Planta Alta"
+        },
+        "last_changed": "2025-12-08T15:27:39.306569+00:00",
+        "last_reported": "2025-12-08T15:29:09.056734+00:00",
+        "last_updated": "2025-12-08T15:27:39.306569+00:00",
+        "context": {
+            "id": "01KBZ96MSASJA7GA6MBVSR6B0J",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "device_tracker.broadlink_remote_3e_e9_67",
+        "state": "home",
+        "attributes": {
+            "source_type": "router",
+            "ip": "10.1.0.123",
+            "mac": "e8:70:72:3e:e9:67",
+            "host_name": "BroadLink-Remote-3e-e9-67",
+            "_is_guest_by_uap": false,
+            "ap_mac": "28:70:4e:86:fe:7d",
+            "essid": "Matsushiro",
+            "is_11r": false,
+            "is_guest": false,
+            "qos_policy_applied": true,
+            "radio": "ng",
+            "radio_proto": "g",
+            "oui": "Hangzhou BroadLink Technology Co.,Ltd",
+            "friendly_name": "Control planta alta BroadLink-Remote-3e-e9-67"
+        },
+        "last_changed": "2025-12-08T15:28:09.180965+00:00",
+        "last_reported": "2025-12-08T15:39:33.832878+00:00",
+        "last_updated": "2025-12-08T15:39:33.832878+00:00",
+        "context": {
+            "id": "01KBZ9WEJ8RYME2XTCBXH4RQE9",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "remote.control_planta_alta",
+        "state": "on",
+        "attributes": {
+            "friendly_name": "Control planta alta",
+            "supported_features": 3
+        },
+        "last_changed": "2025-12-08T15:39:33.833382+00:00",
+        "last_reported": "2025-12-08T15:39:33.833476+00:00",
+        "last_updated": "2025-12-08T15:39:33.833382+00:00",
+        "context": {
+            "id": "01KBZ9WEJ9VZ0NJ4W5XF338P6A",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "climate.aire_acondicionado",
+        "state": "unavailable",
+        "attributes": {
+            "hvac_modes": [
+                "off",
+                "auto",
+                "heat",
+                "cool",
+                "fan_only",
+                "dry"
+            ],
+            "min_temp": 7,
+            "max_temp": 35,
+            "fan_modes": [
+                "auto",
+                "high",
+                "low",
+                "medium"
+            ],
+            "swing_modes": [
+                "on",
+                "off"
+            ],
+            "swing_horizontal_modes": [
+                "on",
+                "off"
+            ],
+            "friendly_name": "Aire acondicionado",
+            "supported_features": 937
+        },
+        "last_changed": "2025-12-08T16:14:28.564824+00:00",
+        "last_reported": "2025-12-08T16:14:28.564928+00:00",
+        "last_updated": "2025-12-08T16:14:28.564824+00:00",
+        "context": {
+            "id": "01KBZBWC6MB6A60YD89S5ABZKG",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "event.aire_acondicionado_notification",
+        "state": "unavailable",
+        "attributes": {
+            "event_types": [
+                "water_is_full"
+            ],
+            "friendly_name": "Aire acondicionado Notification"
+        },
+        "last_changed": "2025-12-08T16:14:28.565358+00:00",
+        "last_reported": "2025-12-08T16:14:28.565436+00:00",
+        "last_updated": "2025-12-08T16:14:28.565358+00:00",
+        "context": {
+            "id": "01KBZBWC6NH49BG8DJ9KW25T8M",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "number.aire_acondicionado_schedule_turn_on",
+        "state": "unavailable",
+        "attributes": {
+            "min": 0.0,
+            "max": 100.0,
+            "step": 1.0,
+            "mode": "box",
+            "unit_of_measurement": "h",
+            "friendly_name": "Aire acondicionado Schedule turn-on"
+        },
+        "last_changed": "2025-12-08T16:14:28.565915+00:00",
+        "last_reported": "2025-12-08T16:14:28.565994+00:00",
+        "last_updated": "2025-12-08T16:14:28.565915+00:00",
+        "context": {
+            "id": "01KBZBWC6NF8517NFYQXY94WM4",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "number.aire_acondicionado_schedule_turn_off",
+        "state": "unavailable",
+        "attributes": {
+            "min": 0.0,
+            "max": 100.0,
+            "step": 1.0,
+            "mode": "box",
+            "unit_of_measurement": "h",
+            "friendly_name": "Aire acondicionado Schedule turn-off"
+        },
+        "last_changed": "2025-12-08T16:14:28.566259+00:00",
+        "last_reported": "2025-12-08T16:14:28.566335+00:00",
+        "last_updated": "2025-12-08T16:14:28.566259+00:00",
+        "context": {
+            "id": "01KBZBWC6P9THVJ04Z0GXKXNG0",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "number.aire_acondicionado_sleep_timer",
+        "state": "unavailable",
+        "attributes": {
+            "min": 0.0,
+            "max": 100.0,
+            "step": 1.0,
+            "mode": "box",
+            "unit_of_measurement": "h",
+            "friendly_name": "Aire acondicionado Sleep timer"
+        },
+        "last_changed": "2025-12-08T16:14:28.566562+00:00",
+        "last_reported": "2025-12-08T16:14:28.566637+00:00",
+        "last_updated": "2025-12-08T16:14:28.566562+00:00",
+        "context": {
+            "id": "01KBZBWC6P6DZW1A9ABB48A80B",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.aire_acondicionado_schedule_turn_on",
+        "state": "unavailable",
+        "attributes": {
+            "unit_of_measurement": "min",
+            "device_class": "duration",
+            "friendly_name": "Aire acondicionado Schedule turn-on"
+        },
+        "last_changed": "2025-12-08T16:14:28.567286+00:00",
+        "last_reported": "2025-12-08T16:14:28.567370+00:00",
+        "last_updated": "2025-12-08T16:14:28.567286+00:00",
+        "context": {
+            "id": "01KBZBWC6QFQPN4KFDPT2PBKNA",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.aire_acondicionado_schedule_turn_off",
+        "state": "unavailable",
+        "attributes": {
+            "unit_of_measurement": "min",
+            "device_class": "duration",
+            "friendly_name": "Aire acondicionado Schedule turn-off"
+        },
+        "last_changed": "2025-12-08T16:14:28.567759+00:00",
+        "last_reported": "2025-12-08T16:14:28.567834+00:00",
+        "last_updated": "2025-12-08T16:14:28.567759+00:00",
+        "context": {
+            "id": "01KBZBWC6QJB306R1HHYYWJPZ8",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.aire_acondicionado_sleep_timer",
+        "state": "unavailable",
+        "attributes": {
+            "unit_of_measurement": "min",
+            "device_class": "duration",
+            "friendly_name": "Aire acondicionado Sleep timer"
+        },
+        "last_changed": "2025-12-08T16:14:28.568154+00:00",
+        "last_reported": "2025-12-08T16:14:28.568244+00:00",
+        "last_updated": "2025-12-08T16:14:28.568154+00:00",
+        "context": {
+            "id": "01KBZBWC6RA0XQJW1G7MK30GK2",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.aire_acondicionado_power",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "switch",
+            "friendly_name": "Aire acondicionado Power"
+        },
+        "last_changed": "2025-12-08T16:14:28.569548+00:00",
+        "last_reported": "2025-12-08T16:14:28.570297+00:00",
+        "last_updated": "2025-12-08T16:14:28.569548+00:00",
+        "context": {
+            "id": "01KBZBWC6SD5M7RK7Y8K1G18Z2",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "switch.aire_acondicionado_energy_saving",
+        "state": "unavailable",
+        "attributes": {
+            "device_class": "switch",
+            "friendly_name": "Aire acondicionado Energy saving"
+        },
+        "last_changed": "2025-12-08T16:14:28.570525+00:00",
+        "last_reported": "2025-12-08T16:14:28.570596+00:00",
+        "last_updated": "2025-12-08T16:14:28.570525+00:00",
+        "context": {
+            "id": "01KBZBWC6TNNBVR1KRSSKCMD85",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.aire_acondicionado_energy_yesterday",
+        "state": "0.0",
+        "attributes": {
+            "state_class": "total",
+            "unit_of_measurement": "Wh",
+            "device_class": "energy",
+            "friendly_name": "Aire acondicionado Energy yesterday"
+        },
+        "last_changed": "2025-12-08T16:14:29.117287+00:00",
+        "last_reported": "2025-12-08T16:14:29.117426+00:00",
+        "last_updated": "2025-12-08T16:14:29.117287+00:00",
+        "context": {
+            "id": "01KBZBWCQX692JP44Z50FXCK2C",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.aire_acondicionado_energy_this_month",
+        "state": "1178.0",
+        "attributes": {
+            "state_class": "total_increasing",
+            "unit_of_measurement": "Wh",
+            "device_class": "energy",
+            "friendly_name": "Aire acondicionado Energy this month"
+        },
+        "last_changed": "2025-12-08T16:14:29.678724+00:00",
+        "last_reported": "2025-12-08T16:14:29.678877+00:00",
+        "last_updated": "2025-12-08T16:14:29.678724+00:00",
+        "context": {
+            "id": "01KBZBWD9EQTMVJNGJZM7VAYDD",
+            "parent_id": null,
+            "user_id": null
+        }
+    },
+    {
+        "entity_id": "sensor.aire_acondicionado_energy_last_month",
+        "state": "0.0",
+        "attributes": {
+            "state_class": "total",
+            "unit_of_measurement": "Wh",
+            "device_class": "energy",
+            "friendly_name": "Aire acondicionado Energy last month"
+        },
+        "last_changed": "2025-12-08T16:14:30.196950+00:00",
+        "last_reported": "2025-12-08T16:14:30.197109+00:00",
+        "last_updated": "2025-12-08T16:14:30.196950+00:00",
+        "context": {
+            "id": "01KBZBWDSM8ZNVKGAXX72BRDQ9",
+            "parent_id": null,
+            "user_id": null
+        }
+    }
+]
