@@ -2,6 +2,7 @@ import { Link, useRouterState } from '@tanstack/react-router';
 
 const NAV_LINKS = [
   { to: '/', label: 'Dashboard' },
+  { to: '/energy', label: 'Energy Live' },
   { to: '/entities', label: 'Entidades' },
 ];
 

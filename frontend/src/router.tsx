@@ -7,6 +7,7 @@ import {
 import { RootLayout } from './layouts/RootLayout';
 import { DashboardView } from './screens/DashboardView';
 import { EntitiesView } from './screens/EntitiesView';
+import { EnergyDashboardView } from './screens/EnergyDashboardView';
 
 const rootRoute = new RootRoute({
   component: RootLayout,
@@ -24,7 +25,13 @@ const entitiesRoute = new Route({
   component: EntitiesView,
 });
 
-const routeTree = rootRoute.addChildren([dashboardRoute, entitiesRoute]);
+const energyRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: 'energy',
+  component: EnergyDashboardView,
+});
+
+const routeTree = rootRoute.addChildren([dashboardRoute, entitiesRoute, energyRoute]);
 
 export const router = new Router({ routeTree });
 

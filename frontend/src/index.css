@@ -65,6 +65,12 @@ main {
   padding: 1.5rem;
 }
 
+.panel__meta {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+
 .panel.filters {
   display: flex;
   gap: 1rem;
@@ -141,4 +147,172 @@ main {
   padding-top: 0.5rem;
   font-size: 0.85rem;
   opacity: 0.8;
+}
+
+.energy-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.energy-metric-card {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: min(320px, 100%);
+}
+
+.energy-card {
+  min-height: auto;
+}
+
+.power-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.power-card__header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.power-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.power-chart__wrapper {
+  margin-top: 0.5rem;
+}
+
+.power-chart {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 0.5rem;
+}
+
+.power-chart--loading,
+.power-chart--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 160px;
+  opacity: 0.8;
+}
+
+.history-error {
+  margin: 0;
+  color: #fca5a5;
+  font-size: 0.9rem;
+}
+
+.energy-metric-card header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.energy-metric-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.energy-metric-card__area {
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.energy-metric-card__error {
+  margin: 0;
+  color: #f87171;
+  font-size: 0.9rem;
+}
+
+.tag {
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  color: #bfdbfe;
+  border-radius: 999px;
+  padding: 0.15rem 0.8rem;
+  font-size: 0.75rem;
+}
+
+.metric-values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.metric-value-block {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 0.85rem;
+}
+
+.metric-label {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.65;
+}
+
+.metric-value-block .metric-value {
+  margin: 0.25rem 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.metric-updated {
+  margin: 0;
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+.sparkline-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sparkline-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.sparkline {
+  width: 100%;
+  height: 120px;
+  background: rgba(15, 23, 42, 0.65);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sparkline polyline {
+  fill: none;
+  stroke: #38bdf8;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.sparkline--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  opacity: 0.75;
+  height: 120px;
 }
