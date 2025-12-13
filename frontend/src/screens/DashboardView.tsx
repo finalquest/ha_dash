@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useFavorites, useFavoriteToggle, useDeleteFavorite } from '../hooks/useFavorites';
+import { useFavorites, useFavoriteToggle } from '../hooks/useFavorites';
 import { useEntities } from '../hooks/useEntities';
 import { useMetricGroups } from '../hooks/useMetricGroups';
 import type { FavoriteEntry } from '../api/types';
@@ -30,7 +30,6 @@ export const DashboardView = () => {
     error: metricGroupsErrorMessage,
   } = useMetricGroups();
   const toggleFavorite = useFavoriteToggle();
-  const deleteFavorite = useDeleteFavorite();
 
   const entityMap = useMemo(() => new Map(entities.map((entity) => [entity.entity_id, entity])), [entities]);
   const metricGroupMap = useMemo(
@@ -108,8 +107,8 @@ export const DashboardView = () => {
                   className="favorite-btn favorite-btn--active favorite-btn--overlay"
                   title="Quitar de favoritos"
                   type="button"
-                  disabled={deleteFavorite.isPending}
-                  onClick={() => deleteFavorite.mutate(favorite.id)}
+                  disabled={toggleFavorite.isPending}
+                  onClick={() => toggleFavorite.mutate({ favorite })}
                 >
                   ★
                 </button>

@@ -213,9 +213,17 @@ const PowerTrendChart = ({ values, unit, labels, yAxis }: PowerChartProps) => {
 
 interface Props {
   group: MetricGroup;
+  isFavorite?: boolean;
+  onToggleFavorite?: (group: MetricGroup) => void;
+  favoriteDisabled?: boolean;
 }
 
-export const EnergyMetricGroupCard = ({ group }: Props) => {
+export const EnergyMetricGroupCard = ({
+  group,
+  isFavorite,
+  onToggleFavorite,
+  favoriteDisabled,
+}: Props) => {
   const { data, isLoading, isError, error } = useMetricGroupState(group.id);
   const powerEntityId = group.metrics.power?.entityId;
 
@@ -250,7 +258,21 @@ export const EnergyMetricGroupCard = ({ group }: Props) => {
           <h3>{group.name}</h3>
           {group.areaId && <p className="energy-metric-card__area">Área: {group.areaId}</p>}
         </div>
-        {isLoading && <span className="tag">Actualizando…</span>}
+        <div className="energy-card__actions">
+          {isLoading && <span className="tag">Actualizando…</span>}
+          {onToggleFavorite && (
+            <button
+              className={`favorite-btn${isFavorite ? ' favorite-btn--active' : ''}`}
+              title={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
+              type="button"
+              onClick={() => onToggleFavorite(group)}
+              aria-pressed={isFavorite}
+              disabled={favoriteDisabled}
+            >
+              {isFavorite ? '★' : '☆'}
+            </button>
+          )}
+        </div>
       </div>
 
       {isError && (

@@ -1,7 +1,8 @@
 import { useMemo } from 'react';
-import type { HaEntity, MetricGroup, MetricType } from '../api/types';
+import type { FavoriteEntry, HaEntity, MetricGroup, MetricType } from '../api/types';
 import { useEntities } from '../hooks/useEntities';
 import { useMetricGroups } from '../hooks/useMetricGroups';
+import { useFavorites, useFavoriteToggle } from '../hooks/useFavorites';
 import { EntityCard } from '../components/EntityCard';
 import { EnergyMetricGroupCard } from '../components/EnergyMetricGroupCard';
 
@@ -42,12 +43,27 @@ export const EnergyDashboardView = () => {
     isError: metricGroupsError,
     error: metricGroupsErrorMessage,
   } = useMetricGroups();
+  const { data: favorites = [] } = useFavorites();
+  const toggleFavorite = useFavoriteToggle();
 
   const energyEntities = useMemo(() => entities.filter(isEnergyEntity), [entities]);
   const energyMetricGroups = useMemo(
     () => groupEnergyMetricGroups(metricGroups),
     [metricGroups],
   );
+
+  const energyFavoriteMap = useMemo(() => {
+    return favorites.reduce<Map<string, FavoriteEntry>>((acc, favorite) => {
+      if (favorite.cardType !== 'energy-metric-panel') return acc;
+      const groupId =
+        (favorite.config as { groupId?: string; group_id?: string })?.groupId ||
+        (favorite.config as { group_id?: string }).group_id;
+      if (groupId) {
+        acc.set(groupId, favorite);
+      }
+      return acc;
+    }, new Map());
+  }, [favorites]);
 
   const grouped = useMemo(() => {
     return energyEntities.reduce<Record<string, { label: string; items: HaEntity[] }>>(
@@ -111,7 +127,20 @@ export const EnergyDashboardView = () => {
       {!isLoadingMetricGroups && !metricGroupsError && energyMetricGroups.length > 0 && (
         <div className="energy-cards-grid">
           {energyMetricGroups.map((group) => (
-            <EnergyMetricGroupCard key={group.id} group={group} />
+            <EnergyMetricGroupCard
+              key={group.id}
+              group={group}
+              isFavorite={energyFavoriteMap.has(group.id)}
+              favoriteDisabled={toggleFavorite.isPending}
+              onToggleFavorite={() =>
+                toggleFavorite.mutate({
+                  favorite: energyFavoriteMap.get(group.id),
+                  cardType: 'energy-metric-panel',
+                  config: { groupId: group.id },
+                  title: group.name,
+                })
+              }
+            />
           ))}
         </div>
       )}
