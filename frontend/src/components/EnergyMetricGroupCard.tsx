@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { EntityHistoryPoint, MetricGroup, MetricType } from '../api/types';
 import { useMetricGroupState } from '../hooks/useMetricGroups';
 import { useEntityHistory } from '../hooks/useEntityHistory';
@@ -42,16 +42,19 @@ const normalizeHistory = (points: EntityHistoryPoint[] = []): NormalizedHistoryP
     .filter((entry) => Number.isFinite(entry.timestamp) && Number.isFinite(entry.value))
     .sort((a, b) => a.timestamp - b.timestamp);
 
-const buildLinePoints = (values: number[]) => {
+const LEFT_MARGIN = 40;
+const RIGHT_MARGIN = 20;
+const TOP_MARGIN = 30;
+const BOTTOM_MARGIN = 30;
+const CHART_HEIGHT = 160;
+
+const buildLinePoints = (values: number[], width: number) => {
   if (!values.length) return null;
   const chartValues = values.length === 1 ? [values[0], values[0]] : values;
 
-  const containerWidth = 400;
-  const leftMarginPx = 40;
-  const rightMarginPx = 20;
-  const availableWidth = containerWidth - leftMarginPx - rightMarginPx;
-  const graphTop = 20;
-  const graphBottom = 100;
+  const availableWidth = Math.max(width - LEFT_MARGIN - RIGHT_MARGIN, 1);
+  const graphTop = TOP_MARGIN;
+  const graphBottom = CHART_HEIGHT - BOTTOM_MARGIN;
   const graphHeight = graphBottom - graphTop;
 
   const maxValue = Math.max(...chartValues);
@@ -61,7 +64,7 @@ const buildLinePoints = (values: number[]) => {
 
   return chartValues
     .map((value, index) => {
-      const x = leftMarginPx + (index / denominator) * availableWidth;
+      const x = LEFT_MARGIN + (index / denominator) * availableWidth;
       const normalized = (value - minValue) / range;
       const y = graphBottom - normalized * graphHeight;
       return `${x.toFixed(2)},${y.toFixed(2)}`;
@@ -167,29 +170,54 @@ interface PowerChartProps {
 }
 
 const PowerTrendChart = ({ values, unit, labels, yAxis }: PowerChartProps) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [chartWidth, setChartWidth] = useState(400);
+
+  useEffect(() => {
+    const node = containerRef.current;
+    if (!node) return;
+    const observer = new ResizeObserver((entries) => {
+      const entry = entries[0];
+      if (entry?.contentRect?.width) {
+        setChartWidth(entry.contentRect.width);
+      }
+    });
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
   if (!values.length) {
     return <div className="power-chart power-chart--empty">Sin datos históricos</div>;
   }
 
-  const linePoints = buildLinePoints(values);
   const axisValues = yAxis.length === 5 ? yAxis : Array(5).fill(0);
   const timeAxis = labels.length ? labels : defaultTimeAxis();
-
-  const containerWidth = 400;
-  const leftMarginPx = 40;
-  const rightMarginPx = 20;
-  const availableWidth = containerWidth - leftMarginPx - rightMarginPx;
+  const availableWidth = Math.max(chartWidth - LEFT_MARGIN - RIGHT_MARGIN, 1);
+  const linePoints = buildLinePoints(values, chartWidth);
 
   return (
-    <div className="power-chart">
-      <svg width="100%" height="160" viewBox="0 0 400 160" preserveAspectRatio="none">
+    <div className="power-chart" ref={containerRef}>
+      <svg
+        width="100%"
+        height={CHART_HEIGHT}
+        viewBox={`0 0 ${chartWidth} ${CHART_HEIGHT}`}
+        preserveAspectRatio="xMidYMid meet"
+      >
         {[0, 1, 2, 3, 4].map((index) => {
-          const yPos = 30 + index * 25;
+          const verticalSpacing = (CHART_HEIGHT - TOP_MARGIN - BOTTOM_MARGIN) / 4;
+          const yPos = TOP_MARGIN + index * verticalSpacing;
           const value = axisValues[index] || 0;
           return (
             <g key={`axis-${index}`}>
-              <line x1="40" y1={yPos} x2="380" y2={yPos} stroke="#374151" strokeWidth="0.5" />
-              <text x="35" y={yPos + 4} fill="#9CA3AF" fontSize="9" textAnchor="end">
+              <line
+                x1={LEFT_MARGIN}
+                y1={yPos}
+                x2={chartWidth - RIGHT_MARGIN}
+                y2={yPos}
+                stroke="#374151"
+                strokeWidth="0.5"
+              />
+              <text x={LEFT_MARGIN - 5} y={yPos + 4} fill="#9CA3AF" fontSize="9" textAnchor="end">
                 {formatAxisValue(value)}{unit ? unit : ''}
               </text>
             </g>
@@ -199,9 +227,9 @@ const PowerTrendChart = ({ values, unit, labels, yAxis }: PowerChartProps) => {
         {linePoints && <polyline points={linePoints} fill="none" stroke="#3B82F6" strokeWidth="2" />}
 
         {timeAxis.map(({ label, ratio }, index) => {
-          const x = leftMarginPx + Math.min(Math.max(ratio, 0), 1) * availableWidth;
+          const x = LEFT_MARGIN + Math.min(Math.max(ratio, 0), 1) * availableWidth;
           return (
-            <text key={`time-${index}`} x={x} y={148} fill="#9CA3AF" fontSize="9" textAnchor="middle">
+            <text key={`time-${index}`} x={x} y={CHART_HEIGHT - 10} fill="#9CA3AF" fontSize="9" textAnchor="middle">
               {label}
             </text>
           );
