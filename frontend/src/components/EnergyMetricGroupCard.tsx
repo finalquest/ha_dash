@@ -182,9 +182,9 @@ const PowerTrendChart = ({ values, unit, labels, yAxis }: PowerChartProps) => {
 
   return (
     <div className="power-chart">
-      <svg width="100%" height="140" viewBox="0 0 400 140" preserveAspectRatio="xMidYMid meet">
+      <svg width="100%" height="160" viewBox="0 0 400 160" preserveAspectRatio="none">
         {[0, 1, 2, 3, 4].map((index) => {
-          const yPos = 30 + index * 20;
+          const yPos = 30 + index * 25;
           const value = axisValues[index] || 0;
           return (
             <g key={`axis-${index}`}>
@@ -201,7 +201,7 @@ const PowerTrendChart = ({ values, unit, labels, yAxis }: PowerChartProps) => {
         {timeAxis.map(({ label, ratio }, index) => {
           const x = leftMarginPx + Math.min(Math.max(ratio, 0), 1) * availableWidth;
           return (
-            <text key={`time-${index}`} x={x} y={128} fill="#9CA3AF" fontSize="9" textAnchor="middle">
+            <text key={`time-${index}`} x={x} y={148} fill="#9CA3AF" fontSize="9" textAnchor="middle">
               {label}
             </text>
           );
