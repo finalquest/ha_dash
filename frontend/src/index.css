@@ -127,8 +127,17 @@ main {
   font-size: 1.1rem;
 }
 
+.favorite-btn--active {
+  color: #facc15;
+}
+
 .favorite-btn:hover {
   color: rgba(255, 255, 255, 0.9);
+}
+
+.favorite-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .entity-card__value {
@@ -154,6 +163,17 @@ main {
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.25rem;
   margin: 1.5rem 0;
+}
+
+.favorite-energy-card {
+  position: relative;
+}
+
+.favorite-btn--overlay {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 2;
 }
 
 .energy-metric-card {

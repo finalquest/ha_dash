@@ -24,6 +24,20 @@ export interface AreasResponse {
   areas: AreaEntry[];
 }
 
+export interface FavoriteEntry {
+  id: string;
+  cardType: string;
+  config: Record<string, unknown> & { entity_id?: string };
+  title?: string;
+  orderIndex: number;
+  dashboardId?: string;
+}
+
+export interface FavoritesResponse {
+  ok: boolean;
+  favorites: FavoriteEntry[];
+}
+
 export type MetricType = 'power' | 'voltage' | 'current';
 
 export interface MetricGroupEntityRef {
@@ -71,4 +85,12 @@ export interface EntityHistoryResponse {
   ok: boolean;
   entityId: string;
   points: EntityHistoryPoint[];
+}
+
+export interface CreateFavoritePayload {
+  cardType: string;
+  config: Record<string, unknown>;
+  title?: string;
+  orderIndex?: number;
+  dashboardId?: string;
 }

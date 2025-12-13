@@ -1,8 +1,9 @@
 import { useMemo, useState } from 'react';
 import { useAreas } from '../hooks/useAreas';
 import { useEntities } from '../hooks/useEntities';
-import type { AreaEntry, HaEntity } from '../api/types';
+import type { AreaEntry, FavoriteEntry, HaEntity } from '../api/types';
 import { EntityCard } from '../components/EntityCard';
+import { useFavorites, useFavoriteToggle } from '../hooks/useFavorites';
 
 const NO_AREA_KEY = 'unassigned';
 
@@ -38,6 +39,8 @@ export const EntitiesView = () => {
   } = useAreas();
   const [search, setSearch] = useState('');
   const [selectedArea, setSelectedArea] = useState<'all' | string>('all');
+  const { data: favorites = [] } = useFavorites();
+  const toggleFavorite = useFavoriteToggle();
 
   const areaNameMap = useMemo(() => {
     const map = new Map<string, string>();
@@ -85,6 +88,22 @@ export const EntitiesView = () => {
     }, {});
   }, [areaNameMap, entities, search, selectedArea]);
 
+  const favoriteMap = useMemo(() => {
+    return favorites.reduce<Map<string, FavoriteEntry>>((acc, favorite) => {
+      if (favorite.cardType !== 'entity') return acc;
+      const entityId = favorite.config?.entity_id;
+      if (typeof entityId === 'string') {
+        acc.set(entityId, favorite);
+      }
+      return acc;
+    }, new Map());
+  }, [favorites]);
+
+  const handleToggleFavorite = (entity: HaEntity) => {
+    const favorite = favoriteMap.get(entity.entity_id);
+    toggleFavorite.mutate({ entity, favorite });
+  };
+
   if (isLoadingEntities || isLoadingAreas) {
     return (
       <section className="panel">
@@ -129,7 +148,14 @@ export const EntitiesView = () => {
           <h3>{group.name}</h3>
           <div className="entity-grid">
             {group.items.map((entity) => (
-              <EntityCard key={entity.entity_id} entity={entity} areaName={group.name} />
+              <EntityCard
+                key={entity.entity_id}
+                entity={entity}
+                areaName={group.name}
+                isFavorite={favoriteMap.has(entity.entity_id)}
+                onToggleFavorite={handleToggleFavorite}
+                favoriteDisabled={toggleFavorite.isPending}
+              />
             ))}
           </div>
         </section>

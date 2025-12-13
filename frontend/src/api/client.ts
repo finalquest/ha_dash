@@ -2,6 +2,8 @@ import type {
   AreasResponse,
   EntitiesResponse,
   EntityHistoryResponse,
+  CreateFavoritePayload,
+  FavoritesResponse,
   MetricGroupStateResponse,
   MetricGroupsResponse,
 } from './types';
@@ -58,4 +60,31 @@ export const fetchEntityHistory = async (
     buildUrl(`/api/entities/${encodeURIComponent(entityId)}/history${query ? `?${query}` : ''}`),
   );
   return handleResponse<EntityHistoryResponse>(response);
+};
+
+export const fetchFavorites = async (dashboardId?: string) => {
+  const search = dashboardId ? `?dashboardId=${encodeURIComponent(dashboardId)}` : '';
+  const response = await fetch(buildUrl(`/api/favorites${search}`));
+  const data = await handleResponse<FavoritesResponse>(response);
+  return data.favorites;
+};
+
+export const createFavorite = async (payload: CreateFavoritePayload) => {
+  const response = await fetch(buildUrl('/api/favorites'), {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  return handleResponse<{ ok: boolean }>(response);
+};
+
+export const deleteFavorite = async (favoriteId: string) => {
+  const response = await fetch(buildUrl(`/api/favorites/${favoriteId}`), {
+    method: 'DELETE',
+  });
+  if (!response.ok) {
+    const body = await response.json().catch(() => ({}));
+    const message = (body as { error?: string }).error ?? response.statusText;
+    throw new Error(message || 'Request failed');
+  }
 };

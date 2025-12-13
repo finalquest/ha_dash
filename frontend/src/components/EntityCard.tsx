@@ -3,6 +3,9 @@ import type { HaEntity } from '../api/types';
 interface EntityCardProps {
   entity: HaEntity;
   areaName?: string;
+  isFavorite?: boolean;
+  onToggleFavorite?: (entity: HaEntity) => void;
+  favoriteDisabled?: boolean;
 }
 
 const formatValue = (entity: HaEntity) => {
@@ -10,7 +13,7 @@ const formatValue = (entity: HaEntity) => {
   return `${entity.state}${unit ? ` ${unit}` : ''}`;
 };
 
-export const EntityCard = ({ entity, areaName }: EntityCardProps) => {
+export const EntityCard = ({ entity, areaName, isFavorite, onToggleFavorite, favoriteDisabled }: EntityCardProps) => {
   const friendlyName = (entity.attributes.friendly_name as string | undefined) ?? entity.entity_id;
   const deviceClass = (entity.attributes.device_class as string | undefined) ?? 'Sensor';
   const deviceId = (entity.attributes.device_id as string | undefined) ?? 'Desconocido';
@@ -21,8 +24,15 @@ export const EntityCard = ({ entity, areaName }: EntityCardProps) => {
     <article className="entity-card">
       <header>
         <h4>{friendlyName}</h4>
-        <button className="favorite-btn" title="Agregar a favoritos" type="button">
-          ★
+        <button
+          className={`favorite-btn${isFavorite ? ' favorite-btn--active' : ''}`}
+          title={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
+          type="button"
+          onClick={() => onToggleFavorite?.(entity)}
+          aria-pressed={isFavorite}
+          disabled={favoriteDisabled}
+        >
+          {isFavorite ? '★' : '☆'}
         </button>
       </header>
       <div className="entity-card__value">{formatValue(entity)}</div>
