@@ -98,6 +98,75 @@ main {
   margin-top: 1rem;
 }
 
+.light-card {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  color: inherit;
+  width: 100%;
+  max-width: 220px;
+  border: none;
+}
+
+.light-card--on {
+  border-color: rgba(250, 204, 21, 0.6);
+  box-shadow: 0 0 20px rgba(250, 204, 21, 0.2);
+}
+
+.light-card__bulb-icon {
+  width: 64px;
+  height: 80px;
+}
+
+.light-card__bulb-icon .bulb-head {
+  fill: #4b5563;
+}
+
+.light-card__bulb-icon .bulb-base {
+  fill: #374151;
+}
+
+.light-card--on .light-card__bulb-icon .bulb-head {
+  fill: #fb923c;
+}
+
+.light-card--on .light-card__bulb-icon .bulb-base {
+  fill: #b45309;
+}
+
+.light-card__details {
+  text-align: center;
+}
+
+.light-card__name {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.light-card__state {
+  margin: 0.15rem 0;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.light-card__area {
+  margin: 0;
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+.light-card:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
 .entity-card {
   background: rgba(15, 23, 42, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.05);

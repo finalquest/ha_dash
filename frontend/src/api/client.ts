@@ -88,3 +88,18 @@ export const deleteFavorite = async (favoriteId: string) => {
     throw new Error(message || 'Request failed');
   }
 };
+
+const lightAction = async (entityId: string, action: 'toggle' | 'on' | 'off') => {
+  const response = await fetch(buildUrl(`/api/lights/${encodeURIComponent(entityId)}/${action}`), {
+    method: 'POST',
+  });
+  if (!response.ok) {
+    const body = await response.json().catch(() => ({}));
+    const message = (body as { error?: string }).error ?? response.statusText;
+    throw new Error(message || 'Request failed');
+  }
+};
+
+export const toggleLight = (entityId: string) => lightAction(entityId, 'toggle');
+export const turnOnLight = (entityId: string) => lightAction(entityId, 'on');
+export const turnOffLight = (entityId: string) => lightAction(entityId, 'off');

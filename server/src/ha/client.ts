@@ -313,6 +313,26 @@ export class HomeAssistantClient {
       });
     });
   }
+
+  async callService(domain: string, service: string, payload: Record<string, unknown> = {}) {
+    const path = `/api/services/${domain}/${service}`;
+    const response = await fetch(this.buildUrl(path), {
+      method: 'POST',
+      headers: this.headers,
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      const errorBody = await this.safeParseJson(response);
+      throw new HomeAssistantError(
+        (errorBody as { message?: string } | null)?.message ||
+          `Home Assistant service call failed with status ${response.status}`,
+        response.status,
+      );
+    }
+
+    return response.json().catch(() => undefined);
+  }
 }
 
 export const createHomeAssistantClient = (config: AppConfig) =>
