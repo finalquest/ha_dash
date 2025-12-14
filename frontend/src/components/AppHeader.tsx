@@ -4,6 +4,7 @@ const NAV_LINKS = [
   { to: '/', label: 'Dashboard' },
   { to: '/energy', label: 'Energy Live' },
   { to: '/lights', label: 'Lights Live' },
+  { to: '/switches', label: 'Switches' },
   { to: '/entities', label: 'Entidades' },
 ];
 

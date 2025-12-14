@@ -1,6 +1,6 @@
 import type { HaEntity } from '../api/types';
 
-interface LightCardProps {
+interface SwitchCardProps {
   entity: HaEntity;
   onToggle: (entity: HaEntity) => void;
   disabled?: boolean;
@@ -9,36 +9,37 @@ interface LightCardProps {
   favoriteDisabled?: boolean;
 }
 
-const BulbIcon = ({ isOn }: { isOn: boolean }) => (
-  <svg viewBox="0 0 64 80" className={`light-card__bulb-icon ${isOn ? 'on' : ''}`} aria-hidden>
-    <circle cx="32" cy="24" r="20" className="bulb-head" />
-    <rect x="23" y="46" width="18" height="20" rx="4" className="bulb-base" />
+const SwitchIcon = ({ isOn }: { isOn: boolean }) => (
+  <svg viewBox="0 0 64 80" className={`switch-card__icon ${isOn ? 'on' : ''}`} aria-hidden>
+    <rect x="20" y="15" width="24" height="50" rx="6" className="switch-body" />
+    <rect x="26" y={isOn ? 20 : 40} width="12" height="20" rx="4" className="switch-thumb" />
   </svg>
 );
 
-export const LightCard = ({
+export const SwitchCard = ({
   entity,
   onToggle,
   disabled,
   isFavorite,
   onToggleFavorite,
   favoriteDisabled,
-}: LightCardProps) => {
+}: SwitchCardProps) => {
   const isOn = entity.state === 'on';
   const friendlyName = (entity.attributes.friendly_name as string | undefined) ?? entity.entity_id;
   const areaLabel = (entity.attributes.area_name as string | undefined) ?? 'Sin zona';
+
   return (
     <button
       type="button"
-      className={`light-card ${isOn ? 'light-card--on' : ''}`}
+      className={`switch-card ${isOn ? 'switch-card--on' : ''}`}
       onClick={() => onToggle(entity)}
       disabled={disabled}
     >
-      <BulbIcon isOn={isOn} />
-      <div className="light-card__details">
-        <p className="light-card__name">{friendlyName}</p>
-        <p className="light-card__state">{isOn ? 'On' : 'Off'}</p>
-        <p className="light-card__area">{areaLabel}</p>
+      <SwitchIcon isOn={isOn} />
+      <div className="switch-card__details">
+        <p className="switch-card__name">{friendlyName}</p>
+        <p className="switch-card__state">{isOn ? 'On' : 'Off'}</p>
+        <p className="switch-card__area">{areaLabel}</p>
       </div>
       {onToggleFavorite && (
         <button

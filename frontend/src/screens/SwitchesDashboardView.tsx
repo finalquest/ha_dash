@@ -1,44 +1,27 @@
 import { useMemo } from 'react';
 import type { HaEntity, FavoriteEntry } from '../api/types';
 import { useEntities } from '../hooks/useEntities';
-import { LightCard } from '../components/LightCard';
+import { SwitchCard } from '../components/SwitchCard';
 import { useLightControl } from '../hooks/useLightControl';
 import { useFavorites, useFavoriteToggle } from '../hooks/useFavorites';
 
-const isLightEntity = (entity: HaEntity) => {
-  const domain = entity.entity_id.split('.')[0];
-  const deviceClass = (entity.attributes.device_class as string | undefined)?.toLowerCase();
-  const friendlyName = (entity.attributes.friendly_name as string | undefined)?.toLowerCase();
+const isSwitchEntity = (entity: HaEntity) => entity.entity_id.startsWith('switch.');
 
-  const looksLikeLight = friendlyName?.includes('luz') || friendlyName?.includes('light');
-  const lightDeviceClass = deviceClass === 'light' || deviceClass === 'illuminance';
-
-  if (domain === 'light') {
-    return true;
-  }
-
-  if (domain === 'switch') {
-    return looksLikeLight || lightDeviceClass;
-  }
-
-  return looksLikeLight || lightDeviceClass;
-};
-
-export const LightsDashboardView = () => {
+export const SwitchesDashboardView = () => {
   const {
     data: entities = [],
     isLoading,
     isError,
     error,
   } = useEntities();
-  const lightControl = useLightControl();
+  const switchControl = useLightControl();
   const { data: favorites = [] } = useFavorites();
   const toggleFavorite = useFavoriteToggle();
 
-  const lightEntities = useMemo(() => entities.filter(isLightEntity), [entities]);
+  const switchEntities = useMemo(() => entities.filter(isSwitchEntity), [entities]);
 
   const grouped = useMemo(() => {
-    return lightEntities.reduce<Record<string, { label: string; items: HaEntity[] }>>((acc, entity) => {
+    return switchEntities.reduce<Record<string, { label: string; items: HaEntity[] }>>((acc, entity) => {
       const areaId = (entity.attributes.area_id as string | undefined) ?? 'unassigned';
       if (!acc[areaId]) {
         const areaName =
@@ -49,7 +32,7 @@ export const LightsDashboardView = () => {
       acc[areaId].items.push(entity);
       return acc;
     }, {});
-  }, [lightEntities]);
+  }, [switchEntities]);
 
   const favoriteMap = useMemo(() => {
     return favorites.reduce<Map<string, FavoriteEntry>>((acc, favorite) => {
@@ -65,13 +48,13 @@ export const LightsDashboardView = () => {
   if (isLoading) {
     return (
       <section className="panel">
-        <p>Cargando luces...</p>
+        <p>Cargando switches...</p>
       </section>
     );
   }
 
   if (isError) {
-    const message = (error as Error | undefined)?.message ?? 'No pudimos cargar las luces.';
+    const message = (error as Error | undefined)?.message ?? 'No pudimos cargar los switches.';
     return (
       <section className="panel">
         <p>{message}</p>
@@ -80,15 +63,15 @@ export const LightsDashboardView = () => {
   }
 
   const handleToggle = (entity: HaEntity) => {
-    lightControl.mutate(entity.entity_id);
+    switchControl.mutate(entity.entity_id);
   };
 
   return (
     <section>
       <div className="panel">
-        <h2>Lights Live</h2>
-        <p>Estado en vivo de todas las luces y entidades relacionadas.</p>
-        <p className="panel__meta">Mostrando {lightEntities.length} luces filtradas por Home Assistant.</p>
+        <h2>Switches Live</h2>
+        <p>Estado en vivo de todos los switches controlables.</p>
+        <p className="panel__meta">Mostrando {switchEntities.length} switches detectados.</p>
       </div>
 
       {Object.entries(grouped).map(([areaId, group]) => (
@@ -96,11 +79,11 @@ export const LightsDashboardView = () => {
           <h3>{group.label}</h3>
           <div className="entity-grid">
             {group.items.map((entity) => (
-              <LightCard
+              <SwitchCard
                 key={entity.entity_id}
                 entity={entity}
                 onToggle={handleToggle}
-                disabled={lightControl.isPending}
+                disabled={switchControl.isPending}
                 isFavorite={favoriteMap.has(entity.entity_id)}
                 onToggleFavorite={(candidate) =>
                   toggleFavorite.mutate({ entity: candidate, favorite: favoriteMap.get(candidate.entity_id) })
@@ -112,9 +95,9 @@ export const LightsDashboardView = () => {
         </section>
       ))}
 
-      {lightEntities.length === 0 && (
+      {switchEntities.length === 0 && (
         <section className="panel">
-          <p>No encontramos entidades de luces en Home Assistant.</p>
+          <p>No encontramos switches en Home Assistant.</p>
         </section>
       )}
     </section>

@@ -5,6 +5,9 @@ import { useMetricGroups } from '../hooks/useMetricGroups';
 import type { FavoriteEntry } from '../api/types';
 import { EntityCard } from '../components/EntityCard';
 import { EnergyMetricGroupCard } from '../components/EnergyMetricGroupCard';
+import { LightCard } from '../components/LightCard';
+import { SwitchCard } from '../components/SwitchCard';
+import { useLightControl } from '../hooks/useLightControl';
 
 const renderUnsupportedCard = (favorite: FavoriteEntry) => (
   <article key={favorite.id} className="entity-card">
@@ -30,6 +33,7 @@ export const DashboardView = () => {
     error: metricGroupsErrorMessage,
   } = useMetricGroups();
   const toggleFavorite = useFavoriteToggle();
+  const lightControl = useLightControl();
 
   const entityMap = useMemo(() => new Map(entities.map((entity) => [entity.entity_id, entity])), [entities]);
   const metricGroupMap = useMemo(
@@ -134,6 +138,43 @@ export const DashboardView = () => {
               </article>
             );
           }
+
+            const domain = entity.entity_id.split('.')[0];
+            const friendlyName = (entity.attributes.friendly_name as string | undefined)?.toLowerCase() ?? '';
+            const deviceClass = (entity.attributes.device_class as string | undefined)?.toLowerCase() ?? '';
+            const looksLikeLight =
+              domain === 'light' ||
+              friendlyName.includes('light') ||
+              friendlyName.includes('luz') ||
+              deviceClass.includes('light');
+
+            if (looksLikeLight) {
+              return (
+                <LightCard
+                  key={favorite.id}
+                  entity={entity}
+                  onToggle={() => lightControl.mutate(entity.entity_id)}
+                  disabled={lightControl.isPending}
+                  isFavorite
+                  onToggleFavorite={() => toggleFavorite.mutate({ entity, favorite })}
+                  favoriteDisabled={toggleFavorite.isPending}
+                />
+              );
+            }
+
+            if (domain === 'switch') {
+              return (
+                <SwitchCard
+                  key={favorite.id}
+                  entity={entity}
+                  onToggle={() => lightControl.mutate(entity.entity_id)}
+                  disabled={lightControl.isPending}
+                  isFavorite
+                  onToggleFavorite={() => toggleFavorite.mutate({ entity, favorite })}
+                  favoriteDisabled={toggleFavorite.isPending}
+                />
+              );
+            }
 
             return (
               <EntityCard
