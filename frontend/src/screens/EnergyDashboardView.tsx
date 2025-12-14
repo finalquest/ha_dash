@@ -65,6 +65,17 @@ export const EnergyDashboardView = () => {
     }, new Map());
   }, [favorites]);
 
+  const entityFavoriteMap = useMemo(() => {
+    return favorites.reduce<Map<string, FavoriteEntry>>((acc, favorite) => {
+      if (favorite.cardType !== 'entity') return acc;
+      const entityId = favorite.config?.entity_id;
+      if (typeof entityId === 'string') {
+        acc.set(entityId, favorite);
+      }
+      return acc;
+    }, new Map());
+  }, [favorites]);
+
   const grouped = useMemo(() => {
     return energyEntities.reduce<Record<string, { label: string; items: HaEntity[] }>>(
       (acc, entity) => {
@@ -101,13 +112,6 @@ export const EnergyDashboardView = () => {
 
   return (
     <section>
-      <div className="panel">
-        <h2>Energy Live</h2>
-        <p>Estado en vivo de los sensores de energía, potencia, tensión y consumo.</p>
-        <p className="panel__meta">
-          Mostrando {energyEntities.length} entidades individuales y {energyMetricGroups.length} circuitos inferidos.
-        </p>
-      </div>
 
       {isLoadingMetricGroups && (
         <section className="panel">
@@ -158,7 +162,16 @@ export const EnergyDashboardView = () => {
           <h3>{group.label}</h3>
           <div className="entity-grid">
             {group.items.map((entity) => (
-              <EntityCard key={entity.entity_id} entity={entity} areaName={group.label} />
+              <EntityCard
+                key={entity.entity_id}
+                entity={entity}
+                areaName={group.label}
+                isFavorite={entityFavoriteMap.has(entity.entity_id)}
+                onToggleFavorite={(candidate) =>
+                  toggleFavorite.mutate({ entity: candidate, favorite: entityFavoriteMap.get(candidate.entity_id) })
+                }
+                favoriteDisabled={toggleFavorite.isPending}
+              />
             ))}
           </div>
         </section>

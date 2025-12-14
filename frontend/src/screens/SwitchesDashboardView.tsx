@@ -68,11 +68,6 @@ export const SwitchesDashboardView = () => {
 
   return (
     <section>
-      <div className="panel">
-        <h2>Switches Live</h2>
-        <p>Estado en vivo de todos los switches controlables.</p>
-        <p className="panel__meta">Mostrando {switchEntities.length} switches detectados.</p>
-      </div>
 
       {Object.entries(grouped).map(([areaId, group]) => (
         <section key={areaId} className="panel entity-group">

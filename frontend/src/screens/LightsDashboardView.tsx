@@ -85,11 +85,6 @@ export const LightsDashboardView = () => {
 
   return (
     <section>
-      <div className="panel">
-        <h2>Lights Live</h2>
-        <p>Estado en vivo de todas las luces y entidades relacionadas.</p>
-        <p className="panel__meta">Mostrando {lightEntities.length} luces filtradas por Home Assistant.</p>
-      </div>
 
       {Object.entries(grouped).map(([areaId, group]) => (
         <section key={areaId} className="panel entity-group">

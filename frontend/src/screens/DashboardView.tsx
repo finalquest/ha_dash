@@ -82,11 +82,6 @@ export const DashboardView = () => {
 
   return (
     <section>
-      <div className="panel">
-        <h2>Dashboard</h2>
-        <p>Estas son tus cards favoritas.</p>
-      </div>
-
       {energyFavorites.length > 0 && (
         <div className="energy-cards-grid favorite-energy-grid">
           {energyFavorites.map((favorite) => {
