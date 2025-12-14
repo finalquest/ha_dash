@@ -27,9 +27,22 @@ export const useEventStream = () => {
         if (payload.type === 'state_changed' && payload.new_state) {
           queryClient.setQueryData<HaEntity[]>(['entities'], (current) => {
             if (!current) return current;
-            return current.map((entity) =>
-              entity.entity_id === payload.entity_id ? (payload.new_state as HaEntity) : entity,
-            );
+            return current.map((entity) => {
+              if (entity.entity_id !== payload.entity_id) {
+                return entity;
+              }
+              const nextState = payload.new_state as HaEntity;
+              return {
+                ...entity,
+                state: nextState.state,
+                last_changed: nextState.last_changed,
+                last_updated: nextState.last_updated,
+                attributes: {
+                  ...entity.attributes,
+                  ...(nextState.attributes ?? {}),
+                },
+              };
+            });
           });
         }
       } catch (error) {
