@@ -10,7 +10,7 @@
 2. Manejar estados de carga/errores de manera consistente en UI.
 3. Abstraer llamadas a Home Assistant en un cliente reutilizable en el backend.
 
-### Metas futuras
+- ### Metas futuras
 - Streaming en tiempo real (WS/SSE) para reflejar cambios instantáneos.
 - Controles para acciones sobre entidades (encender/apagar, etc.).
 - Dashboards configurables en base a preferencias del usuario.
@@ -152,10 +152,19 @@ interface CardInstance {
 ## 6. Tiempo real (fase 2)
 - Home Assistant expone WebSocket API (`/api/websocket`).
 - Backend actuará como proxy:
-  - Mantiene conexión WS con HA.
-  - Expone a frontend un SSE (`/api/events/stream`) o WS propio (`/ws`).
-  - Filtra eventos relevantes (state_changed) y los remite.
-- Frontend se suscribe y actualiza cache TanStack Query mediante `queryClient.setQueryData`.
+  - Mantiene conexión WS con HA, autentica con token y se suscribe a `state_changed`.
+  - Mantiene cache en memoria del último estado por `entity_id` para hidratar clientes nuevos.
+  - Expone a frontend un SSE (`GET /api/events/stream`) con keep-alive o un WS propio (`/ws`).
+  - Filtra eventos relevantes (dominios `light`, `switch`, `sensor`, `binary_sensor`, etc.) y adjunta metadata (área, friendly_name).
+  - Implementa reconexión/backoff cuando el WS de HA se cae e informa al frontend cuando el stream está `offline`.
+- Frontend se suscribe y actualiza cache TanStack Query mediante `queryClient.setQueryData`. Estrategia inicial:
+  - `useRealtimeEntities` escucha el stream y aplica los `state_changed` sobre la cache de `['entities']`.
+  - Vistas específicas (Lights, Energy, Dashboard) solo dependen de la query; al mutarse la cache, re-renderizan sin refetch.
+  - Si se pierde la conexión, mostramos un banner “Sincronización en vivo desconectada” y caemos a refetch periódico.
+- Roadmap:
+  1. Implementar proxy SSE con reconexión.
+  2. Añadir hook en frontend y mutación de cache.
+  3. Expandir a métricas (metric groups) y favoritos cuando existan acciones en vivo.
 
 ## 7. Seguridad y configuración
 - Backend nunca expone el token de HA al frontend.
