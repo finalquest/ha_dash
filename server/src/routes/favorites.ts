@@ -1,6 +1,6 @@
 import type { Request, Response } from 'express';
 import { Router } from 'express';
-import { deleteFavorite, listFavorites, upsertFavorite } from '../repos/favoritesRepo';
+import { deleteFavorite, listFavorites, reorderFavorites, upsertFavorite } from '../repos/favoritesRepo';
 
 const router = Router();
 
@@ -27,6 +27,20 @@ router.post('/', (req: Request, res: Response) => {
 router.delete('/:id', (req: Request, res: Response) => {
   deleteFavorite(req.params.id);
   res.status(204).send();
+});
+
+router.put('/reorder', (req: Request, res: Response) => {
+  const order = req.body?.order;
+  if (!Array.isArray(order) || order.length === 0) {
+    return res.status(400).json({ ok: false, error: 'order must be a non-empty array' });
+  }
+  try {
+    reorderFavorites(order as string[]);
+    res.json({ ok: true });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Failed to reorder favorites';
+    res.status(500).json({ ok: false, error: message });
+  }
 });
 
 export default router;

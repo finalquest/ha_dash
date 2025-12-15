@@ -31,6 +31,7 @@ const updateFavorite = db.prepare(
   'UPDATE favorites SET card_type = @card_type, config_json = @config_json, title = @title, order_index = @order_index, updated_at = CURRENT_TIMESTAMP WHERE id = @id'
 );
 const deleteFavoriteStmt = db.prepare('DELETE FROM favorites WHERE id = ?');
+const updateOrderStmt = db.prepare('UPDATE favorites SET order_index = ? WHERE id = ?');
 
 const mapRowToFavorite = (row: FavoriteRow): Favorite => ({
   id: row.id,
@@ -73,4 +74,13 @@ export const upsertFavorite = (payload: {
 
 export const deleteFavorite = (id: string) => {
   deleteFavoriteStmt.run(id);
+};
+
+export const reorderFavorites = (ids: string[]) => {
+  const tx = db.transaction((favoriteIds: string[]) => {
+    favoriteIds.forEach((favoriteId, index) => {
+      updateOrderStmt.run(index, favoriteId);
+    });
+  });
+  tx(ids);
 };

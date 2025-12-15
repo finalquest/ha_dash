@@ -29,26 +29,12 @@ export const SwitchCard = ({
   const areaLabel = (entity.attributes.area_name as string | undefined) ?? 'Sin zona';
 
   return (
-    <button
-      type="button"
-      className={`switch-card ${isOn ? 'switch-card--on' : ''}`}
-      onClick={() => onToggle(entity)}
-      disabled={disabled}
-    >
-      <SwitchIcon isOn={isOn} />
-      <div className="switch-card__details">
-        <p className="switch-card__name">{friendlyName}</p>
-        <p className="switch-card__state">{isOn ? 'On' : 'Off'}</p>
-        <p className="switch-card__area">{areaLabel}</p>
-      </div>
+    <article className={`switch-card ${isOn ? 'switch-card--on' : ''}`}>
       {onToggleFavorite && (
         <button
           type="button"
           className={`favorite-btn favorite-btn--floating${isFavorite ? ' favorite-btn--active' : ''}`}
-          onClick={(event) => {
-            event.stopPropagation();
-            onToggleFavorite(entity);
-          }}
+          onClick={() => onToggleFavorite(entity)}
           disabled={favoriteDisabled}
           aria-pressed={isFavorite}
           title={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
@@ -56,6 +42,19 @@ export const SwitchCard = ({
           {isFavorite ? '★' : '☆'}
         </button>
       )}
-    </button>
+      <button
+        type="button"
+        className="switch-card__action"
+        onClick={() => onToggle(entity)}
+        disabled={disabled}
+      >
+        <SwitchIcon isOn={isOn} />
+        <div className="switch-card__details">
+          <p className="switch-card__name">{friendlyName}</p>
+          <p className="switch-card__state">{isOn ? 'On' : 'Off'}</p>
+          <p className="switch-card__area">{areaLabel}</p>
+        </div>
+      </button>
+    </article>
   );
 };

@@ -115,37 +115,28 @@ main {
   border: none;
 }
 
+
 .switch-card {
   background: rgba(15, 23, 42, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 16px;
-  padding: 0;
-  position: relative;
-  overflow: hidden;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
   color: inherit;
   width: 100%;
   max-width: 220px;
   border: none;
+  position: relative;
 }
 
 .switch-card--on {
   border-color: rgba(96, 165, 250, 0.7);
   box-shadow: 0 0 18px rgba(96, 165, 250, 0.25);
-}
-
-button.switch-card__action {
-  background: none;
-  border: none;
-  width: 100%;
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  color: inherit;
-  cursor: pointer;
 }
 
 .switch-card__name {
@@ -196,6 +187,17 @@ button.switch-card__action {
 .light-card--on {
   border-color: rgba(250, 204, 21, 0.6);
   box-shadow: 0 0 20px rgba(250, 204, 21, 0.2);
+}
+.light-card__action,
+.switch-card__action {
+  background: none;
+  border: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: inherit;
 }
 
 .light-card__bulb-icon {
@@ -295,7 +297,9 @@ button.switch-card__action {
 }
 
 .favorite-btn--floating {
-  align-self: flex-end;
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
 }
 
 .entity-card__value {
@@ -493,4 +497,22 @@ button.switch-card__action {
   font-size: 0.85rem;
   opacity: 0.75;
   height: 120px;
+}
+.dashboard-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.dashboard-actions button {
+  background: rgba(59, 130, 246, 0.2);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  color: #bfdbfe;
+  border-radius: 999px;
+  padding: 0.35rem 1rem;
+  cursor: pointer;
+}
+
+.entity-grid--editing {
+  gap: 1.25rem;
 }

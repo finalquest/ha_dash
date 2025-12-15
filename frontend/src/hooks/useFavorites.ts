@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { createFavorite, deleteFavorite, fetchFavorites } from '../api/client';
+import { createFavorite, deleteFavorite, fetchFavorites, reorderFavorites } from '../api/client';
 import type { HaEntity, FavoriteEntry } from '../api/types';
 
 export const useFavorites = () =>
@@ -69,6 +69,16 @@ export const useDeleteFavorite = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (favoriteId: string) => deleteFavorite(favoriteId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['favorites'] });
+    },
+  });
+};
+
+export const useReorderFavorites = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (order: string[]) => reorderFavorites(order),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['favorites'] });
     },

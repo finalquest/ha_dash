@@ -136,6 +136,11 @@ interface CardInstance {
 - Sólo hay una card por tipo cross-app. Los dashboards reusan la misma implementación al referenciar `cardType`.
 - Data requirements: cada card define qué queries necesita (p.ej. `energy-consumption` usa `useAreasQuery` + filtros de dominio).
 - Persistencia: dashboards y favoritos se almacenan en SQLite (tablas `dashboards`, `dashboard_cards`, `favorites`) para garantizar que los cambios del usuario se mantengan entre sesiones.
+- Reordenamiento de favoritos (futuro inmediato)
+  - Cada fila en `favorites` ya posee `order_index`. Agregar un endpoint `PUT /api/favorites/reorder` que reciba un arreglo de IDs en el orden deseado y actualice `order_index` dentro de una transacción.
+  - El frontend usará drag & drop (`@dnd-kit/core` recomendado) para modificar el orden localmente y, al soltar, llamará al endpoint con el nuevo orden. El estado se actualiza de forma optimista y se invalida la query `['favorites']` al completar.
+  - Mostrar un “handle” visual en cada card (p.ej. ícono de grip) y usar `cursor: grab`/`grabbing` para indicar que son reordenables.
+  - A futuro, el SSE puede emitir un evento `favorite_reordered` para sincronizar otras sesiones sin refetch.
 
 #### Card compuesta de energía
 - `CardType`: `energy-metric-panel`.

@@ -103,3 +103,17 @@ const lightAction = async (entityId: string, action: 'toggle' | 'on' | 'off') =>
 export const toggleLight = (entityId: string) => lightAction(entityId, 'toggle');
 export const turnOnLight = (entityId: string) => lightAction(entityId, 'on');
 export const turnOffLight = (entityId: string) => lightAction(entityId, 'off');
+
+export const reorderFavorites = async (order: string[]) => {
+  const response = await fetch(buildUrl('/api/favorites/reorder'), {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ order }),
+  });
+  if (!response.ok) {
+    const body = await response.json().catch(() => ({}));
+    const message = (body as { error?: string }).error ?? response.statusText;
+    throw new Error(message || 'Request failed');
+  }
+  return response.json().catch(() => ({ ok: true }));
+};

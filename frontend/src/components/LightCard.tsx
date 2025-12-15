@@ -28,26 +28,12 @@ export const LightCard = ({
   const friendlyName = (entity.attributes.friendly_name as string | undefined) ?? entity.entity_id;
   const areaLabel = (entity.attributes.area_name as string | undefined) ?? 'Sin zona';
   return (
-    <button
-      type="button"
-      className={`light-card ${isOn ? 'light-card--on' : ''}`}
-      onClick={() => onToggle(entity)}
-      disabled={disabled}
-    >
-      <BulbIcon isOn={isOn} />
-      <div className="light-card__details">
-        <p className="light-card__name">{friendlyName}</p>
-        <p className="light-card__state">{isOn ? 'On' : 'Off'}</p>
-        <p className="light-card__area">{areaLabel}</p>
-      </div>
+    <article className={`light-card ${isOn ? 'light-card--on' : ''}`}>
       {onToggleFavorite && (
         <button
           type="button"
           className={`favorite-btn favorite-btn--floating${isFavorite ? ' favorite-btn--active' : ''}`}
-          onClick={(event) => {
-            event.stopPropagation();
-            onToggleFavorite(entity);
-          }}
+          onClick={() => onToggleFavorite(entity)}
           disabled={favoriteDisabled}
           aria-pressed={isFavorite}
           title={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
@@ -55,6 +41,19 @@ export const LightCard = ({
           {isFavorite ? '★' : '☆'}
         </button>
       )}
-    </button>
+      <button
+        type="button"
+        className="light-card__action"
+        onClick={() => onToggle(entity)}
+        disabled={disabled}
+      >
+        <BulbIcon isOn={isOn} />
+        <div className="light-card__details">
+          <p className="light-card__name">{friendlyName}</p>
+          <p className="light-card__state">{isOn ? 'On' : 'Off'}</p>
+          <p className="light-card__area">{areaLabel}</p>
+        </div>
+      </button>
+    </article>
   );
 };

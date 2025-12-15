@@ -27,8 +27,8 @@ const createMockResponse = () => {
 };
 
 const runHandler = async (
-  method: 'get' | 'post' | 'delete',
-  path: '/' | '/:id',
+  method: 'get' | 'post' | 'delete' | 'put',
+  path: '/' | '/:id' | '/reorder',
   options: { body?: Record<string, unknown>; params?: Record<string, string> } = {},
 ) => {
   const handlers = favoritesRouter.stack
@@ -76,5 +76,24 @@ describe('favorites routes', () => {
     await runHandler('delete', '/:id', { params: { id: body.favorites[0].id } });
     const afterDelete = await runHandler('get', '/');
     expect((afterDelete.body as { favorites: unknown[] }).favorites).toHaveLength(0);
+  });
+
+  it('reorders favorites', async () => {
+    await runHandler('post', '/', {
+      body: { cardType: 'entity', config: { entity_id: 'light.one' }, title: 'One' },
+    });
+    await runHandler('post', '/', {
+      body: { cardType: 'entity', config: { entity_id: 'light.two' }, title: 'Two' },
+    });
+
+    const listRes = await runHandler('get', '/');
+    const favorites = (listRes.body as { favorites: Array<{ id: string }> }).favorites;
+    const newOrder = [...favorites].reverse().map((fav) => fav.id);
+    const reorderRes = await runHandler('put', '/reorder', { body: { order: newOrder } });
+    expect(reorderRes.statusCode).toBe(200);
+
+    const afterRes = await runHandler('get', '/');
+    const afterIds = (afterRes.body as { favorites: Array<{ id: string }> }).favorites.map((fav) => fav.id);
+    expect(afterIds[0]).toBe(newOrder[0]);
   });
 });
