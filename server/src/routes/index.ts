@@ -8,6 +8,7 @@ import historyRouter from './history';
 import favoritesRouter from './favorites';
 import lightsRouter from './lights';
 import eventsRouter from './events';
+import fansRouter from './fans';
 
 const apiRouter = Router();
 
@@ -19,6 +20,7 @@ apiRouter.use('/areas', areasRouter);
 apiRouter.use('/devices/metrics', metricsRouter);
 apiRouter.use('/favorites', favoritesRouter);
 apiRouter.use('/lights', lightsRouter);
+apiRouter.use('/fans', fansRouter);
 apiRouter.use('/events', eventsRouter);
 
 export default apiRouter;

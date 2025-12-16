@@ -6,12 +6,14 @@ import { CSS } from '@dnd-kit/utilities';
 import { useFavorites, useFavoriteToggle, useReorderFavorites } from '../hooks/useFavorites';
 import { useEntities } from '../hooks/useEntities';
 import { useMetricGroups } from '../hooks/useMetricGroups';
-import type { FavoriteEntry } from '../api/types';
+import type { FavoriteEntry, HaEntity } from '../api/types';
 import { EntityCard } from '../components/EntityCard';
 import { EnergyMetricGroupCard } from '../components/EnergyMetricGroupCard';
 import { LightCard } from '../components/LightCard';
 import { SwitchCard } from '../components/SwitchCard';
+import { FanCard } from '../components/FanCard';
 import { useLightControl } from '../hooks/useLightControl';
+import { useFanPercentage, useFanToggle } from '../hooks/useFanControls';
 
 const renderUnsupportedCard = (favorite: FavoriteEntry) => (
   <article key={favorite.id} className="entity-card">
@@ -38,6 +40,8 @@ export const DashboardView = () => {
   } = useMetricGroups();
   const toggleFavorite = useFavoriteToggle();
   const lightControl = useLightControl();
+  const fanToggleControl = useFanToggle();
+  const fanPercentageControl = useFanPercentage();
   const reorderFavoritesMutation = useReorderFavorites();
   const [isEditing, setIsEditing] = useState(false);
   const [orderedIds, setOrderedIds] = useState<string[]>([]);
@@ -125,6 +129,32 @@ export const DashboardView = () => {
             }
           }}
           disabled={editing || lightControl.isPending}
+          isFavorite
+          onToggleFavorite={editing ? undefined : handleToggleFavorite}
+          favoriteDisabled={toggleFavorite.isPending}
+        />
+      );
+    }
+
+    if (domain === 'fan') {
+      const handleFanToggle = (candidate: HaEntity) => {
+        if (!editing) {
+          fanToggleControl.mutate(candidate.entity_id);
+        }
+      };
+      const handleFanPercentage = (candidate: HaEntity, percentage: number) => {
+        if (!editing) {
+          fanPercentageControl.mutate({ entityId: candidate.entity_id, percentage });
+        }
+      };
+      return (
+        <FanCard
+          key={favorite.id}
+          entity={entity}
+          onToggle={handleFanToggle}
+          onChangePercentage={editing ? undefined : handleFanPercentage}
+          disabled={editing || fanToggleControl.isPending}
+          percentageDisabled={editing || fanPercentageControl.isPending}
           isFavorite
           onToggleFavorite={editing ? undefined : handleToggleFavorite}
           favoriteDisabled={toggleFavorite.isPending}
