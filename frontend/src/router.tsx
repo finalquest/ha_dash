@@ -3,6 +3,7 @@ import {
   RouterProvider,
   Route,
   RootRoute,
+  Outlet,
 } from '@tanstack/react-router';
 import { RootLayout } from './layouts/RootLayout';
 import { DashboardView } from './screens/DashboardView';
@@ -52,6 +53,70 @@ const switchesRoute = new Route({
   component: SwitchesDashboardView,
 });
 
+const SectionLayout = () => <Outlet />;
+
+const dashboardSectionRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: 'dashboard',
+  component: SectionLayout,
+});
+
+const dashboardFavoritesRoute = new Route({
+  getParentRoute: () => dashboardSectionRoute,
+  path: 'favorites',
+  component: DashboardView,
+});
+
+const dashboardEnergyRoute = new Route({
+  getParentRoute: () => dashboardSectionRoute,
+  path: 'energy',
+  component: EnergyDashboardView,
+});
+
+const dashboardSwitchesRoute = new Route({
+  getParentRoute: () => dashboardSectionRoute,
+  path: 'switches',
+  component: SwitchesDashboardView,
+});
+
+const liveSectionRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: 'live',
+  component: SectionLayout,
+});
+
+const liveAllRoute = new Route({
+  getParentRoute: () => liveSectionRoute,
+  path: 'all',
+  component: ClimateDashboardView,
+});
+
+const liveEnergyRoute = new Route({
+  getParentRoute: () => liveSectionRoute,
+  path: 'energy',
+  component: EnergyDashboardView,
+});
+
+const liveLightsRoute = new Route({
+  getParentRoute: () => liveSectionRoute,
+  path: 'lights',
+  component: LightsDashboardView,
+});
+
+const liveSwitchesRoute = new Route({
+  getParentRoute: () => liveSectionRoute,
+  path: 'switches',
+  component: SwitchesDashboardView,
+});
+
+dashboardSectionRoute.addChildren([
+  dashboardFavoritesRoute,
+  dashboardEnergyRoute,
+  dashboardSwitchesRoute,
+]);
+
+liveSectionRoute.addChildren([liveAllRoute, liveEnergyRoute, liveLightsRoute, liveSwitchesRoute]);
+
 const routeTree = rootRoute.addChildren([
   dashboardRoute,
   energyRoute,
@@ -59,6 +124,8 @@ const routeTree = rootRoute.addChildren([
   climateRoute,
   switchesRoute,
   entitiesRoute,
+  dashboardSectionRoute,
+  liveSectionRoute,
 ]);
 
 export const router = new Router({ routeTree });
