@@ -54,8 +54,15 @@ const NAV_SECTIONS: NavSection[] = [
         to: '/live/all',
         label: 'All',
         icon: '📡',
-        description: 'Clima, fans y HVAC en vivo',
-        match: (pathname) => pathname.startsWith('/live/all') || pathname.startsWith('/climate'),
+        description: 'Todas las entidades en vivo',
+        match: (pathname) => pathname.startsWith('/live/all') || pathname.startsWith('/entities'),
+      },
+      {
+        to: '/live/climate',
+        label: 'Climatización',
+        icon: '🌬️',
+        description: 'Fans y HVAC en vivo',
+        match: (pathname) => pathname.startsWith('/live/climate') || pathname.startsWith('/climate'),
       },
       {
         to: '/live/energy',

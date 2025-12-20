@@ -88,13 +88,19 @@ const liveSectionRoute = new Route({
 const liveAllRoute = new Route({
   getParentRoute: () => liveSectionRoute,
   path: 'all',
-  component: ClimateDashboardView,
+  component: EntitiesView,
 });
 
 const liveEnergyRoute = new Route({
   getParentRoute: () => liveSectionRoute,
   path: 'energy',
   component: EnergyDashboardView,
+});
+
+const liveClimateRoute = new Route({
+  getParentRoute: () => liveSectionRoute,
+  path: 'climate',
+  component: ClimateDashboardView,
 });
 
 const liveLightsRoute = new Route({
@@ -115,7 +121,13 @@ dashboardSectionRoute.addChildren([
   dashboardSwitchesRoute,
 ]);
 
-liveSectionRoute.addChildren([liveAllRoute, liveEnergyRoute, liveLightsRoute, liveSwitchesRoute]);
+liveSectionRoute.addChildren([
+  liveAllRoute,
+  liveClimateRoute,
+  liveEnergyRoute,
+  liveLightsRoute,
+  liveSwitchesRoute,
+]);
 
 const routeTree = rootRoute.addChildren([
   dashboardRoute,
