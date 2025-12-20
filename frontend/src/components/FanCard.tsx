@@ -1,5 +1,8 @@
-import { useEffect, useMemo, useState, type ChangeEvent } from 'react';
+import { useEffect, useMemo, useRef, useState, type ChangeEvent } from 'react';
 import type { HaEntity } from '../api/types';
+import { LinkedEntitiesSection, type LinkedEntityControl } from './LinkedEntitiesSection';
+import { formatRelativeUpdate } from '../lib/formatRelativeUpdate';
+import { FAN_SPEED_STEPS } from '../config/dashboard';
 
 interface FanCardProps {
   entity: HaEntity;
@@ -10,6 +13,8 @@ interface FanCardProps {
   isFavorite?: boolean;
   onToggleFavorite?: (entity: HaEntity) => void;
   favoriteDisabled?: boolean;
+  linkedEntities?: LinkedEntityControl[];
+  linkedEntitiesTitle?: string;
 }
 
 const FanIcon = ({ isOn }: { isOn: boolean }) => (
@@ -29,23 +34,6 @@ const FanIcon = ({ isOn }: { isOn: boolean }) => (
   </svg>
 );
 
-const formatRelativeUpdate = (lastChanged: string) => {
-  const lastDate = new Date(lastChanged);
-  if (Number.isNaN(lastDate.getTime())) {
-    return 'Actualizado recientemente';
-  }
-  const diffSeconds = Math.max(0, Math.round((Date.now() - lastDate.getTime()) / 1000));
-  if (diffSeconds < 60) {
-    return `Actualizado hace ${diffSeconds}s`;
-  }
-  const diffMinutes = Math.round(diffSeconds / 60);
-  if (diffMinutes < 60) {
-    return `Actualizado hace ${diffMinutes}m`;
-  }
-  const diffHours = Math.round(diffMinutes / 60);
-  return `Actualizado hace ${diffHours}h`;
-};
-
 export const FanCard = ({
   entity,
   onToggle,
@@ -55,6 +43,8 @@ export const FanCard = ({
   isFavorite,
   onToggleFavorite,
   favoriteDisabled,
+  linkedEntities,
+  linkedEntitiesTitle,
 }: FanCardProps) => {
   const isOn = entity.state === 'on';
   const friendlyName = (entity.attributes.friendly_name as string | undefined) ?? entity.entity_id;
@@ -70,38 +60,74 @@ export const FanCard = ({
     }
     return undefined;
   }, [entity.attributes.percentage]);
-  const [pendingPercentage, setPendingPercentage] = useState<number | null>(null);
-  const sliderValue = pendingPercentage ?? entityPercentage ?? 0;
-  const sliderColor = useMemo(() => {
-    const clamped = Math.max(0, Math.min(100, sliderValue));
-    const hue = 120 - clamped * 1.2; // 120 (green) → ~0 (red)
-    return `hsl(${hue}, 70%, 50%)`;
-  }, [sliderValue]);
+  const speedSteps = Math.max(1, FAN_SPEED_STEPS);
+  const entityStep = useMemo(() => {
+    if (entity.state === 'off') {
+      return 0;
+    }
+    if (typeof entityPercentage !== 'number') {
+      return speedSteps;
+    }
+    return Math.max(1, Math.round((entityPercentage / 100) * speedSteps));
+  }, [entityPercentage, entity.state, speedSteps]);
+  const [pendingStep, setPendingStep] = useState<number | null>(null);
+  const pendingStepRef = useRef<number | null>(null);
+  const lastCommittedRef = useRef<number>(entityStep);
+  const sliderStep = pendingStep ?? entityStep ?? 0;
+  const sliderFill = useMemo(() => {
+    const clamped = Math.max(0, Math.min(speedSteps, sliderStep));
+    const percentage = (clamped / speedSteps) * 100;
+    const hue = 120 - percentage * 1.2;
+    return { percentage, color: `hsl(${hue}, 70%, 50%)` };
+  }, [sliderStep, speedSteps]);
+  const sliderTicks = useMemo(() => Array.from({ length: speedSteps + 1 }, (_, index) => index), [speedSteps]);
 
   useEffect(() => {
     if (!percentageDisabled) {
-      setPendingPercentage(null);
+      setPendingStep(null);
+      pendingStepRef.current = null;
     }
-  }, [percentageDisabled, entityPercentage]);
+  }, [percentageDisabled, entityStep]);
 
   const handleSliderChange = (event: ChangeEvent<HTMLInputElement>) => {
     const nextValue = Number(event.target.value);
-    setPendingPercentage(nextValue);
+    setPendingStep(nextValue);
+    pendingStepRef.current = nextValue;
   };
 
-  const commitPendingPercentage = () => {
-    if (!onChangePercentage || percentageDisabled) {
+  useEffect(() => {
+    const nextValue = pendingStepRef.current;
+    if (nextValue === null) {
       return;
     }
-    setPendingPercentage((current) => {
-      const nextValue = current ?? entityPercentage;
-      if (typeof nextValue !== 'number' || nextValue === entityPercentage) {
-        return current;
+    if (nextValue === entityStep) {
+      pendingStepRef.current = null;
+      setPendingStep(null);
+      return;
+    }
+    if (percentageDisabled) {
+      return;
+    }
+    if (nextValue <= 0) {
+      if (entity.state === 'on' && lastCommittedRef.current !== 0) {
+        onToggle(entity);
+        lastCommittedRef.current = 0;
       }
-      onChangePercentage(entity, nextValue);
-      return null;
-    });
-  };
+      pendingStepRef.current = null;
+      setPendingStep(null);
+      return;
+    }
+    if (lastCommittedRef.current === nextValue) {
+      return;
+    }
+    const percentage = Math.round((nextValue / speedSteps) * 100);
+    if (onChangePercentage) {
+      onChangePercentage(entity, percentage);
+      lastCommittedRef.current = nextValue;
+    }
+    pendingStepRef.current = null;
+    setPendingStep(null);
+  }, [entityStep, entity.state, onChangePercentage, onToggle, percentageDisabled, speedSteps]);
 
   const sliderId = `fan-slider-${entity.entity_id.replace(/\./g, '-')}`;
 
@@ -135,39 +161,39 @@ export const FanCard = ({
       </button>
       {supportsPercentage && (
         <div className="fan-card__slider">
-          <label htmlFor={sliderId}>
-            Velocidad: <strong>{sliderValue}%</strong>
-          </label>
+          <label htmlFor={sliderId}>Velocidad</label>
           <div className="fan-card__slider-wrapper">
             <div className="fan-card__slider-track">
               <div
                 className="fan-card__slider-fill"
-                style={{ width: `${sliderValue}%`, backgroundColor: sliderColor }}
+                style={{ width: `${sliderFill.percentage}%`, backgroundColor: sliderFill.color }}
               />
             </div>
             <input
               id={sliderId}
               type="range"
               min={0}
-              max={100}
-              step={5}
-              value={sliderValue}
+              max={speedSteps}
+              step={1}
+              value={sliderStep}
               onChange={handleSliderChange}
               disabled={percentageDisabled || !onChangePercentage}
               className="fan-card__slider-input"
-              onPointerUp={commitPendingPercentage}
-              onMouseUp={commitPendingPercentage}
-              onTouchEnd={commitPendingPercentage}
-              onKeyUp={(event) => {
-                const commitKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'End', 'Home'];
-                if (commitKeys.includes(event.key)) {
-                  commitPendingPercentage();
-                }
-              }}
             />
+          </div>
+          <div className="fan-card__slider-ticks" aria-hidden>
+            {sliderTicks.map((tick) => (
+              <span
+                key={tick}
+                className={`fan-card__slider-tick${tick === sliderStep ? ' fan-card__slider-tick--active' : ''}`}
+              >
+                {tick}
+              </span>
+            ))}
           </div>
         </div>
       )}
+      <LinkedEntitiesSection entities={linkedEntities} title={linkedEntitiesTitle} />
     </article>
   );
 };
