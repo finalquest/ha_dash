@@ -14,6 +14,16 @@ import { SwitchCard } from '../components/SwitchCard';
 import { FanCard } from '../components/FanCard';
 import { useLightControl } from '../hooks/useLightControl';
 import { useFanPercentage, useFanToggle } from '../hooks/useFanControls';
+import type { LinkedEntityControl } from '../components/LinkedEntitiesSection';
+import {
+  buildClimateDeviceGroups,
+  buildEntityGroupMap,
+  formatClimateDescription,
+  formatClimateTemperature,
+  isClimate as isClimateEntity,
+  isFan as isFanEntity,
+  isLight as isLightEntity,
+} from '../lib/climateGrouping';
 
 const renderUnsupportedCard = (favorite: FavoriteEntry) => (
   <article key={favorite.id} className="entity-card">
@@ -65,6 +75,13 @@ export const DashboardView = () => {
 
   const energyFavorites = sortedFavorites.filter((favorite) => favorite.cardType === 'energy-metric-panel');
   const entityFavorites = sortedFavorites.filter((favorite) => favorite.cardType === 'entity');
+
+  const climateRelevantEntities = useMemo(
+    () => entities.filter((entity) => isFanEntity(entity) || isClimateEntity(entity) || isLightEntity(entity)),
+    [entities],
+  );
+  const climateGroups = useMemo(() => buildClimateDeviceGroups(climateRelevantEntities), [climateRelevantEntities]);
+  const climateGroupMap = useMemo(() => buildEntityGroupMap(climateGroups), [climateGroups]);
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
@@ -147,6 +164,24 @@ export const DashboardView = () => {
           fanPercentageControl.mutate({ entityId: candidate.entity_id, percentage });
         }
       };
+      const linkedGroup = climateGroupMap.get(entity.entity_id);
+      const linkedLights: LinkedEntityControl[] = linkedGroup
+        ? linkedGroup.lights.map((light) => ({
+            entity: light,
+            onToggle: editing ? undefined : (candidate) => lightControl.mutate(candidate.entity_id),
+            disabled: editing || lightControl.isPending,
+            description: 'Luz',
+            variant: 'icon',
+          }))
+        : [];
+      const linkedClimates: LinkedEntityControl[] = linkedGroup
+        ? linkedGroup.climates.map((climate) => ({
+            entity: climate,
+            description: formatClimateDescription(climate),
+            stateOverride: formatClimateTemperature(climate),
+          }))
+        : [];
+      const linkedEntities = [...linkedLights, ...linkedClimates];
       return (
         <FanCard
           key={favorite.id}
@@ -158,6 +193,8 @@ export const DashboardView = () => {
           isFavorite
           onToggleFavorite={editing ? undefined : handleToggleFavorite}
           favoriteDisabled={toggleFavorite.isPending}
+          linkedEntities={linkedEntities}
+          linkedEntitiesTitle={linkedEntities.length ? 'Componentes vinculados' : undefined}
         />
       );
     }

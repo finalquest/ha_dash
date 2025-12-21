@@ -511,15 +511,30 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(148, 163, 184, 0.25);
+  border: 2px solid rgba(148, 163, 184, 0.35);
+  background: transparent;
   font-size: 1.1rem;
-  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .device-card__linked-icon--on {
   background: rgba(250, 204, 21, 0.85);
+  border-color: rgba(250, 204, 21, 0.85);
   color: #0f172a;
   box-shadow: 0 0 12px rgba(250, 204, 21, 0.45);
+}
+
+.light-glyph {
+  width: 24px;
+  height: 24px;
+}
+
+.light-glyph__outline {
+  stroke: currentColor;
+}
+
+.light-glyph__bulb {
+  fill: currentColor;
 }
 
 @media (min-width: 480px) {

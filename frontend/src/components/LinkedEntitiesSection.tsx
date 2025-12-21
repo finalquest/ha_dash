@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import type { HaEntity } from '../api/types';
+import { LightGlyph } from './icons/LightGlyph';
 
 export interface LinkedEntityControl {
   entity: HaEntity;
@@ -53,7 +54,7 @@ export const LinkedEntitiesSection = ({ entities, title = 'Entidades asociadas' 
           if (variant === 'icon') {
             const iconContent = (
               <span className={`device-card__linked-icon${isActive ? ' device-card__linked-icon--on' : ''}`} aria-hidden>
-                {icon ?? '💡'}
+                {icon ?? <LightGlyph />}
               </span>
             );
             if (onToggle) {
