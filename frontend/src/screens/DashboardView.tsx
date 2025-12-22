@@ -12,6 +12,7 @@ import { EnergyMetricGroupCard } from '../components/EnergyMetricGroupCard';
 import { LightCard } from '../components/LightCard';
 import { SwitchCard } from '../components/SwitchCard';
 import { FanCard } from '../components/FanCard';
+import { SensorCard } from '../components/SensorCard';
 import { useLightControl } from '../hooks/useLightControl';
 import { useFanPercentage, useFanToggle } from '../hooks/useFanControls';
 import type { LinkedEntityControl } from '../components/LinkedEntitiesSection';
@@ -24,6 +25,7 @@ import {
   isFan as isFanEntity,
   isLight as isLightEntity,
 } from '../lib/climateGrouping';
+import { isSensorEntity } from '../lib/sensorUtils';
 
 const renderUnsupportedCard = (favorite: FavoriteEntry) => (
   <article key={favorite.id} className="entity-card">
@@ -195,6 +197,18 @@ export const DashboardView = () => {
           favoriteDisabled={toggleFavorite.isPending}
           linkedEntities={linkedEntities}
           linkedEntitiesTitle={linkedEntities.length ? 'Componentes vinculados' : undefined}
+        />
+      );
+    }
+
+    if (domain === 'sensor' || domain === 'binary_sensor' || isSensorEntity(entity)) {
+      return (
+        <SensorCard
+          key={favorite.id}
+          entity={entity}
+          isFavorite
+          onToggleFavorite={editing ? undefined : handleToggleFavorite}
+          favoriteDisabled={toggleFavorite.isPending}
         />
       );
     }

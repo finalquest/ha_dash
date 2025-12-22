@@ -12,6 +12,7 @@ import { EnergyDashboardView } from './screens/EnergyDashboardView';
 import { LightsDashboardView } from './screens/LightsDashboardView';
 import { SwitchesDashboardView } from './screens/SwitchesDashboardView';
 import { ClimateDashboardView } from './screens/ClimateDashboardView';
+import { SensorsDashboardView } from './screens/SensorsDashboardView';
 
 const rootRoute = new RootRoute({
   component: RootLayout,
@@ -51,6 +52,12 @@ const switchesRoute = new Route({
   getParentRoute: () => rootRoute,
   path: 'switches',
   component: SwitchesDashboardView,
+});
+
+const sensorsRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: 'sensors',
+  component: SensorsDashboardView,
 });
 
 const SectionLayout = () => <Outlet />;
@@ -115,6 +122,12 @@ const liveSwitchesRoute = new Route({
   component: SwitchesDashboardView,
 });
 
+const liveSensorsRoute = new Route({
+  getParentRoute: () => liveSectionRoute,
+  path: 'sensors',
+  component: SensorsDashboardView,
+});
+
 dashboardSectionRoute.addChildren([
   dashboardFavoritesRoute,
   dashboardEnergyRoute,
@@ -127,6 +140,7 @@ liveSectionRoute.addChildren([
   liveEnergyRoute,
   liveLightsRoute,
   liveSwitchesRoute,
+  liveSensorsRoute,
 ]);
 
 const routeTree = rootRoute.addChildren([
@@ -135,6 +149,7 @@ const routeTree = rootRoute.addChildren([
   lightsRoute,
   climateRoute,
   switchesRoute,
+  sensorsRoute,
   entitiesRoute,
   dashboardSectionRoute,
   liveSectionRoute,

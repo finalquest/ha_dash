@@ -85,6 +85,13 @@ const NAV_SECTIONS: NavSection[] = [
         description: 'Actuadores y tomas inteligentes',
         match: (pathname) => pathname.startsWith('/live/switches') || pathname === '/switches',
       },
+      {
+        to: '/live/sensors',
+        label: 'Sensores',
+        icon: '🛰️',
+        description: 'Contactos y lecturas ambientales',
+        match: (pathname) => pathname.startsWith('/live/sensors') || pathname === '/sensors',
+      },
     ],
   },
 ];
