@@ -185,10 +185,34 @@ body {
 }
 
 .entity-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 0.75rem;
+  column-count: 1;
+  column-gap: 1rem;
   margin-top: 1rem;
+}
+
+.entity-grid > * {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+  display: inline-block;
+  width: 100%;
+}
+
+@media (min-width: 720px) {
+  .entity-grid {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .entity-grid {
+    column-count: 3;
+  }
+}
+
+@media (min-width: 1360px) {
+  .entity-grid {
+    column-count: 4;
+  }
 }
 
 .light-card {
@@ -1054,7 +1078,16 @@ body {
 }
 
 .entity-grid--editing {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 1.25rem;
+  column-width: auto;
+  column-gap: 0;
+}
+
+.entity-grid--editing > * {
+  break-inside: auto;
+  margin-bottom: 0;
 }
 .favorite-btn--sensor {
   top: 0.4rem;
