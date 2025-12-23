@@ -70,17 +70,19 @@ export const ClimateUnitCard = ({
           {isFavorite ? '★' : '☆'}
         </button>
       )}
-      <div className="climate-unit-card__summary">
-        <ThermostatIcon />
-        <div className="climate-unit-card__info">
-          <p className="climate-unit-card__name">{friendlyName}</p>
-          <p className="climate-unit-card__mode">{hvacStatus}</p>
-          <p className="climate-unit-card__area">{areaLabel}</p>
-          <p className="climate-unit-card__updated">{formatRelativeUpdate(entity.last_changed)}</p>
+      <div className="card-content climate-unit-card__content">
+        <div className="climate-unit-card__summary">
+          <ThermostatIcon />
+          <div className="climate-unit-card__info">
+            <p className="climate-unit-card__name">{friendlyName}</p>
+            <p className="climate-unit-card__mode">{hvacStatus}</p>
+            <p className="climate-unit-card__area">{areaLabel}</p>
+            <p className="climate-unit-card__updated">{formatRelativeUpdate(entity.last_changed)}</p>
+          </div>
+          <p className="climate-unit-card__temperature">{temperatureSummary}</p>
         </div>
-        <p className="climate-unit-card__temperature">{temperatureSummary}</p>
+        <LinkedEntitiesSection entities={linkedEntities} />
       </div>
-      <LinkedEntitiesSection entities={linkedEntities} />
     </article>
   );
 };

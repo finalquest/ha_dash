@@ -145,55 +145,57 @@ export const FanCard = ({
           {isFavorite ? '★' : '☆'}
         </button>
       )}
-      <button
-        type="button"
-        className="fan-card__action"
-        onClick={() => onToggle(entity)}
-        disabled={disabled}
-      >
-        <FanIcon isOn={isOn} />
-        <div className="fan-card__details">
-          <p className="fan-card__name">{friendlyName}</p>
-          <p className="fan-card__state">{isOn ? 'On' : 'Off'}</p>
-          <p className="fan-card__area">{areaLabel}</p>
-          <p className="fan-card__updated">{formatRelativeUpdate(entity.last_changed)}</p>
-        </div>
-      </button>
-      {supportsPercentage && (
-        <div className="fan-card__slider">
-          <label htmlFor={sliderId}>Velocidad</label>
-          <div className="fan-card__slider-wrapper">
-            <div className="fan-card__slider-track">
-              <div
-                className="fan-card__slider-fill"
-                style={{ width: `${sliderFill.percentage}%`, backgroundColor: sliderFill.color }}
+      <div className="card-content fan-card__content">
+        <button
+          type="button"
+          className="fan-card__action"
+          onClick={() => onToggle(entity)}
+          disabled={disabled}
+        >
+          <FanIcon isOn={isOn} />
+          <div className="fan-card__details">
+            <p className="fan-card__name">{friendlyName}</p>
+            <p className="fan-card__state">{isOn ? 'On' : 'Off'}</p>
+            <p className="fan-card__area">{areaLabel}</p>
+            <p className="fan-card__updated">{formatRelativeUpdate(entity.last_changed)}</p>
+          </div>
+        </button>
+        {supportsPercentage && (
+          <div className="fan-card__slider">
+            <label htmlFor={sliderId}>Velocidad</label>
+            <div className="fan-card__slider-wrapper">
+              <div className="fan-card__slider-track">
+                <div
+                  className="fan-card__slider-fill"
+                  style={{ width: `${sliderFill.percentage}%`, backgroundColor: sliderFill.color }}
+                />
+              </div>
+              <input
+                id={sliderId}
+                type="range"
+                min={0}
+                max={speedSteps}
+                step={1}
+                value={sliderStep}
+                onChange={handleSliderChange}
+                disabled={percentageDisabled || !onChangePercentage}
+                className="fan-card__slider-input"
               />
             </div>
-            <input
-              id={sliderId}
-              type="range"
-              min={0}
-              max={speedSteps}
-              step={1}
-              value={sliderStep}
-              onChange={handleSliderChange}
-              disabled={percentageDisabled || !onChangePercentage}
-              className="fan-card__slider-input"
-            />
+            <div className="fan-card__slider-ticks" aria-hidden>
+              {sliderTicks.map((tick) => (
+                <span
+                  key={tick}
+                  className={`fan-card__slider-tick${tick === sliderStep ? ' fan-card__slider-tick--active' : ''}`}
+                >
+                  {tick}
+                </span>
+              ))}
+            </div>
           </div>
-          <div className="fan-card__slider-ticks" aria-hidden>
-            {sliderTicks.map((tick) => (
-              <span
-                key={tick}
-                className={`fan-card__slider-tick${tick === sliderStep ? ' fan-card__slider-tick--active' : ''}`}
-              >
-                {tick}
-              </span>
-            ))}
-          </div>
-        </div>
-      )}
-      <LinkedEntitiesSection entities={linkedEntities} title={linkedEntitiesTitle} />
+        )}
+        <LinkedEntitiesSection entities={linkedEntities} title={linkedEntitiesTitle} />
+      </div>
     </article>
   );
 };

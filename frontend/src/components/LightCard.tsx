@@ -41,19 +41,21 @@ export const LightCard = ({
           {isFavorite ? '★' : '☆'}
         </button>
       )}
-      <button
-        type="button"
-        className="light-card__action"
-        onClick={() => onToggle(entity)}
-        disabled={disabled}
-      >
-        <BulbIcon isOn={isOn} />
-        <div className="light-card__details">
-          <p className="light-card__name">{friendlyName}</p>
-          <p className="light-card__state">{isOn ? 'On' : 'Off'}</p>
-          <p className="light-card__area">{areaLabel}</p>
-        </div>
-      </button>
+      <div className="card-content light-card__content">
+        <button
+          type="button"
+          className="light-card__action"
+          onClick={() => onToggle(entity)}
+          disabled={disabled}
+        >
+          <BulbIcon isOn={isOn} />
+          <div className="light-card__details">
+            <p className="light-card__name">{friendlyName}</p>
+            <p className="light-card__state">{isOn ? 'On' : 'Off'}</p>
+            <p className="light-card__area">{areaLabel}</p>
+          </div>
+        </button>
+      </div>
     </article>
   );
 };

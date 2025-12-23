@@ -42,19 +42,21 @@ export const SwitchCard = ({
           {isFavorite ? '★' : '☆'}
         </button>
       )}
-      <button
-        type="button"
-        className="switch-card__action"
-        onClick={() => onToggle(entity)}
-        disabled={disabled}
-      >
-        <SwitchIcon isOn={isOn} />
-        <div className="switch-card__details">
-          <p className="switch-card__name">{friendlyName}</p>
-          <p className="switch-card__state">{isOn ? 'On' : 'Off'}</p>
-          <p className="switch-card__area">{areaLabel}</p>
-        </div>
-      </button>
+      <div className="card-content switch-card__content">
+        <button
+          type="button"
+          className="switch-card__action"
+          onClick={() => onToggle(entity)}
+          disabled={disabled}
+        >
+          <SwitchIcon isOn={isOn} />
+          <div className="switch-card__details">
+            <p className="switch-card__name">{friendlyName}</p>
+            <p className="switch-card__state">{isOn ? 'On' : 'Off'}</p>
+            <p className="switch-card__area">{areaLabel}</p>
+          </div>
+        </button>
+      </div>
     </article>
   );
 };

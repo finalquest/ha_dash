@@ -22,29 +22,31 @@ export const EntityCard = ({ entity, areaName, isFavorite, onToggleFavorite, fav
 
   return (
     <article className="entity-card">
-      <header>
-        <h4>{friendlyName}</h4>
-        <button
-          className={`favorite-btn${isFavorite ? ' favorite-btn--active' : ''}`}
-          title={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
-          type="button"
-          onClick={() => onToggleFavorite?.(entity)}
-          aria-pressed={isFavorite}
-          disabled={favoriteDisabled}
-        >
-          {isFavorite ? '★' : '☆'}
-        </button>
-      </header>
-      <div className="entity-card__value">{formatValue(entity)}</div>
-      <p className="entity-card__type">{deviceClass}</p>
-      <footer>
-        <p>
-          <strong>Device ID:</strong> {deviceId}
-        </p>
-        <p>
-          <strong>Área:</strong> {areaLabel}
-        </p>
-      </footer>
+      <div className="card-content entity-card__content">
+        <header>
+          <h4>{friendlyName}</h4>
+          <button
+            className={`favorite-btn${isFavorite ? ' favorite-btn--active' : ''}`}
+            title={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
+            type="button"
+            onClick={() => onToggleFavorite?.(entity)}
+            aria-pressed={isFavorite}
+            disabled={favoriteDisabled}
+          >
+            {isFavorite ? '★' : '☆'}
+          </button>
+        </header>
+        <div className="entity-card__value">{formatValue(entity)}</div>
+        <p className="entity-card__type">{deviceClass}</p>
+        <footer>
+          <p>
+            <strong>Device ID:</strong> {deviceId}
+          </p>
+          <p>
+            <strong>Área:</strong> {areaLabel}
+          </p>
+        </footer>
+      </div>
     </article>
   );
 };

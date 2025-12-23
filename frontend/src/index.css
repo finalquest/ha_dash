@@ -180,6 +180,15 @@ body {
   color: inherit;
 }
 
+.card-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .entity-group + .entity-group {
   margin-top: 1rem;
 }
@@ -219,7 +228,7 @@ body {
   background: rgba(15, 23, 42, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 16px;
-  padding: 1.25rem;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -228,8 +237,12 @@ body {
   cursor: pointer;
   color: inherit;
   width: 100%;
-  max-width: 220px;
   border: none;
+}
+
+.light-card__content {
+  align-items: center;
+  gap: 0.5rem;
 }
 
 
@@ -237,7 +250,7 @@ body {
   background: rgba(15, 23, 42, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 16px;
-  padding: 1.25rem;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -246,24 +259,33 @@ body {
   cursor: pointer;
   color: inherit;
   width: 100%;
-  max-width: 220px;
   border: none;
   position: relative;
+}
+
+.switch-card__content {
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .fan-card {
   background: rgba(15, 23, 42, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 16px;
-  padding: 1.25rem;
+  padding: 0;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   align-items: stretch;
   width: 100%;
-  max-width: 260px;
   position: relative;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fan-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .fan-card--on {
@@ -588,12 +610,15 @@ body {
   background: rgba(15, 23, 42, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
-  padding: 1.25rem;
+  padding: 0;
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  max-width: 280px;
+}
+
+.climate-unit-card__content {
+  gap: 0.75rem;
 }
 
 .climate-unit-card__summary {
@@ -752,11 +777,14 @@ body {
   background: rgba(15, 23, 42, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 16px;
-  padding: 1rem;
+  padding: 0;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  max-width: 270px;
+}
+
+.entity-card__content {
+  gap: 0.5rem;
 }
 
 .entity-card header {
@@ -840,10 +868,8 @@ body {
 }
 
 .sensor-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  padding: 0.85rem 1rem;
+  display: block;
+  padding: 0;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(15, 23, 42, 0.85);
@@ -871,6 +897,9 @@ body {
 
 .sensor-card__details {
   flex: 1;
+}
+.sensor-card__content {
+  gap: 0.75rem;
 }
 
 .sensor-card__name {

@@ -34,26 +34,28 @@ export const SensorCard = ({ entity, isFavorite, onToggleFavorite, favoriteDisab
 
   return (
     <article className={`sensor-card${isActive ? ' sensor-card--active' : ''}`}>
-      <div className="sensor-card__header">
-        <SensorStatusIcon kind={sensorKind} active={isActive} />
-        {onToggleFavorite && (
-          <button
-            type="button"
-            className={`favorite-btn favorite-btn--floating favorite-btn--sensor${isFavorite ? ' favorite-btn--active' : ''}`}
-            onClick={() => onToggleFavorite(entity)}
-            disabled={favoriteDisabled}
-            aria-pressed={isFavorite}
-            title={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
-          >
-            {isFavorite ? '★' : '☆'}
-          </button>
-        )}
-      </div>
-      <div className="sensor-card__details">
-        <p className="sensor-card__name">{friendlyName}</p>
-        {!isBinary && <p className="sensor-card__state">{state}</p>}
-        <p className="sensor-card__area">{area}</p>
-        <p className="sensor-card__updated">{formatRelativeUpdate(entity.last_changed)}</p>
+      <div className="card-content sensor-card__content">
+        <div className="sensor-card__header">
+          <SensorStatusIcon kind={sensorKind} active={isActive} />
+          {onToggleFavorite && (
+            <button
+              type="button"
+              className={`favorite-btn favorite-btn--floating favorite-btn--sensor${isFavorite ? ' favorite-btn--active' : ''}`}
+              onClick={() => onToggleFavorite(entity)}
+              disabled={favoriteDisabled}
+              aria-pressed={isFavorite}
+              title={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
+            >
+              {isFavorite ? '★' : '☆'}
+            </button>
+          )}
+        </div>
+        <div className="sensor-card__details">
+          <p className="sensor-card__name">{friendlyName}</p>
+          {!isBinary && <p className="sensor-card__state">{state}</p>}
+          <p className="sensor-card__area">{area}</p>
+          <p className="sensor-card__updated">{formatRelativeUpdate(entity.last_changed)}</p>
+        </div>
       </div>
     </article>
   );
