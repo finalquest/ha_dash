@@ -20,12 +20,17 @@ router.get('/stream', (_req: Request, res: Response) => {
     sendEvent({ type: 'state_changed', ...event });
   };
 
+  const handleSceneTriggered = (event: { entityIds: string[]; timestamp: string }) => {
+    sendEvent({ type: 'scene_triggered', ...event });
+  };
+
   const handleStatus = (status: { online: boolean }) => {
     sendEvent({ type: 'status', ...status });
   };
 
   hub.on('state_changed', handleStateChange);
   hub.on('status', handleStatus);
+  hub.on('scene_triggered', handleSceneTriggered);
 
   sendEvent({ type: 'status', online: hub.isConnected() });
 
@@ -37,6 +42,7 @@ router.get('/stream', (_req: Request, res: Response) => {
     clearInterval(heartbeat);
     hub.off('state_changed', handleStateChange);
     hub.off('status', handleStatus);
+    hub.off('scene_triggered', handleSceneTriggered);
   });
 });
 

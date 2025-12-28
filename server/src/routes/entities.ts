@@ -2,12 +2,14 @@ import type { Request, Response } from 'express';
 import { Router } from 'express';
 import { getConfig } from '../config';
 import { createHomeAssistantClient } from '../ha/client';
+import { getEventHub } from '../ha/events';
 
 export const entitiesHandler = async (_req: Request, res: Response) => {
   try {
     const config = getConfig();
     const haClient = createHomeAssistantClient(config);
     const [entities, areas] = await Promise.all([haClient.getStates(), haClient.getAreas()]);
+    const sceneTriggerMap = getEventHub().getSceneTriggerMap();
 
     let metadataMap: Record<string, { area_id?: string; device_id?: string }> = {};
     try {
@@ -25,6 +27,7 @@ export const entitiesHandler = async (_req: Request, res: Response) => {
       const areaName = areaId ? areaNameMap.get(areaId) ?? areaId : undefined;
       const deviceId = metadata?.device_id ?? (entity.attributes.device_id as string | undefined);
 
+      const sceneLastTriggered = sceneTriggerMap.get(entity.entity_id);
       return {
         ...entity,
         attributes: {
@@ -32,6 +35,7 @@ export const entitiesHandler = async (_req: Request, res: Response) => {
           area_id: areaId ?? null,
           area_name: areaName,
           device_id: deviceId ?? null,
+          ...(sceneLastTriggered ? { __ha_dash_last_triggered: sceneLastTriggered } : {}),
         },
       };
     });

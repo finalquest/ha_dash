@@ -13,7 +13,13 @@ interface StatusPayload {
   online: boolean;
 }
 
-type EventPayload = StateChangedPayload | StatusPayload;
+interface SceneTriggeredPayload {
+  type: 'scene_triggered';
+  entityIds: string[];
+  timestamp: string;
+}
+
+type EventPayload = StateChangedPayload | StatusPayload | SceneTriggeredPayload;
 
 export const useEventStream = () => {
   const queryClient = useQueryClient();
@@ -40,6 +46,22 @@ export const useEventStream = () => {
                 attributes: {
                   ...entity.attributes,
                   ...(nextState.attributes ?? {}),
+                },
+              };
+            });
+          });
+        } else if (payload.type === 'scene_triggered' && payload.entityIds?.length) {
+          queryClient.setQueryData<HaEntity[]>(['entities'], (current) => {
+            if (!current) return current;
+            return current.map((entity) => {
+              if (!payload.entityIds.includes(entity.entity_id)) {
+                return entity;
+              }
+              return {
+                ...entity,
+                attributes: {
+                  ...entity.attributes,
+                  __ha_dash_last_triggered: payload.timestamp,
                 },
               };
             });

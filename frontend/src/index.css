@@ -526,8 +526,10 @@ body {
 }
 
 .device-card__linked-entity--active {
-  border-color: rgba(45, 212, 191, 0.5);
-  box-shadow: 0 0 12px rgba(45, 212, 191, 0.2);
+  border-color: rgba(94, 234, 212, 0.95);
+  box-shadow: 0 0 22px rgba(94, 234, 212, 0.45);
+  background: rgba(94, 234, 212, 0.9);
+  color: #052327;
 }
 
 .device-card__linked-info {

@@ -13,6 +13,7 @@ export interface LinkedEntityControl {
   icon?: ReactNode;
   hideDescription?: boolean;
   hideState?: boolean;
+  isActiveOverride?: boolean;
 }
 
 const isEntityActive = (entity: HaEntity) => {
@@ -47,12 +48,13 @@ export const LinkedEntitiesSection = ({ entities, title = 'Entidades asociadas' 
             icon,
             hideDescription,
             hideState,
+            isActiveOverride,
           } = item;
           const friendlyName = label ?? ((entity.attributes.friendly_name as string | undefined) ?? entity.entity_id);
           const domain = entity.entity_id.split('.')[0];
           const helperText = description ?? domain;
           const stateLabel = stateOverride ?? String(entity.state ?? '');
-          const isActive = isEntityActive(entity);
+          const isActive = typeof isActiveOverride === 'boolean' ? isActiveOverride : isEntityActive(entity);
           const baseClass = `device-card__linked-entity${isActive ? ' device-card__linked-entity--active' : ''}`;
 
           if (variant === 'icon') {

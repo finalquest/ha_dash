@@ -137,19 +137,34 @@ export const DashboardView = () => {
       };
       const groupFriendlyName = (entity.attributes.friendly_name as string | undefined) ?? entity.entity_id;
       const associatedScenes = lightSceneAssociations.get(entity.entity_id) ?? [];
+      const latestSceneTimestamp = associatedScenes.reduce<string | undefined>((latest, scene) => {
+        const sceneTimestamp = scene.attributes.__ha_dash_last_triggered as string | undefined;
+        if (!sceneTimestamp) {
+          return latest;
+        }
+        if (!latest || sceneTimestamp > latest) {
+          return sceneTimestamp;
+        }
+        return latest;
+      }, undefined);
       const linkedScenes: LinkedEntityControl[] =
         associatedScenes.length > 0
-          ? associatedScenes.map((scene) => ({
-              entity: scene,
-              onToggle: editing ? undefined : () => sceneActivate.mutate(scene.entity_id),
-              disabled: editing || sceneActivate.isPending,
-              label: stripGroupNameFromScene(
+          ? associatedScenes.map((scene) => {
+              const sceneLabel = stripGroupNameFromScene(
                 (scene.attributes.friendly_name as string | undefined) ?? scene.entity_id,
                 groupFriendlyName,
-              ),
-              hideDescription: true,
-              hideState: true,
-            }))
+              );
+              const lastTriggered = scene.attributes.__ha_dash_last_triggered as string | undefined;
+              return {
+                entity: scene,
+                onToggle: editing ? undefined : () => sceneActivate.mutate(scene.entity_id),
+                disabled: editing || sceneActivate.isPending,
+                label: sceneLabel,
+                hideDescription: true,
+                hideState: true,
+                isActiveOverride: Boolean(lastTriggered && latestSceneTimestamp && lastTriggered === latestSceneTimestamp),
+              };
+            })
           : [];
       return (
         <LightCard

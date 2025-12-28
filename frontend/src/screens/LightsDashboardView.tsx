@@ -99,17 +99,32 @@ export const LightsDashboardView = () => {
       return [];
     }
     const groupFriendlyName = (entity.attributes.friendly_name as string | undefined) ?? entity.entity_id;
-    return associatedScenes.map((scene) => ({
-      entity: scene,
-      onToggle: () => sceneActivate.mutate(scene.entity_id),
-      disabled: sceneActivate.isPending,
-      label: stripGroupNameFromScene(
-        (scene.attributes.friendly_name as string | undefined) ?? scene.entity_id,
-        groupFriendlyName,
-      ),
-      hideDescription: true,
-      hideState: true,
-    }));
+    const latestSceneTimestamp = associatedScenes.reduce<string | undefined>((latest, scene) => {
+      const sceneTimestamp = scene.attributes.__ha_dash_last_triggered as string | undefined;
+      if (!sceneTimestamp) {
+        return latest;
+      }
+      if (!latest || sceneTimestamp > latest) {
+        return sceneTimestamp;
+      }
+      return latest;
+    }, undefined);
+
+    return associatedScenes.map((scene) => {
+      const lastTriggered = scene.attributes.__ha_dash_last_triggered as string | undefined;
+      return {
+        entity: scene,
+        onToggle: () => sceneActivate.mutate(scene.entity_id),
+        disabled: sceneActivate.isPending,
+        label: stripGroupNameFromScene(
+          (scene.attributes.friendly_name as string | undefined) ?? scene.entity_id,
+          groupFriendlyName,
+        ),
+        hideDescription: true,
+        hideState: true,
+        isActiveOverride: Boolean(lastTriggered && latestSceneTimestamp && lastTriggered === latestSceneTimestamp),
+      };
+    });
   };
 
   return (
