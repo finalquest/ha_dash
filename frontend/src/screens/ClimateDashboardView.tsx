@@ -4,6 +4,7 @@ import { useEntities } from '../hooks/useEntities';
 import { useFavorites, useFavoriteToggle } from '../hooks/useFavorites';
 import { useFanPercentage, useFanToggle } from '../hooks/useFanControls';
 import { useLightControl } from '../hooks/useLightControl';
+import { useClimateModeControl, useClimateTemperatureControl } from '../hooks/useClimateControls';
 import { FanCard } from '../components/FanCard';
 import { ClimateUnitCard } from '../components/ClimateUnitCard';
 import type { LinkedEntityControl } from '../components/LinkedEntitiesSection';
@@ -40,6 +41,8 @@ export const ClimateDashboardView = () => {
   const fanToggle = useFanToggle();
   const fanPercentage = useFanPercentage();
   const lightControl = useLightControl();
+  const climateModeControl = useClimateModeControl();
+  const climateTemperatureControl = useClimateTemperatureControl();
 
   const favoriteMap = useMemo(() => buildFavoriteMap(favorites), [favorites]);
   const relevantEntities = useMemo(
@@ -96,6 +99,10 @@ export const ClimateDashboardView = () => {
   const handleFanPercentage = (entity: HaEntity, percentage: number) =>
     fanPercentage.mutate({ entityId: entity.entity_id, percentage });
   const handleLightToggle = (entity: HaEntity) => lightControl.mutate(entity.entity_id);
+  const handleClimateMode = (entity: HaEntity, mode: string) =>
+    climateModeControl.mutate({ entityId: entity.entity_id, mode });
+  const handleClimateTemperature = (entity: HaEntity, temperature: number) =>
+    climateTemperatureControl.mutate({ entityId: entity.entity_id, temperature });
 
   const buildLightLinks = (lights: HaEntity[]): LinkedEntityControl[] =>
     lights.map((light) => ({
@@ -148,6 +155,10 @@ export const ClimateDashboardView = () => {
             toggleFavorite.mutate({ entity: candidate, favorite: favoriteMap.get(candidate.entity_id) })
           }
           favoriteDisabled={toggleFavorite.isPending}
+          onSetMode={handleClimateMode}
+          modeDisabled={climateModeControl.isPending}
+          onSetTemperature={handleClimateTemperature}
+          temperatureDisabled={climateTemperatureControl.isPending}
         />
       );
     }

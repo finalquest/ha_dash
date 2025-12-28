@@ -146,3 +146,29 @@ export const reorderFavorites = async (order: string[]) => {
   }
   return response.json().catch(() => ({ ok: true }));
 };
+
+export const setClimateHvacMode = async (entityId: string, mode: string) => {
+  const response = await fetch(buildUrl(`/api/climate/${encodeURIComponent(entityId)}/mode`), {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ mode }),
+  });
+  if (!response.ok) {
+    const body = await response.json().catch(() => ({}));
+    const message = (body as { error?: string }).error ?? response.statusText;
+    throw new Error(message || 'Request failed');
+  }
+};
+
+export const setClimateTemperature = async (entityId: string, temperature: number) => {
+  const response = await fetch(buildUrl(`/api/climate/${encodeURIComponent(entityId)}/temperature`), {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ temperature }),
+  });
+  if (!response.ok) {
+    const body = await response.json().catch(() => ({}));
+    const message = (body as { error?: string }).error ?? response.statusText;
+    throw new Error(message || 'Request failed');
+  }
+};

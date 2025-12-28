@@ -12,9 +12,11 @@ import { EnergyMetricGroupCard } from '../components/EnergyMetricGroupCard';
 import { LightCard } from '../components/LightCard';
 import { SwitchCard } from '../components/SwitchCard';
 import { FanCard } from '../components/FanCard';
+import { ClimateUnitCard } from '../components/ClimateUnitCard';
 import { SensorCard } from '../components/SensorCard';
 import { useLightControl } from '../hooks/useLightControl';
 import { useFanPercentage, useFanToggle } from '../hooks/useFanControls';
+import { useClimateModeControl, useClimateTemperatureControl } from '../hooks/useClimateControls';
 import type { LinkedEntityControl } from '../components/LinkedEntitiesSection';
 import {
   buildClimateDeviceGroups,
@@ -54,6 +56,8 @@ export const DashboardView = () => {
   const lightControl = useLightControl();
   const fanToggleControl = useFanToggle();
   const fanPercentageControl = useFanPercentage();
+  const climateModeControl = useClimateModeControl();
+  const climateTemperatureControl = useClimateTemperatureControl();
   const reorderFavoritesMutation = useReorderFavorites();
   const [isEditing, setIsEditing] = useState(false);
   const [orderedIds, setOrderedIds] = useState<string[]>([]);
@@ -197,6 +201,53 @@ export const DashboardView = () => {
           favoriteDisabled={toggleFavorite.isPending}
           linkedEntities={linkedEntities}
           linkedEntitiesTitle={linkedEntities.length ? 'Componentes vinculados' : undefined}
+        />
+      );
+    }
+
+    if (domain === 'climate') {
+      const handleClimateMode = (candidate: HaEntity, mode: string) => {
+        if (!editing) {
+          climateModeControl.mutate({ entityId: candidate.entity_id, mode });
+        }
+      };
+      const handleClimateTemperature = (candidate: HaEntity, temperature: number) => {
+        if (!editing) {
+          climateTemperatureControl.mutate({ entityId: candidate.entity_id, temperature });
+        }
+      };
+      const linkedGroup = climateGroupMap.get(entity.entity_id);
+      const linkedLights: LinkedEntityControl[] = linkedGroup
+        ? linkedGroup.lights.map((light) => ({
+            entity: light,
+            onToggle: editing ? undefined : (candidate) => lightControl.mutate(candidate.entity_id),
+            disabled: editing || lightControl.isPending,
+            description: 'Luz',
+            variant: 'icon',
+          }))
+        : [];
+      const linkedClimates: LinkedEntityControl[] = linkedGroup
+        ? linkedGroup.climates
+            .filter((climate) => climate.entity_id !== entity.entity_id)
+            .map((climate) => ({
+              entity: climate,
+              description: formatClimateDescription(climate),
+              stateOverride: formatClimateTemperature(climate),
+            }))
+        : [];
+      const linkedEntities = [...linkedLights, ...linkedClimates];
+      return (
+        <ClimateUnitCard
+          key={favorite.id}
+          entity={entity}
+          linkedEntities={linkedEntities}
+          isFavorite
+          onToggleFavorite={editing ? undefined : handleToggleFavorite}
+          favoriteDisabled={toggleFavorite.isPending}
+          onSetMode={editing ? undefined : handleClimateMode}
+          modeDisabled={editing || climateModeControl.isPending}
+          onSetTemperature={editing ? undefined : handleClimateTemperature}
+          temperatureDisabled={editing || climateTemperatureControl.isPending}
         />
       );
     }

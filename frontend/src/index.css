@@ -665,6 +665,178 @@ body {
   font-weight: 600;
 }
 
+.climate-unit-card__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.climate-unit-card__control {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 0.75rem;
+  background: rgba(15, 23, 42, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.climate-unit-card__control-header {
+  margin: 0;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.climate-unit-card__control-header span:last-child,
+.climate-unit-card__control-header > span:last-child {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: normal;
+  text-transform: none;
+  color: #e2e8f0;
+}
+
+.climate-unit-card__temp-slider {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.climate-unit-card__temp-slider input[type='range'] {
+  flex: 1;
+  accent-color: var(--temperature-color, #22c55e);
+  background: linear-gradient(90deg, #22c55e, #84cc16, #facc15, #fb923c, #ef4444);
+  border-radius: 999px;
+  height: 6px;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.climate-unit-card__temp-slider input[type='range']::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 999px;
+  background: inherit;
+}
+
+.climate-unit-card__temp-slider input[type='range']::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--temperature-color, #22c55e);
+  border: 2px solid #0f172a;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  margin-top: -6px;
+}
+
+.climate-unit-card__temp-slider input[type='range']::-moz-range-track {
+  height: 6px;
+  border-radius: 999px;
+  background: inherit;
+}
+
+.climate-unit-card__temp-slider input[type='range']::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #0f172a;
+  background: var(--temperature-color, #22c55e);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
+
+.climate-unit-card__temp-step {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: #f8fafc;
+  font-size: 1.25rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.climate-unit-card__temp-step:disabled {
+  opacity: 0.5;
+}
+
+.climate-unit-card__temp-step:not(:disabled):hover {
+  background: rgba(96, 165, 250, 0.35);
+}
+
+.climate-unit-card__apply-btn {
+  align-self: flex-end;
+  border: none;
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  background: linear-gradient(90deg, #38bdf8, #4f46e5);
+  color: #0f172a;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.climate-unit-card__apply-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.climate-unit-card__mode-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.climate-unit-card__mode-btn {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  padding: 0.25rem 0.8rem;
+  background: rgba(255, 255, 255, 0.04);
+  color: #e2e8f0;
+  text-transform: capitalize;
+  font-size: 0.85rem;
+  transition: background 0.2s ease, border 0.2s ease;
+}
+
+.climate-unit-card__mode-btn--active {
+  border-color: rgba(96, 165, 250, 0.8);
+  background: rgba(96, 165, 250, 0.25);
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.climate-unit-card__mode-btn:disabled:not(.climate-unit-card__mode-btn--active) {
+  opacity: 0.5;
+}
+
+.climate-unit-card__mode-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.climate-unit-card__chip {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  padding: 0.05rem 0.6rem;
+  font-size: 0.75rem;
+  text-transform: capitalize;
+  background: rgba(255, 255, 255, 0.04);
+}
+
 .switch-card__name {
   margin: 0;
   font-size: 1rem;

@@ -9,6 +9,7 @@ import favoritesRouter from './favorites';
 import lightsRouter from './lights';
 import eventsRouter from './events';
 import fansRouter from './fans';
+import climateRouter from './climate';
 
 const apiRouter = Router();
 
@@ -21,6 +22,7 @@ apiRouter.use('/devices/metrics', metricsRouter);
 apiRouter.use('/favorites', favoritesRouter);
 apiRouter.use('/lights', lightsRouter);
 apiRouter.use('/fans', fansRouter);
+apiRouter.use('/climate', climateRouter);
 apiRouter.use('/events', eventsRouter);
 
 export default apiRouter;
