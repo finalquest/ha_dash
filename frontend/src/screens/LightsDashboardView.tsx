@@ -2,8 +2,11 @@ import { useMemo } from 'react';
 import type { HaEntity, FavoriteEntry } from '../api/types';
 import { useEntities } from '../hooks/useEntities';
 import { LightCard } from '../components/LightCard';
+import type { LinkedEntityControl } from '../components/LinkedEntitiesSection';
 import { useLightControl, useLightBrightness } from '../hooks/useLightControl';
 import { useFavorites, useFavoriteToggle } from '../hooks/useFavorites';
+import { useSceneActivate } from '../hooks/useSceneActivate';
+import { buildLightSceneAssociations, stripGroupNameFromScene } from '../lib/lightSceneGrouping';
 
 const isLightEntity = (entity: HaEntity) => {
   const domain = entity.entity_id.split('.')[0];
@@ -33,10 +36,12 @@ export const LightsDashboardView = () => {
   } = useEntities();
   const lightControl = useLightControl();
   const lightBrightnessControl = useLightBrightness();
+  const sceneActivate = useSceneActivate();
   const { data: favorites = [] } = useFavorites();
   const toggleFavorite = useFavoriteToggle();
 
   const lightEntities = useMemo(() => entities.filter(isLightEntity), [entities]);
+  const lightSceneAssociations = useMemo(() => buildLightSceneAssociations(entities), [entities]);
 
   const grouped = useMemo(() => {
     return lightEntities.reduce<Record<string, { label: string; items: HaEntity[] }>>((acc, entity) => {
@@ -88,6 +93,25 @@ export const LightsDashboardView = () => {
     lightBrightnessControl.mutate({ entityId: entity.entity_id, percentage });
   };
 
+  const buildSceneLinks = (entity: HaEntity): LinkedEntityControl[] => {
+    const associatedScenes = lightSceneAssociations.get(entity.entity_id) ?? [];
+    if (associatedScenes.length === 0) {
+      return [];
+    }
+    const groupFriendlyName = (entity.attributes.friendly_name as string | undefined) ?? entity.entity_id;
+    return associatedScenes.map((scene) => ({
+      entity: scene,
+      onToggle: () => sceneActivate.mutate(scene.entity_id),
+      disabled: sceneActivate.isPending,
+      label: stripGroupNameFromScene(
+        (scene.attributes.friendly_name as string | undefined) ?? scene.entity_id,
+        groupFriendlyName,
+      ),
+      hideDescription: true,
+      hideState: true,
+    }));
+  };
+
   return (
     <section>
 
@@ -95,21 +119,26 @@ export const LightsDashboardView = () => {
         <section key={areaId} className="panel entity-group">
           <h3>{group.label}</h3>
           <div className="entity-grid">
-            {group.items.map((entity) => (
-              <LightCard
-                key={entity.entity_id}
-                entity={entity}
-                onToggle={handleToggle}
-                disabled={lightControl.isPending}
-                isFavorite={favoriteMap.has(entity.entity_id)}
-                onToggleFavorite={(candidate) =>
-                  toggleFavorite.mutate({ entity: candidate, favorite: favoriteMap.get(candidate.entity_id) })
-                }
-                favoriteDisabled={toggleFavorite.isPending}
-                onChangeBrightness={entity.entity_id.startsWith('light.') ? handleBrightness : undefined}
-                brightnessDisabled={lightBrightnessControl.isPending}
-              />
-            ))}
+            {group.items.map((entity) => {
+              const sceneLinks = buildSceneLinks(entity);
+              return (
+                <LightCard
+                  key={entity.entity_id}
+                  entity={entity}
+                  onToggle={handleToggle}
+                  disabled={lightControl.isPending}
+                  isFavorite={favoriteMap.has(entity.entity_id)}
+                  onToggleFavorite={(candidate) =>
+                    toggleFavorite.mutate({ entity: candidate, favorite: favoriteMap.get(candidate.entity_id) })
+                  }
+                  favoriteDisabled={toggleFavorite.isPending}
+                  onChangeBrightness={entity.entity_id.startsWith('light.') ? handleBrightness : undefined}
+                  brightnessDisabled={lightBrightnessControl.isPending}
+                  linkedEntities={sceneLinks}
+                  linkedEntitiesTitle={sceneLinks.length ? 'Escenas' : undefined}
+                />
+              );
+            })}
           </div>
         </section>
       ))}

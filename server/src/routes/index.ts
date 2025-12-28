@@ -10,6 +10,7 @@ import lightsRouter from './lights';
 import eventsRouter from './events';
 import fansRouter from './fans';
 import climateRouter from './climate';
+import scenesRouter from './scenes';
 
 const apiRouter = Router();
 
@@ -23,6 +24,7 @@ apiRouter.use('/favorites', favoritesRouter);
 apiRouter.use('/lights', lightsRouter);
 apiRouter.use('/fans', fansRouter);
 apiRouter.use('/climate', climateRouter);
+apiRouter.use('/scenes', scenesRouter);
 apiRouter.use('/events', eventsRouter);
 
 export default apiRouter;

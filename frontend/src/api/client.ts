@@ -185,3 +185,14 @@ export const setClimateTemperature = async (entityId: string, temperature: numbe
     throw new Error(message || 'Request failed');
   }
 };
+
+export const activateScene = async (entityId: string) => {
+  const response = await fetch(buildUrl(`/api/scenes/${encodeURIComponent(entityId)}/activate`), {
+    method: 'POST',
+  });
+  if (!response.ok) {
+    const body = await response.json().catch(() => ({}));
+    const message = (body as { error?: string }).error ?? response.statusText;
+    throw new Error(message || 'Request failed');
+  }
+};

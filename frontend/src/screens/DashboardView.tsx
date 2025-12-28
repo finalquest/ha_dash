@@ -17,6 +17,7 @@ import { SensorCard } from '../components/SensorCard';
 import { useLightControl, useLightBrightness } from '../hooks/useLightControl';
 import { useFanPercentage, useFanToggle } from '../hooks/useFanControls';
 import { useClimateModeControl, useClimateTemperatureControl } from '../hooks/useClimateControls';
+import { useSceneActivate } from '../hooks/useSceneActivate';
 import type { LinkedEntityControl } from '../components/LinkedEntitiesSection';
 import {
   buildClimateDeviceGroups,
@@ -28,6 +29,7 @@ import {
   isLight as isLightEntity,
 } from '../lib/climateGrouping';
 import { isSensorEntity } from '../lib/sensorUtils';
+import { buildLightSceneAssociations, stripGroupNameFromScene } from '../lib/lightSceneGrouping';
 
 const renderUnsupportedCard = (favorite: FavoriteEntry) => (
   <article key={favorite.id} className="entity-card">
@@ -55,6 +57,7 @@ export const DashboardView = () => {
   const toggleFavorite = useFavoriteToggle();
   const lightControl = useLightControl();
   const lightBrightnessControl = useLightBrightness();
+  const sceneActivate = useSceneActivate();
   const fanToggleControl = useFanToggle();
   const fanPercentageControl = useFanPercentage();
   const climateModeControl = useClimateModeControl();
@@ -89,6 +92,7 @@ export const DashboardView = () => {
   );
   const climateGroups = useMemo(() => buildClimateDeviceGroups(climateRelevantEntities), [climateRelevantEntities]);
   const climateGroupMap = useMemo(() => buildEntityGroupMap(climateGroups), [climateGroups]);
+  const lightSceneAssociations = useMemo(() => buildLightSceneAssociations(entities), [entities]);
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
@@ -131,6 +135,22 @@ export const DashboardView = () => {
           lightBrightnessControl.mutate({ entityId: candidate.entity_id, percentage });
         }
       };
+      const groupFriendlyName = (entity.attributes.friendly_name as string | undefined) ?? entity.entity_id;
+      const associatedScenes = lightSceneAssociations.get(entity.entity_id) ?? [];
+      const linkedScenes: LinkedEntityControl[] =
+        associatedScenes.length > 0
+          ? associatedScenes.map((scene) => ({
+              entity: scene,
+              onToggle: editing ? undefined : () => sceneActivate.mutate(scene.entity_id),
+              disabled: editing || sceneActivate.isPending,
+              label: stripGroupNameFromScene(
+                (scene.attributes.friendly_name as string | undefined) ?? scene.entity_id,
+                groupFriendlyName,
+              ),
+              hideDescription: true,
+              hideState: true,
+            }))
+          : [];
       return (
         <LightCard
           key={favorite.id}
@@ -146,6 +166,8 @@ export const DashboardView = () => {
           favoriteDisabled={toggleFavorite.isPending}
           onChangeBrightness={isRealLight ? handleBrightness : undefined}
           brightnessDisabled={editing || lightBrightnessControl.isPending}
+          linkedEntities={linkedScenes}
+          linkedEntitiesTitle={linkedScenes.length ? 'Escenas' : undefined}
         />
       );
     }

@@ -11,6 +11,8 @@ export interface LinkedEntityControl {
   stateOverride?: string;
   variant?: 'default' | 'icon';
   icon?: ReactNode;
+  hideDescription?: boolean;
+  hideState?: boolean;
 }
 
 const isEntityActive = (entity: HaEntity) => {
@@ -43,6 +45,8 @@ export const LinkedEntitiesSection = ({ entities, title = 'Entidades asociadas' 
             stateOverride,
             variant = 'default',
             icon,
+            hideDescription,
+            hideState,
           } = item;
           const friendlyName = label ?? ((entity.attributes.friendly_name as string | undefined) ?? entity.entity_id);
           const domain = entity.entity_id.split('.')[0];
@@ -93,9 +97,9 @@ export const LinkedEntitiesSection = ({ entities, title = 'Entidades asociadas' 
               >
                 <span className="device-card__linked-info">
                   <span className="device-card__linked-name">{friendlyName}</span>
-                  <span className="device-card__linked-description">{helperText}</span>
+                  {!hideDescription && <span className="device-card__linked-description">{helperText}</span>}
                 </span>
-                <span className="device-card__linked-state">{stateLabel}</span>
+                {!hideState && <span className="device-card__linked-state">{stateLabel}</span>}
               </button>
             );
           }
@@ -103,9 +107,9 @@ export const LinkedEntitiesSection = ({ entities, title = 'Entidades asociadas' 
             <div key={entity.entity_id} className={`${baseClass} device-card__linked-entity--static`}>
               <span className="device-card__linked-info">
                 <span className="device-card__linked-name">{friendlyName}</span>
-                <span className="device-card__linked-description">{helperText}</span>
+                {!hideDescription && <span className="device-card__linked-description">{helperText}</span>}
               </span>
-              <span className="device-card__linked-state">{stateLabel}</span>
+              {!hideState && <span className="device-card__linked-state">{stateLabel}</span>}
             </div>
           );
         })}

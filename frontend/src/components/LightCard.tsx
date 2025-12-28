@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { HaEntity } from '../api/types';
+import { LinkedEntitiesSection, type LinkedEntityControl } from './LinkedEntitiesSection';
 
 interface LightCardProps {
   entity: HaEntity;
@@ -10,6 +11,8 @@ interface LightCardProps {
   favoriteDisabled?: boolean;
   onChangeBrightness?: (entity: HaEntity, percentage: number) => void;
   brightnessDisabled?: boolean;
+  linkedEntities?: LinkedEntityControl[];
+  linkedEntitiesTitle?: string;
 }
 
 const BulbIcon = ({ isOn }: { isOn: boolean }) => (
@@ -28,6 +31,8 @@ export const LightCard = ({
   favoriteDisabled,
   onChangeBrightness,
   brightnessDisabled,
+  linkedEntities,
+  linkedEntitiesTitle,
 }: LightCardProps) => {
   const isOn = entity.state === 'on';
   const friendlyName = (entity.attributes.friendly_name as string | undefined) ?? entity.entity_id;
@@ -145,6 +150,7 @@ export const LightCard = ({
             </div>
           </div>
         )}
+        <LinkedEntitiesSection entities={linkedEntities} title={linkedEntitiesTitle ?? 'Entidades asociadas'} />
       </div>
     </article>
   );
