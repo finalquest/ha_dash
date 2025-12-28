@@ -104,6 +104,19 @@ export const toggleLight = (entityId: string) => lightAction(entityId, 'toggle')
 export const turnOnLight = (entityId: string) => lightAction(entityId, 'on');
 export const turnOffLight = (entityId: string) => lightAction(entityId, 'off');
 
+export const setLightBrightness = async (entityId: string, percentage: number) => {
+  const response = await fetch(buildUrl(`/api/lights/${encodeURIComponent(entityId)}/brightness`), {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ percentage }),
+  });
+  if (!response.ok) {
+    const body = await response.json().catch(() => ({}));
+    const message = (body as { error?: string }).error ?? response.statusText;
+    throw new Error(message || 'Request failed');
+  }
+};
+
 const fanAction = async (entityId: string, action: 'toggle') => {
   const response = await fetch(buildUrl(`/api/fans/${encodeURIComponent(entityId)}/${action}`), {
     method: 'POST',

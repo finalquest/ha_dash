@@ -14,7 +14,7 @@ import { SwitchCard } from '../components/SwitchCard';
 import { FanCard } from '../components/FanCard';
 import { ClimateUnitCard } from '../components/ClimateUnitCard';
 import { SensorCard } from '../components/SensorCard';
-import { useLightControl } from '../hooks/useLightControl';
+import { useLightControl, useLightBrightness } from '../hooks/useLightControl';
 import { useFanPercentage, useFanToggle } from '../hooks/useFanControls';
 import { useClimateModeControl, useClimateTemperatureControl } from '../hooks/useClimateControls';
 import type { LinkedEntityControl } from '../components/LinkedEntitiesSection';
@@ -54,6 +54,7 @@ export const DashboardView = () => {
   } = useMetricGroups();
   const toggleFavorite = useFavoriteToggle();
   const lightControl = useLightControl();
+  const lightBrightnessControl = useLightBrightness();
   const fanToggleControl = useFanToggle();
   const fanPercentageControl = useFanPercentage();
   const climateModeControl = useClimateModeControl();
@@ -124,6 +125,12 @@ export const DashboardView = () => {
     const handleToggleFavorite = () => toggleFavorite.mutate({ entity, favorite });
 
     if (looksLikeLight) {
+      const isRealLight = domain === 'light';
+      const handleBrightness = (candidate: HaEntity, percentage: number) => {
+        if (!editing && isRealLight) {
+          lightBrightnessControl.mutate({ entityId: candidate.entity_id, percentage });
+        }
+      };
       return (
         <LightCard
           key={favorite.id}
@@ -137,6 +144,8 @@ export const DashboardView = () => {
           isFavorite
           onToggleFavorite={editing ? undefined : handleToggleFavorite}
           favoriteDisabled={toggleFavorite.isPending}
+          onChangeBrightness={isRealLight ? handleBrightness : undefined}
+          brightnessDisabled={editing || lightBrightnessControl.isPending}
         />
       );
     }

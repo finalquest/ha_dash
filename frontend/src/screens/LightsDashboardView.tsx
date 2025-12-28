@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import type { HaEntity, FavoriteEntry } from '../api/types';
 import { useEntities } from '../hooks/useEntities';
 import { LightCard } from '../components/LightCard';
-import { useLightControl } from '../hooks/useLightControl';
+import { useLightControl, useLightBrightness } from '../hooks/useLightControl';
 import { useFavorites, useFavoriteToggle } from '../hooks/useFavorites';
 
 const isLightEntity = (entity: HaEntity) => {
@@ -32,6 +32,7 @@ export const LightsDashboardView = () => {
     error,
   } = useEntities();
   const lightControl = useLightControl();
+  const lightBrightnessControl = useLightBrightness();
   const { data: favorites = [] } = useFavorites();
   const toggleFavorite = useFavoriteToggle();
 
@@ -83,6 +84,10 @@ export const LightsDashboardView = () => {
     lightControl.mutate(entity.entity_id);
   };
 
+  const handleBrightness = (entity: HaEntity, percentage: number) => {
+    lightBrightnessControl.mutate({ entityId: entity.entity_id, percentage });
+  };
+
   return (
     <section>
 
@@ -101,6 +106,8 @@ export const LightsDashboardView = () => {
                   toggleFavorite.mutate({ entity: candidate, favorite: favoriteMap.get(candidate.entity_id) })
                 }
                 favoriteDisabled={toggleFavorite.isPending}
+                onChangeBrightness={entity.entity_id.startsWith('light.') ? handleBrightness : undefined}
+                brightnessDisabled={lightBrightnessControl.isPending}
               />
             ))}
           </div>

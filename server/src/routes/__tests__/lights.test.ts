@@ -43,15 +43,16 @@ const createMockResponse = () => {
 };
 
 const runHandler = async (
-  path: '/:entityId/toggle' | '/:entityId/on' | '/:entityId/off',
+  path: '/:entityId/toggle' | '/:entityId/on' | '/:entityId/off' | '/:entityId/brightness',
   entityId = 'light.living_room',
+  body?: Record<string, unknown>,
 ) => {
   const layer = lightsRouter.stack.find((layer) => layer.route?.path === path);
   if (!layer) {
     throw new Error(`Handler for ${path} not found`);
   }
   const handler = layer.route!.stack[0].handle;
-  const req = { params: { entityId } } as unknown as Request;
+  const req = { params: { entityId }, body } as unknown as Request;
   const res = createMockResponse();
   await handler(req, res, () => undefined);
   return res;
@@ -83,5 +84,26 @@ describe('lights routes', () => {
     const res = createMockResponse();
     await handler(req, res, () => undefined);
     expect(res.statusCode).toBe(400);
+  });
+
+  it('sets brightness when payload is valid', async () => {
+    const res = await runHandler('/:entityId/brightness', 'light.living_room', { percentage: 50 });
+    expect(mockCallService).toHaveBeenCalledWith('light', 'turn_on', {
+      entity_id: 'light.living_room',
+      brightness: expect.any(Number),
+    });
+    expect(res.statusCode).toBe(200);
+  });
+
+  it('turns off light when brightness is zero', async () => {
+    const res = await runHandler('/:entityId/brightness', 'light.living_room', { percentage: 0 });
+    expect(mockCallService).toHaveBeenCalledWith('light', 'turn_off', { entity_id: 'light.living_room' });
+    expect(res.statusCode).toBe(200);
+  });
+
+  it('rejects invalid brightness payloads', async () => {
+    const res = await runHandler('/:entityId/brightness', 'light.living_room', { percentage: 'invalid' });
+    expect(res.statusCode).toBe(400);
+    expect(mockCallService).not.toHaveBeenCalled();
   });
 });
